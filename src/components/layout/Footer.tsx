@@ -28,7 +28,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="mt-4 text-[#A7B1D8] text-sm leading-relaxed max-w-md">
-              Empowering businesses with intelligent AI technologies. We design and ship 
+              Empowering businesses with intelligent AI technologies. We design and ship
               machine learning systems that are calm, reliable, and easy to adopt.
             </p>
             <div className="flex items-center gap-4 mt-6">

@@ -159,7 +159,7 @@ const Contact = () => {
               Let's Start a Conversation
             </h1>
             <p className="text-lg text-[#A7B1D8] leading-relaxed max-w-2xl mx-auto">
-              Ready to explore how AI can transform your business? Contact Ikarmic AI 
+              Ready to explore how AI can transform your business? Contact Ikarmic AI
               Services and Solutions today and our AI experts will get back to you.
             </p>
           </div>
@@ -169,7 +169,7 @@ const Contact = () => {
       {/* Contact Form Section */}
       <section
         className="relative py-16 lg:py-24"
-        style={{ 
+        style={{
           backgroundColor: '#0B1022',
           borderTop: '1px solid rgba(244, 246, 255, 0.05)'
         }}
@@ -183,14 +183,14 @@ const Contact = () => {
                   Contact Information
                 </h2>
                 <p className="text-[#A7B1D8] leading-relaxed mb-8">
-                  Fill out the form and our AI experts will contact you within 
+                  Fill out the form and our AI experts will contact you within
                   24 hours to discuss your project.
                 </p>
                 <p className="text-sm text-[#A7B1D8] mb-8">
                   Typical discovery calls are 30 minutes and include feasibility guidance,
                   timeline ranges, and recommended next steps.
                 </p>
-                
+
                 <div className="space-y-6">
                   {contactInfo.map((item) => (
                     <div key={item.label} className="flex items-start gap-4">
@@ -246,7 +246,7 @@ const Contact = () => {
                   <h2 className="text-xl font-semibold text-white mb-6">
                     Request a Consultation
                   </h2>
-                  
+
                   {isSubmitted ? (
                     <div className="text-center py-12">
                       <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
@@ -298,7 +298,7 @@ const Contact = () => {
                           />
                         </div>
                       </div>
-                      
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
                           <label className="block text-sm text-[#A7B1D8] mb-2">
@@ -327,7 +327,7 @@ const Contact = () => {
                           />
                         </div>
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm text-[#A7B1D8] mb-2">
                           Message <span className="text-indigo-400">*</span>
@@ -342,7 +342,7 @@ const Contact = () => {
                           placeholder="Tell us about your project and how we can help..."
                         />
                       </div>
-                      
+
                       <button
                         type="submit"
                         disabled={isSubmitting}

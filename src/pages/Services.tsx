@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  MessageSquare, 
-  Bot, 
-  BarChart3, 
-  Sparkles, 
-  Code2, 
-  FileText, 
+import {
+  MessageSquare,
+  Bot,
+  BarChart3,
+  Sparkles,
+  Code2,
+  FileText,
   Settings,
   TrendingUp,
   ShoppingBag,
@@ -308,7 +308,7 @@ const Services = () => {
               Core AI Services
             </h1>
             <p className="text-lg text-[#A7B1D8] leading-relaxed max-w-2xl mx-auto">
-              We specialize in building intelligent systems that automate workflows, 
+              We specialize in building intelligent systems that automate workflows,
               improve decision-making, and enhance customer experiences.
             </p>
           </div>
@@ -319,7 +319,7 @@ const Services = () => {
       <section
         ref={servicesRef}
         className="relative py-16 lg:py-24"
-        style={{ 
+        style={{
           backgroundColor: '#0B1022',
           borderTop: '1px solid rgba(244, 246, 255, 0.05)'
         }}
@@ -419,7 +419,7 @@ const Services = () => {
       <section
         ref={industriesRef}
         className="relative py-16 lg:py-24"
-        style={{ 
+        style={{
           opacity: 0,
           backgroundColor: '#0B1022',
           borderTop: '1px solid rgba(244, 246, 255, 0.05)'
@@ -524,7 +524,7 @@ const Services = () => {
       <section
         ref={ctaRef}
         className="relative py-20 lg:py-28"
-        style={{ 
+        style={{
           opacity: 0,
           borderTop: '1px solid rgba(244, 246, 255, 0.05)'
         }}
@@ -535,8 +535,8 @@ const Services = () => {
               Transform Your Business with AI
             </h2>
             <p className="text-lg text-[#A7B1D8] leading-relaxed mb-10">
-              Artificial intelligence is transforming the way businesses operate. 
-              Ikarmic AI Services and Solutions helps companies leverage AI to increase 
+              Artificial intelligence is transforming the way businesses operate.
+              Ikarmic AI Services and Solutions helps companies leverage AI to increase
               efficiency, reduce costs, and unlock new opportunities.
             </p>
             <Link

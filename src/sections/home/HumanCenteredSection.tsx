@@ -121,7 +121,7 @@ const HumanCenteredSection = () => {
           className="text-[#A7B1D8] leading-relaxed mb-8"
           style={{ opacity: 0 }}
         >
-          Great AI is invisible. We design explanations, confidence signals, and safe 
+          Great AI is invisible. We design explanations, confidence signals, and safe
           defaults so users feel in control—every interaction.
         </p>
         <Link

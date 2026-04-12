@@ -121,7 +121,7 @@ const EthicalSection = () => {
           className="text-[#A7B1D8] leading-relaxed mb-8"
           style={{ opacity: 0 }}
         >
-          We build with bias checks, privacy guardrails, and clear governance from day one. 
+          We build with bias checks, privacy guardrails, and clear governance from day one.
           Compliance isn't a finish line—it's a baseline.
         </p>
         <Link

@@ -219,7 +219,7 @@ const About = () => {
               Who We Are
             </h1>
             <p className="text-lg text-[#A7B1D8] leading-relaxed max-w-2xl mx-auto">
-              Ikarmic AI Services and Solutions is dedicated to helping organizations harness 
+              Ikarmic AI Services and Solutions is dedicated to helping organizations harness
               the power of artificial intelligence to improve business performance and innovation.
             </p>
           </div>
@@ -230,7 +230,7 @@ const About = () => {
       <section
         ref={missionRef}
         className="relative py-16 lg:py-24"
-        style={{ 
+        style={{
           opacity: 0,
           backgroundColor: '#0B1022',
           borderTop: '1px solid rgba(244, 246, 255, 0.05)'
@@ -244,7 +244,7 @@ const About = () => {
                 Empowering businesses with intelligent AI solutions
               </h2>
               <p className="text-[#A7B1D8] leading-relaxed">
-                To empower businesses with intelligent AI solutions that drive automation, 
+                To empower businesses with intelligent AI solutions that drive automation,
                 improve decision-making, and accelerate digital transformation.
               </p>
             </div>
@@ -254,7 +254,7 @@ const About = () => {
                 A trusted global partner for AI innovation
               </h2>
               <p className="text-[#A7B1D8] leading-relaxed">
-                To become a trusted global partner for businesses seeking innovative, 
+                To become a trusted global partner for businesses seeking innovative,
                 scalable, and ethical AI solutions.
               </p>
             </div>
@@ -290,7 +290,7 @@ const About = () => {
       <section
         ref={valuesRef}
         className="relative py-16 lg:py-24"
-        style={{ 
+        style={{
           backgroundColor: '#0B1022',
           borderTop: '1px solid rgba(244, 246, 255, 0.05)'
         }}

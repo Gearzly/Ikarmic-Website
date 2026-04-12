@@ -19,13 +19,13 @@ gsap.registerPlugin(ScrollTrigger);
 // Scroll to top on route change
 const ScrollToTop = () => {
   const location = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
     // Refresh ScrollTrigger after route change
     ScrollTrigger.refresh();
   }, [location]);
-  
+
   return null;
 };
 
@@ -144,10 +144,10 @@ function App() {
       <div className="relative min-h-screen bg-[#070A12]">
         {/* Grain Overlay */}
         <div className="grain-overlay" />
-        
+
         {/* Navigation */}
         <Navbar />
-        
+
         {/* Main Content */}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -157,7 +157,7 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
         </Routes>
-        
+
         {/* Footer */}
         <Footer />
       </div>

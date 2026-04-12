@@ -107,7 +107,7 @@ const FeatureCardSection = () => {
       <div
         ref={cardRef}
         className="relative z-[4] w-[min(860px,82vw)] glass-card rounded-[28px] p-8 lg:p-12"
-        style={{ 
+        style={{
           opacity: 0,
           transform: 'perspective(1000px)'
         }}
@@ -127,7 +127,7 @@ const FeatureCardSection = () => {
               className="text-[#A7B1D8] leading-relaxed mb-8"
               style={{ opacity: 0 }}
             >
-              We embed models into your product so predictions feel like features—not add-ons. 
+              We embed models into your product so predictions feel like features—not add-ons.
               From ranking to forecasting, everything is built for latency, scale, and clarity.
             </p>
             <Link

@@ -129,15 +129,15 @@ const DeploySection = () => {
           className="text-[#A7B1D8] leading-relaxed mb-8"
           style={{ opacity: 0 }}
         >
-          We ship clean APIs, reproducible training pipelines, and runbooks your team can own. 
+          We ship clean APIs, reproducible training pipelines, and runbooks your team can own.
           From first model to hundredth, we keep delivery predictable.
         </p>
-        
+
         {/* Status Pill */}
         <div
           ref={pillRef}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-          style={{ 
+          style={{
             opacity: 0,
             background: 'rgba(79, 70, 229, 0.12)',
             border: '1px solid rgba(79, 70, 229, 0.35)'

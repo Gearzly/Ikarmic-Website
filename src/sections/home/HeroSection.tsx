@@ -30,28 +30,28 @@ const HeroSection = () => {
       const loadTl = gsap.timeline();
 
       loadTl
-        .fromTo(bg, 
-          { opacity: 0, scale: 1.06 }, 
+        .fromTo(bg,
+          { opacity: 0, scale: 1.06 },
           { opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out' }
         )
-        .fromTo(label, 
-          { opacity: 0, y: -12 }, 
-          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 
+        .fromTo(label,
+          { opacity: 0, y: -12 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
           '-=0.6'
         )
-        .fromTo(headline, 
-          { opacity: 0, y: 26 }, 
-          { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 
+        .fromTo(headline,
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' },
           '-=0.4'
         )
-        .fromTo(subheadline, 
-          { opacity: 0, y: 14 }, 
-          { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 
+        .fromTo(subheadline,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
           '-=0.5'
         )
-        .fromTo(cta, 
-          { opacity: 0, y: 10, scale: 0.98 }, 
-          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power2.out' }, 
+        .fromTo(cta,
+          { opacity: 0, y: 10, scale: 0.98 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power2.out' },
           '-=0.4'
         );
 
@@ -109,7 +109,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover img-cinematic"
         />
         {/* Dark Overlay */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(180deg, rgba(7,10,18,0.35), rgba(7,10,18,0.72))' }}
         />

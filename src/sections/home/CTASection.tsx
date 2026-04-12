@@ -91,8 +91,8 @@ const CTASection = () => {
     <section
       ref={sectionRef}
       className="relative py-24 lg:py-32"
-      style={{ 
-        zIndex: 80, 
+      style={{
+        zIndex: 80,
         backgroundColor: '#070A12',
         borderTop: '1px solid rgba(244, 246, 255, 0.05)'
       }}
@@ -107,7 +107,7 @@ const CTASection = () => {
             <p className="text-[#A7B1D8] leading-relaxed mb-10 max-w-md">
               Tell us what you're shipping. We'll reply within two business days with next steps.
             </p>
-            
+
             {/* Contact Details */}
             <div className="space-y-4">
               <div className="flex items-center gap-4">
@@ -116,8 +116,8 @@ const CTASection = () => {
                 </div>
                 <div>
                   <p className="text-xs text-[#A7B1D8] uppercase tracking-wider mb-0.5">Email</p>
-                  <a 
-                    href="mailto:hello@ikarmic.ai" 
+                  <a
+                    href="mailto:hello@ikarmic.ai"
                     className="text-white hover:text-indigo-400 transition-colors duration-300"
                   >
                     hello@ikarmic.ai

@@ -1,21 +1,23 @@
-export const SITE_NAME = 'Ikarmic AI Services and Solutions';
-export const SITE_URL = (import.meta.env.VITE_SITE_URL ?? 'https://ikarmic.ai').replace(/\/$/, '');
-export const DEFAULT_OG_IMAGE = '/images/hero_city_bg.jpg';
+export const SITE_NAME = 'Ikarmic AI Services and Solutions'
+export const SITE_URL = (
+  import.meta.env.VITE_SITE_URL ?? 'https://ikarmic.ai'
+).replace(/\/$/, '')
+export const DEFAULT_OG_IMAGE = '/images/hero_city_bg.jpg'
 
 export type PageSeoConfig = {
-  title: string;
-  description: string;
-  path: string;
-  type?: 'website' | 'article';
-  keywords?: string;
-  noindex?: boolean;
-  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
-};
+  title: string
+  description: string
+  path: string
+  type?: 'website' | 'article'
+  keywords?: string
+  noindex?: boolean
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>
+}
 
 export const buildCanonicalUrl = (path: string) => {
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  return `${SITE_URL}${normalizedPath === '/' ? '' : normalizedPath}`;
-};
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+  return `${SITE_URL}${normalizedPath === '/' ? '' : normalizedPath}`
+}
 
 export const defaultOrganizationSchema = {
   '@context': 'https://schema.org',
@@ -28,13 +30,13 @@ export const defaultOrganizationSchema = {
     contactType: 'sales',
     email: 'hello@ikarmic.ai',
     areaServed: 'Worldwide',
-    availableLanguage: ['English']
+    availableLanguage: ['English'],
   },
   sameAs: [
     'https://www.linkedin.com/company/ikarmic-ai',
-    'https://x.com/ikarmicai'
-  ]
-};
+    'https://x.com/ikarmicai',
+  ],
+}
 
 export const defaultWebsiteSchema = {
   '@context': 'https://schema.org',
@@ -44,6 +46,6 @@ export const defaultWebsiteSchema = {
   potentialAction: {
     '@type': 'SearchAction',
     target: `${SITE_URL}/services`,
-    'query-input': 'required name=service'
-  }
-};
+    'query-input': 'required name=service',
+  },
+}

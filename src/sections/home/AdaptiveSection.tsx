@@ -121,7 +121,7 @@ const AdaptiveSection = () => {
           className="text-[#A7B1D8] leading-relaxed mb-8"
           style={{ opacity: 0 }}
         >
-          Markets change. Data drifts. We design feedback loops, retraining pipelines, 
+          Markets change. Data drifts. We design feedback loops, retraining pipelines,
           and monitoring that keeps models accurate—and teams informed.
         </p>
         <Link
