@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 48% 4%;
+    --foreground: 230 67% 97%;
+    --card: 222 43% 7%;
+    --card-foreground: 230 67% 97%;
+    --popover: 222 43% 7%;
+    --popover-foreground: 230 67% 97%;
+    --primary: 243 75% 59%;
+    --primary-foreground: 230 67% 97%;
+    --secondary: 222 43% 10%;
+    --secondary-foreground: 230 67% 97%;
+    --muted: 222 43% 12%;
+    --muted-foreground: 227 32% 75%;
+    --accent: 243 75% 59%;
+    --accent-foreground: 230 67% 97%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 230 67% 97% / 0.08;
+    --input: 230 67% 97% / 0.08;
+    --ring: 243 75% 59%;
+    --radius: 0.875rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    background-color: #070A12;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  code, .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Ambient Orb Animation */
+@keyframes orb-drift {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-48%, -52%) scale(1.05);
+  }
+}
+
+.ambient-orb {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.22) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: orb-drift 20s ease-in-out infinite;
+}
+
+/* Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070A12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 70, 229, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 70, 229, 0.6);
+}
+
+/* Hairline Grid */
+.hairline-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, rgba(244, 246, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 246, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 246, 255, 0.03) 1px, transparent 1px);
+  background-size: 25vw 100%, 50vw 100%, 75vw 100%;
+  background-position: 25vw 0, 50vw 0, 75vw 0;
+  pointer-events: none;
+}
+
+/* Glass Card Effect */
+.glass-card {
+  background: rgba(11, 16, 34, 0.72);
+  border: 1px solid rgba(244, 246, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+/* Micro Label Style */
+.micro-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #A7B1D8;
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium transition-all duration-300;
+}
+.btn-primary:hover {
+  @apply bg-indigo-500 shadow-lg shadow-indigo-500/25;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-transparent text-white border border-white/20 rounded-xl font-medium transition-all duration-300;
+}
+.btn-secondary:hover {
+  @apply bg-white/10 border-white/30;
+}
+
+/* Link Underline Animation */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #4F46E5;
+  transition: width 0.3s ease;
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Section Base */
+.section-pinned {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image Treatment */
+.img-cinematic {
+  filter: saturate(0.35) contrast(1.1);
+}
