@@ -85,56 +85,89 @@ const EthicalSection = () => {
       className="section-pinned hairline-grid"
       style={{ zIndex: 50, backgroundColor: '#070A12' }}
     >
-      {/* Image Panel (Right) */}
-      <div
-        ref={imageRef}
-        className="absolute right-[6vw] top-[18vh] w-[40vw] h-[64vh] rounded-[28px] overflow-hidden"
-        style={{ opacity: 0 }}
-      >
-        <img
-          src="/images/ethical_image.jpg"
-          alt="Ethical AI Design"
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover img-cinematic"
-        />
+      {/* Desktop layout */}
+      <div className="hidden lg:block">
+        {/* Image Panel (Right) */}
+        <div
+          ref={imageRef}
+          className="absolute right-[6vw] top-[18vh] w-[40vw] h-[64vh] rounded-[28px] overflow-hidden"
+          style={{ opacity: 0 }}
+        >
+          <img
+            src="/images/ethical_image.jpg"
+            alt="Ethical AI Design"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover img-cinematic"
+          />
+        </div>
+
+        {/* Text Block (Left) */}
+        <div className="absolute left-[9vw] top-[30vh] w-[34vw] z-[4]">
+          <span
+            ref={labelRef}
+            className="micro-label block mb-4"
+            style={{ opacity: 0 }}
+          >
+            ETHICAL BY DESIGN
+          </span>
+          <h2
+            ref={headingRef}
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6"
+            style={{ opacity: 0 }}
+          >
+            Ethical by Design
+          </h2>
+          <p
+            ref={bodyRef}
+            className="text-[#A7B1D8] leading-relaxed mb-8"
+            style={{ opacity: 0 }}
+          >
+            We build with bias checks, privacy guardrails, and clear governance from day one.
+            Compliance isn't a finish line—it's a baseline.
+          </p>
+          <Link
+            ref={ctaRef}
+            to="/about"
+            className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors duration-300 link-underline"
+            style={{ opacity: 0 }}
+          >
+            Read our approach
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </div>
       </div>
 
-      {/* Text Block (Left) */}
-      <div className="absolute left-[9vw] top-[30vh] w-[34vw] z-[4]">
-        <span
-          ref={labelRef}
-          className="micro-label block mb-4"
-          style={{ opacity: 0 }}
-        >
-          ETHICAL BY DESIGN
-        </span>
-        <h2
-          ref={headingRef}
-          className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6"
-          style={{ opacity: 0 }}
-        >
-          Ethical by Design
-        </h2>
-        <p
-          ref={bodyRef}
-          className="text-[#A7B1D8] leading-relaxed mb-8"
-          style={{ opacity: 0 }}
-        >
-          We build with bias checks, privacy guardrails, and clear governance from day one.
-          Compliance isn't a finish line—it's a baseline.
-        </p>
-        <Link
-          ref={ctaRef}
-          to="/about"
-          className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors duration-300 link-underline"
-          style={{ opacity: 0 }}
-        >
-          Read our approach
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </Link>
+      {/* Mobile layout */}
+      <div className="flex lg:hidden flex-col items-center justify-center h-full px-6 gap-8">
+        <div className="w-full max-w-md aspect-[4/3] rounded-[20px] overflow-hidden">
+          <img
+            src="/images/ethical_image.jpg"
+            alt="Ethical AI Design"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover img-cinematic"
+          />
+        </div>
+        <div className="w-full max-w-md text-center">
+          <span className="micro-label block mb-3">ETHICAL BY DESIGN</span>
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">Ethical by Design</h2>
+          <p className="text-[#A7B1D8] leading-relaxed mb-6">
+            We build with bias checks, privacy guardrails, and clear governance from day one.
+            Compliance isn't a finish line—it's a baseline.
+          </p>
+          <Link
+            to="/about"
+            className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors duration-300"
+          >
+            Read our approach
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   );

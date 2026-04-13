@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { notifyLead } from '../lib/openclaw';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -105,6 +106,14 @@ const Contact = () => {
       });
 
       setIsSubmitted(true);
+      notifyLead({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        message: formData.message,
+        source: 'contact-page',
+      });
       setFormData({ name: '', email: '', company: '', phone: '', message: '' });
     } catch (error) {
       console.error('Form submission failed', error);
@@ -124,8 +133,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'info@ikarmic.ai',
-      href: 'mailto:info@ikarmic.ai'
+      value: 'hello@ikarmic.ai',
+      href: 'mailto:hello@ikarmic.ai'
     },
     {
       icon: Phone,

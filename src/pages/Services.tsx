@@ -12,7 +12,8 @@ import {
   Settings,
   TrendingUp,
   ShoppingBag,
-  CheckCircle
+  CheckCircle,
+  ArrowRight
 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,6 +22,7 @@ const mainServices = [
   {
     icon: Bot,
     title: 'AI Chatbots & Conversational AI',
+    path: '/services/ai-chatbots',
     description: 'Deploy intelligent chatbots that handle customer interactions across websites, WhatsApp, and messaging platforms. Our conversational AI systems provide instant responses, improve customer support, and reduce operational costs.',
     features: [
       'Website chatbots',
@@ -38,6 +40,7 @@ const mainServices = [
   {
     icon: Settings,
     title: 'AI Business Automation',
+    path: '/services/business-automation',
     description: 'Automate business processes and eliminate repetitive tasks using AI-driven automation. From document processing to operational workflows, we help businesses streamline processes and increase efficiency.',
     features: [
       'Workflow automation',
@@ -54,6 +57,7 @@ const mainServices = [
   {
     icon: BarChart3,
     title: 'AI Data Analytics & Predictive Intelligence',
+    path: '/services/data-analytics',
     description: 'Use advanced AI models to turn data into strategic insights. Our AI models analyze trends, forecast outcomes, and help companies make data-driven decisions.',
     features: [
       'Sales forecasting',
@@ -70,6 +74,7 @@ const mainServices = [
   {
     icon: Sparkles,
     title: 'Generative AI Solutions',
+    path: '/services/generative-ai',
     description: 'Unlock creativity and productivity with generative AI technologies. Leverage generative AI to automate content creation, marketing, product descriptions, and knowledge management systems.',
     features: [
       'AI content generation',
@@ -86,6 +91,7 @@ const mainServices = [
   {
     icon: Code2,
     title: 'Custom AI Development',
+    path: '/services/custom-ai',
     description: 'Every business is unique. Our custom AI development services deliver tailored solutions designed to meet specific business needs across multiple industries.',
     features: [
       'AI-powered software platforms',
@@ -125,12 +131,10 @@ const solutions = [
 ];
 
 const industries = [
-  'Retail and E-commerce',
-  'Healthcare',
-  'Financial Services',
-  'Manufacturing',
-  'Education',
-  'Technology and Startups'
+  { name: 'Retail and E-commerce', path: '/industries/retail' },
+  { name: 'Manufacturing', path: '/industries/manufacturing' },
+  { name: 'Education', path: '/industries/education' },
+  { name: 'Technology and Startups', path: '/industries/technology' },
 ];
 
 const deliveryProcess = [
@@ -357,6 +361,12 @@ const Services = () => {
                         </span>
                       ))}
                     </div>
+                    <Link
+                      to={service.path}
+                      className="inline-flex items-center gap-2 mt-6 text-indigo-400 hover:text-indigo-300 font-medium text-sm transition-colors duration-300 link-underline"
+                    >
+                      Learn more <ArrowRight size={14} />
+                    </Link>
                   </div>
 
                   {/* Right - Benefits */}
@@ -435,12 +445,13 @@ const Services = () => {
             </div>
             <div className="flex flex-wrap justify-center gap-4">
               {industries.map((industry) => (
-                <div
-                  key={industry}
-                  className="px-6 py-3 glass-card rounded-full text-white font-medium"
+                <Link
+                  key={industry.name}
+                  to={industry.path}
+                  className="px-6 py-3 glass-card rounded-full text-white font-medium hover:border-indigo-500/30 transition-colors duration-300"
                 >
-                  {industry}
-                </div>
+                  {industry.name}
+                </Link>
               ))}
             </div>
           </div>

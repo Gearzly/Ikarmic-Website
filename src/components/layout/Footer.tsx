@@ -11,6 +11,19 @@ const Footer = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
+  const solutionsLinks = [
+    { name: 'AI Chatbots', path: '/services/ai-chatbots' },
+    { name: 'Business Automation', path: '/services/business-automation' },
+    { name: 'Data Analytics', path: '/services/data-analytics' },
+    { name: 'Generative AI', path: '/services/generative-ai' },
+    { name: 'Custom AI', path: '/services/custom-ai' },
+  ];
+
+  const resourcesLinks = [
+    { name: 'Industries', path: '/industries' },
+    { name: 'Resources', path: '/resources' },
+  ];
+
   const legalLinks = [
     { name: 'Privacy', path: '/privacy' },
     { name: 'Terms', path: '/terms' },
@@ -19,9 +32,9 @@ const Footer = () => {
   return (
     <footer className="bg-[#0B1022] border-t border-white/5">
       <div className="w-full px-6 lg:px-12 py-12 lg:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 lg:gap-12">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2">
             <Link to="/" className="inline-block">
               <span className="text-2xl font-semibold text-white tracking-tight">
                 Ikarmic
@@ -62,9 +75,43 @@ const Footer = () => {
 
           {/* Navigation Column */}
           <div>
-            <h4 className="text-white font-medium mb-4">Navigation</h4>
+            <h4 className="text-white font-medium mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-[#A7B1D8] text-sm hover:text-white transition-colors duration-300"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Solutions Column */}
+          <div>
+            <h4 className="text-white font-medium mb-4">Solutions</h4>
+            <ul className="space-y-3">
+              {solutionsLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-[#A7B1D8] text-sm hover:text-white transition-colors duration-300"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources Column */}
+          <div>
+            <h4 className="text-white font-medium mb-4">Resources</h4>
+            <ul className="space-y-3">
+              {resourcesLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.path}

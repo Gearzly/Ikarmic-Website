@@ -85,56 +85,89 @@ const HumanCenteredSection = () => {
       className="section-pinned hairline-grid"
       style={{ zIndex: 40, backgroundColor: '#070A12' }}
     >
-      {/* Image Panel (Left) */}
-      <div
-        ref={imageRef}
-        className="absolute left-[6vw] top-[18vh] w-[40vw] h-[64vh] rounded-[28px] overflow-hidden"
-        style={{ opacity: 0 }}
-      >
-        <img
-          src="/images/human_centered_image.jpg"
-          alt="Human-Centered AI"
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover img-cinematic"
-        />
+      {/* Desktop layout */}
+      <div className="hidden lg:block">
+        {/* Image Panel (Left) */}
+        <div
+          ref={imageRef}
+          className="absolute left-[6vw] top-[18vh] w-[40vw] h-[64vh] rounded-[28px] overflow-hidden"
+          style={{ opacity: 0 }}
+        >
+          <img
+            src="/images/human_centered_image.jpg"
+            alt="Human-Centered AI"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover img-cinematic"
+          />
+        </div>
+
+        {/* Text Block (Right) */}
+        <div className="absolute left-[54vw] top-[30vh] w-[34vw] z-[4]">
+          <span
+            ref={labelRef}
+            className="micro-label block mb-4"
+            style={{ opacity: 0 }}
+          >
+            HUMAN-CENTERED
+          </span>
+          <h2
+            ref={headingRef}
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6"
+            style={{ opacity: 0 }}
+          >
+            Human-Centered
+          </h2>
+          <p
+            ref={bodyRef}
+            className="text-[#A7B1D8] leading-relaxed mb-8"
+            style={{ opacity: 0 }}
+          >
+            Great AI is invisible. We design explanations, confidence signals, and safe
+            defaults so users feel in control—every interaction.
+          </p>
+          <Link
+            ref={ctaRef}
+            to="/about"
+            className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors duration-300 link-underline"
+            style={{ opacity: 0 }}
+          >
+            See our principles
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </div>
       </div>
 
-      {/* Text Block (Right) */}
-      <div className="absolute left-[54vw] top-[30vh] w-[34vw] z-[4]">
-        <span
-          ref={labelRef}
-          className="micro-label block mb-4"
-          style={{ opacity: 0 }}
-        >
-          HUMAN-CENTERED
-        </span>
-        <h2
-          ref={headingRef}
-          className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6"
-          style={{ opacity: 0 }}
-        >
-          Human-Centered
-        </h2>
-        <p
-          ref={bodyRef}
-          className="text-[#A7B1D8] leading-relaxed mb-8"
-          style={{ opacity: 0 }}
-        >
-          Great AI is invisible. We design explanations, confidence signals, and safe
-          defaults so users feel in control—every interaction.
-        </p>
-        <Link
-          ref={ctaRef}
-          to="/about"
-          className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors duration-300 link-underline"
-          style={{ opacity: 0 }}
-        >
-          See our principles
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </Link>
+      {/* Mobile layout */}
+      <div className="flex lg:hidden flex-col items-center justify-center h-full px-6 gap-8">
+        <div className="w-full max-w-md aspect-[4/3] rounded-[20px] overflow-hidden">
+          <img
+            src="/images/human_centered_image.jpg"
+            alt="Human-Centered AI"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover img-cinematic"
+          />
+        </div>
+        <div className="w-full max-w-md text-center">
+          <span className="micro-label block mb-3">HUMAN-CENTERED</span>
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">Human-Centered</h2>
+          <p className="text-[#A7B1D8] leading-relaxed mb-6">
+            Great AI is invisible. We design explanations, confidence signals, and safe
+            defaults so users feel in control—every interaction.
+          </p>
+          <Link
+            to="/about"
+            className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors duration-300"
+          >
+            See our principles
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   );

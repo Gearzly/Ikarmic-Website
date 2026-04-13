@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, MapPin } from 'lucide-react';
+import { notifyLead } from '../../lib/openclaw';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,6 +36,13 @@ const CTASection = () => {
 
       form.reset();
       setIsSubmitted(true);
+      notifyLead({
+        name: formData.get('name') as string || '',
+        email: formData.get('email') as string || '',
+        company: formData.get('company') as string || '',
+        message: formData.get('message') as string || '',
+        source: 'home-cta',
+      });
     } catch (error) {
       console.error('CTA form submission failed', error);
     } finally {
