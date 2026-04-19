@@ -2,11 +2,19 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { BookOpen, BarChart3 } from 'lucide-react';
+import { BookOpen, BarChart3, Newspaper, Layers, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const sections = [
+  {
+    icon: Newspaper,
+    label: 'BLOG',
+    title: 'Insights & Articles',
+    description: 'Practical perspectives on AI adoption, implementation patterns, and industry trends — written for operators and decision-makers, not just engineers.',
+    link: '/blog',
+    linkText: 'Read the blog',
+  },
   {
     icon: BarChart3,
     label: 'INDUSTRY INSIGHTS',
@@ -14,6 +22,14 @@ const sections = [
     description: 'Explore how AI applies to your industry — from demand forecasting in retail to predictive maintenance in manufacturing and adaptive learning in education.',
     link: '/industries',
     linkText: 'Explore industries',
+  },
+  {
+    icon: Layers,
+    label: 'SOLUTIONS',
+    title: 'Business Outcome Playbooks',
+    description: 'See how we map AI capabilities to specific business goals — CX automation, intelligent workflows, predictive intelligence, AI-powered marketing, and enterprise platforms.',
+    link: '/solutions',
+    linkText: 'View solutions',
   },
   {
     icon: BookOpen,
@@ -57,8 +73,8 @@ const Resources = () => {
             Learn How We Build AI
           </h1>
           <p className="text-lg text-[#A7B1D8] leading-relaxed max-w-2xl mx-auto">
-            Case studies, industry guides, and service deep-dives — everything you need to
-            evaluate how Ikarmic can help your team ship AI with confidence.
+            Blog posts, industry guides, solution playbooks, and service deep-dives — everything
+            you need to evaluate how Ikarmic can help your team adopt and ship AI with confidence.
           </p>
         </div>
       </section>
@@ -81,7 +97,10 @@ const Resources = () => {
                   <span className="micro-label block mb-2">{s.label}</span>
                   <h2 className="text-2xl font-semibold text-white mb-3">{s.title}</h2>
                   <p className="text-[#A7B1D8] leading-relaxed mb-4">{s.description}</p>
-                  <span className="text-indigo-400 font-medium">{s.linkText} &rarr;</span>
+                  <span className="inline-flex items-center gap-1.5 text-indigo-400 font-medium">
+                    {s.linkText}
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </span>
                 </div>
               </Link>
             );

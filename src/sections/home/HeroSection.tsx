@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Button } from '@/components/ui/button';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,6 +107,8 @@ const HeroSection = () => {
           loading="eager"
           fetchPriority="high"
           decoding="async"
+          width={1344}
+          height={768}
           className="w-full h-full object-cover img-cinematic"
         />
         {/* Dark Overlay */}
@@ -123,7 +126,7 @@ const HeroSection = () => {
         {/* Micro Label */}
         <span
           ref={labelRef}
-          className="micro-label block mb-6"
+          className="text-micro block mb-6"
           style={{ opacity: 0 }}
         >
           IKARMIC AI
@@ -132,7 +135,7 @@ const HeroSection = () => {
         {/* Headline */}
         <h1
           ref={headlineRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-6"
+          className="h1 mb-6"
           style={{ opacity: 0 }}
         >
           AI that works for people.
@@ -141,7 +144,7 @@ const HeroSection = () => {
         {/* Subheadline */}
         <p
           ref={subheadlineRef}
-          className="text-base sm:text-lg text-[#A7B1D8] max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10"
           style={{ opacity: 0 }}
         >
           We design and ship machine learning systems that are calm, reliable, and easy to adopt—across products, operations, and customer experiences.
@@ -153,18 +156,16 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
           style={{ opacity: 0 }}
         >
-          <Link
-            to="/services"
-            className="btn-primary w-full sm:w-auto"
-          >
-            Explore Solutions
-          </Link>
-          <Link
-            to="/contact"
-            className="btn-secondary w-full sm:w-auto"
-          >
-            Start a project
-          </Link>
+          <Button variant="default" size="lg" asChild>
+            <Link to="/services">
+              Explore Solutions
+            </Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/contact">
+              Start a project
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

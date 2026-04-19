@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
@@ -97,9 +97,10 @@ const studies: Record<string, CaseStudyData> = {
   },
 };
 
-const CaseStudy = ({ slug }: { slug: string }) => {
+const CaseStudy = () => {
+  const { slug } = useParams<{ slug: string }>();
   const heroRef = useRef<HTMLDivElement>(null);
-  const data = studies[slug];
+  const data = slug ? studies[slug] : undefined;
 
   useEffect(() => {
     if (!data) return;

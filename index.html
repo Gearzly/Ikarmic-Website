@@ -4,22 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ikarmic AI Services and Solutions</title>
+    <link rel="icon" type="image/png" href="/images/ikarmic-icon-white.png" />
+    <link rel="apple-touch-icon" href="/images/ikarmic-icon-white.png" />
     <meta name="description" content="Ikarmic designs and deploys practical AI solutions for automation, analytics, and customer experiences." />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#070A12" />
-    <link rel="canonical" href="https://ikarmic.ai/" />
+    <link rel="canonical" href="https://ikarmic.com/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ikarmic AI Services and Solutions" />
     <meta property="og:title" content="Ikarmic AI Services and Solutions" />
     <meta property="og:description" content="Ikarmic designs and deploys practical AI solutions for automation, analytics, and customer experiences." />
-    <meta property="og:url" content="https://ikarmic.ai/" />
-    <meta property="og:image" content="https://ikarmic.ai/images/hero_city_bg.jpg" />
+    <meta property="og:url" content="https://ikarmic.com/" />
+    <meta property="og:image" content="https://ikarmic.com/images/og-default.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Ikarmic AI Services and Solutions" />
     <meta name="twitter:description" content="Ikarmic designs and deploys practical AI solutions for automation, analytics, and customer experiences." />
-    <meta name="twitter:image" content="https://ikarmic.ai/images/hero_city_bg.jpg" />
+    <meta name="twitter:image" content="https://ikarmic.com/images/og-default.png" />
+
+    <!-- Google Analytics 4 with Consent Mode v2 -->
+    <!-- Sets consent defaults synchronously from persisted granular preferences
+         so GA4 is never initialised in a non-consented state, even on first load. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      var __a = false, __m = false;
+      try {
+        var __raw = localStorage.getItem('ikarmic-cookie-consent');
+        if (__raw) {
+          var __p = JSON.parse(__raw);
+          if (typeof __p === 'object' && __p !== null && 'analytics' in __p) {
+            __a = Boolean(__p.analytics);
+            __m = Boolean(__p.marketing);
+          } else {
+            // Backward compat: old plain string 'granted'
+            __a = __raw === 'granted';
+            __m = __raw === 'granted';
+          }
+        }
+      } catch(_) {}
+      gtag('consent', 'default', {
+        analytics_storage: __a ? 'granted' : 'denied',
+        ad_storage: __m ? 'granted' : 'denied',
+        ad_user_data: __m ? 'granted' : 'denied',
+        ad_personalization: __m ? 'granted' : 'denied',
+        wait_for_update: __raw ? 0 : 500,
+      });
+      gtag('js', new Date());
+      gtag('config', '%VITE_GA_MEASUREMENT_ID%', { send_page_view: false });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_MEASUREMENT_ID%"></script>
   </head>
   <body>
     <div id="root"></div>

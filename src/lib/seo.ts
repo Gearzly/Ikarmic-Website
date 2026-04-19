@@ -1,8 +1,8 @@
 export const SITE_NAME = 'Ikarmic AI Services and Solutions'
 export const SITE_URL = (
-  import.meta.env.VITE_SITE_URL ?? 'https://ikarmic.ai'
+  import.meta.env.VITE_SITE_URL ?? 'https://ikarmic.com'
 ).replace(/\/$/, '')
-export const DEFAULT_OG_IMAGE = '/images/hero_city_bg.jpg'
+export const DEFAULT_OG_IMAGE = '/images/og-default.png'
 
 export type PageSeoConfig = {
   title: string
@@ -24,11 +24,11 @@ export const defaultOrganizationSchema = {
   '@type': 'Organization',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/images/hero_city_bg.jpg`,
+  logo: `${SITE_URL}/images/ikarmic-ai-logo.png`,
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'sales',
-    email: 'hello@ikarmic.ai',
+    email: 'hello@ikarmic.com',
     areaServed: 'Worldwide',
     availableLanguage: ['English'],
   },

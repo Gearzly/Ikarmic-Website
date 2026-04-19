@@ -1,5 +1,27 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Linkedin, Twitter, Mail } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Grid } from '@/components/layout/Grid';
+import { Container } from '@/components/layout/Container';
+
+const FooterSection: React.FC<{ title: string; links: Array<{ name: string; path: string }> }> = ({ title, links }) => (
+  <div>
+    <h4 className="text-white font-medium mb-4">{title}</h4>
+    <ul className="space-y-3">
+      {links.map((link) => (
+        <li key={link.name}>
+          <Link
+            to={link.path}
+            className="text-muted-foreground text-sm hover:text-white transition-colors duration-300"
+          >
+            {link.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,10 +30,11 @@ const Footer = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
+    { name: 'Solutions', path: '/solutions' },
     { name: 'Contact', path: '/contact' },
   ];
 
-  const solutionsLinks = [
+  const servicesLinks = [
     { name: 'AI Chatbots', path: '/services/ai-chatbots' },
     { name: 'Business Automation', path: '/services/business-automation' },
     { name: 'Data Analytics', path: '/services/data-analytics' },
@@ -19,7 +42,16 @@ const Footer = () => {
     { name: 'Custom AI', path: '/services/custom-ai' },
   ];
 
+  const solutionsLinks = [
+    { name: 'CX & Support AI', path: '/solutions/cx-support-ai' },
+    { name: 'Intelligent Automation', path: '/solutions/intelligent-automation' },
+    { name: 'Predictive Intelligence', path: '/solutions/predictive-intelligence' },
+    { name: 'AI-Powered Marketing', path: '/solutions/ai-powered-marketing' },
+    { name: 'Enterprise AI Platform', path: '/solutions/enterprise-ai-platform' },
+  ];
+
   const resourcesLinks = [
+    { name: 'Blog', path: '/blog' },
     { name: 'Industries', path: '/industries' },
     { name: 'Resources', path: '/resources' },
   ];
@@ -30,17 +62,21 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#0B1022] border-t border-white/5">
-      <div className="w-full px-6 lg:px-12 py-12 lg:py-16">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 lg:gap-12">
+    <footer className="bg-card border-t border-white/5 py-12 lg:py-16">
+      <Container>
+        <Grid cols="2" gap="lg" responsive>
           {/* Brand Column */}
-          <div className="col-span-2">
+          <div className="col-span-2 lg:col-span-1">
             <Link to="/" className="inline-block">
-              <span className="text-2xl font-semibold text-white tracking-tight">
-                Ikarmic
-              </span>
+              <img
+                src="/images/ikarmic-ai-logo.png"
+                alt="Ikarmic"
+                width={1326}
+                height={293}
+                className="h-8 w-auto"
+              />
             </Link>
-            <p className="mt-4 text-[#A7B1D8] text-sm leading-relaxed max-w-md">
+            <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-md">
               Empowering businesses with intelligent AI technologies. We design and ship
               machine learning systems that are calm, reliable, and easy to adopt.
             </p>
@@ -48,110 +84,58 @@ const Footer = () => {
               <a
                 href="https://www.linkedin.com/company/ikarmic-ai"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="Ikarmic on LinkedIn"
-                className="p-2.5 bg-white/5 rounded-lg text-[#A7B1D8] hover:text-white hover:bg-white/10 transition-all duration-300"
+                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300"
               >
                 <Linkedin size={18} />
               </a>
               <a
                 href="https://x.com/ikarmicai"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="Ikarmic on X"
-                className="p-2.5 bg-white/5 rounded-lg text-[#A7B1D8] hover:text-white hover:bg-white/10 transition-all duration-300"
+                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300"
               >
                 <Twitter size={18} />
               </a>
               <a
-                href="mailto:hello@ikarmic.ai"
+                href="mailto:hello@ikarmic.com"
                 aria-label="Email Ikarmic"
-                className="p-2.5 bg-white/5 rounded-lg text-[#A7B1D8] hover:text-white hover:bg-white/10 transition-all duration-300"
+                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300"
               >
                 <Mail size={18} />
               </a>
             </div>
           </div>
 
-          {/* Navigation Column */}
-          <div>
-            <h4 className="text-white font-medium mb-4">Company</h4>
-            <ul className="space-y-3">
-              {footerLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-[#A7B1D8] text-sm hover:text-white transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Company Column */}
+          <FooterSection title="Company" links={footerLinks} />
+
+          {/* Services Column */}
+          <FooterSection title="Services" links={servicesLinks} />
 
           {/* Solutions Column */}
-          <div>
-            <h4 className="text-white font-medium mb-4">Solutions</h4>
-            <ul className="space-y-3">
-              {solutionsLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-[#A7B1D8] text-sm hover:text-white transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterSection title="Solutions" links={solutionsLinks} />
 
           {/* Resources Column */}
-          <div>
-            <h4 className="text-white font-medium mb-4">Resources</h4>
-            <ul className="space-y-3">
-              {resourcesLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-[#A7B1D8] text-sm hover:text-white transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterSection title="Resources" links={resourcesLinks} />
 
           {/* Legal Column */}
-          <div>
-            <h4 className="text-white font-medium mb-4">Legal</h4>
-            <ul className="space-y-3">
-              {legalLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-[#A7B1D8] text-sm hover:text-white transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+          <FooterSection title="Legal" links={legalLinks} />
+        </Grid>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col lg:flex-row items-center justify-between gap-4">
-          <p className="text-[#A7B1D8] text-sm">
+        <Separator className="my-8" />
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+          <p className="text-muted-foreground text-sm">
             © {currentYear} Ikarmic AI. All rights reserved.
           </p>
-          <p className="text-[#A7B1D8]/60 text-xs">
+          <p className="text-muted-foreground/60 text-xs">
             Designed with precision. Built for impact.
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };

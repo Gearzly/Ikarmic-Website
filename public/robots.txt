@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ikarmic.ai/sitemap.xml
+Sitemap: https://ikarmic.com/sitemap.xml

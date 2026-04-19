@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-import { notifyLead } from '../lib/openclaw';
+import { getUtm } from '../lib/utm';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -87,33 +87,21 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const payload = new URLSearchParams({
-      'form-name': 'contact-consultation',
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      phone: formData.phone,
-      message: formData.message,
-    }).toString();
-
     try {
-      await fetch('/', {
+      await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: payload
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          message: formData.message,
+          ...getUtm(),
+        }),
       });
 
       setIsSubmitted(true);
-      notifyLead({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        phone: formData.phone,
-        message: formData.message,
-        source: 'contact-page',
-      });
       setFormData({ name: '', email: '', company: '', phone: '', message: '' });
     } catch (error) {
       console.error('Form submission failed', error);
@@ -133,19 +121,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@ikarmic.ai',
-      href: 'mailto:hello@ikarmic.ai'
+      value: 'hello@ikarmic.com',
+      href: 'mailto:hello@ikarmic.com'
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 80 4209 0099',
-      href: 'tel:+918042090099'
+      value: '+91 7075612365',
+      href: 'tel:+917075612365'
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Bengaluru, India (Remote-first delivery)',
+      value: 'Hyderabad, India (Remote-first delivery)',
       href: null
     }
   ];
@@ -272,11 +260,7 @@ const Contact = () => {
                     <form
                       onSubmit={handleSubmit}
                       className="space-y-5"
-                      name="contact-consultation"
-                      method="POST"
-                      data-netlify="true"
                     >
-                      <input type="hidden" name="form-name" value="contact-consultation" />
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
                           <label className="block text-sm text-[#A7B1D8] mb-2">

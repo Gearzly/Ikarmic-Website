@@ -13,5 +13,6 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": ["sanity", "ikarmic-studio", "scripts", "node_modules"]
 }

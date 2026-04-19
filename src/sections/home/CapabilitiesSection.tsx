@@ -1,166 +1,117 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Cpu, GitBranch, Database, Layers } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
+import { MessageSquare, Zap, BarChart3, Sparkles } from 'lucide-react';
+import { Grid } from '@/components/layout/Grid';
+import { SectionContainer } from '@/components/layout/Container';
 
 const capabilities = [
   {
-    icon: Cpu,
-    title: 'Model Design',
-    description: 'Custom architectures for ranking, forecasting, and classification.',
-    link: '/services'
+    icon: MessageSquare,
+    title: 'AI Chatbots & Conversational AI',
+    description: 'Intelligent chatbots across websites, WhatsApp, and messaging platforms — delivering 24/7 customer support at scale.',
+    link: '/services/ai-chatbots',
+    number: '01',
   },
   {
-    icon: GitBranch,
-    title: 'MLOps',
-    description: 'Pipelines, monitoring, and reproducible deployments.',
-    link: '/services'
+    icon: Zap,
+    title: 'Business Automation',
+    description: 'Automate repetitive workflows, document processing, and operations to cut costs and free up your team.',
+    link: '/services/business-automation',
+    number: '02',
   },
   {
-    icon: Database,
-    title: 'Data Strategy',
-    description: 'Labeling, governance, and feature platforms.',
-    link: '/services'
+    icon: BarChart3,
+    title: 'Data Analytics & Predictive AI',
+    description: 'Turn raw data into strategic insights — forecasting outcomes, detecting risk, and driving smarter decisions.',
+    link: '/services/data-analytics',
+    number: '03',
   },
   {
-    icon: Layers,
-    title: 'Product Integration',
-    description: 'UX, APIs, and feedback loops that improve over time.',
-    link: '/services'
-  }
+    icon: Sparkles,
+    title: 'Generative AI Solutions',
+    description: 'Automate content creation, marketing, and knowledge management with production-ready generative AI tools.',
+    link: '/services/generative-ai',
+    number: '04',
+  },
 ];
 
 const CapabilitiesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const heading = headingRef.current;
-    const cards = cardsRef.current.filter(Boolean);
+    if (!section) return;
 
-    if (!section || !heading || cards.length === 0) return;
-
-    const ctx = gsap.context(() => {
-      // Heading animation
-      gsap.fromTo(heading,
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: heading,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add('caps-visible');
+          observer.disconnect();
         }
-      );
-
-      // Cards animation with stagger
-      cards.forEach((card, index) => {
-        gsap.fromTo(card,
-          { opacity: 0, y: 30, scale: 0.98 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.6,
-            delay: index * 0.08,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-      });
-
-      // Subtle parallax on cards
-      cards.forEach((card) => {
-        gsap.fromTo(card,
-          { y: -12 },
-          {
-            y: 12,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 0.5
-            }
-          }
-        );
-      });
-    }, section);
-
-    return () => ctx.revert();
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 lg:py-32"
-      style={{ 
-        zIndex: 70, 
-        backgroundColor: '#0B1022',
-        borderTop: '1px solid rgba(244, 246, 255, 0.05)'
-      }}
+      className="relative caps-section bg-card border-t border-white/5"
     >
-      <div className="w-full px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-          {/* Left Column - Sticky Heading */}
-          <div
-            ref={headingRef}
-            className="lg:sticky lg:top-[18vh] lg:self-start"
-            style={{ opacity: 0 }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6">
-              Capabilities
-            </h2>
-            <p className="text-[#A7B1D8] leading-relaxed max-w-md">
-              A small team, deep craft. We focus on the highest-leverage ML work—and make it feel simple.
-            </p>
-          </div>
-
-          {/* Right Column - Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {capabilities.map((capability, index) => (
-              <div
-                key={capability.title}
-                ref={(el) => { cardsRef.current[index] = el; }}
-                className="group glass-card rounded-3xl p-6 transition-all duration-300 hover:bg-white/5 hover:border-white/15"
-                style={{ opacity: 0 }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-indigo-600/20 flex items-center justify-center mb-5 group-hover:bg-indigo-600/30 transition-colors duration-300">
-                  <capability.icon className="w-6 h-6 text-indigo-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-3">
-                  {capability.title}
-                </h3>
-                <p className="text-[#A7B1D8] text-sm leading-relaxed mb-4">
-                  {capability.description}
-                </p>
-                <Link
-                  to={capability.link}
-                  className="inline-flex items-center gap-1.5 text-sm text-indigo-400 hover:text-indigo-300 transition-colors duration-300"
-                >
-                  Learn more
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1">
-                    <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
-              </div>
-            ))}
-          </div>
+      <SectionContainer>
+        {/* Centered heading */}
+        <div className="text-center mb-12 lg:mb-16 caps-heading">
+          <span className="text-micro block mb-4">CAPABILITIES</span>
+          <h2 className="h3 mb-5 text-white">
+            Core Services
+          </h2>
+          <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            Five service areas built for measurable outcomes. From conversational AI to custom development, we ship what your team actually needs.
+          </p>
         </div>
-      </div>
+
+        {/* 4-column card grid */}
+        <Grid cols="4" gap="lg">
+          {capabilities.map((cap, index) => (
+            <Link
+              key={cap.title}
+              to={cap.link}
+              className="group glass rounded-2xl p-6 flex flex-col gap-4 hover:surface-hover outline-none focus-visible:ring-2 focus-visible:ring-primary caps-card"
+              style={{ '--delay': `${index * 90}ms` } as React.CSSProperties}
+            >
+              {/* Top row: icon + number */}
+              <div className="flex items-start justify-between">
+                <div className="w-11 h-11 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors duration-300">
+                  <cap.icon className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <span className="text-xs font-mono text-foreground/20 group-hover:text-primary/50 transition-colors duration-300 pt-1">
+                  {cap.number}
+                </span>
+              </div>
+
+              {/* Title */}
+              <h3 className="h6 text-white leading-snug">
+                {cap.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-body-sm text-muted-foreground flex-1">
+                {cap.description}
+              </p>
+
+              {/* CTA */}
+              <span className="inline-flex items-center gap-1.5 text-sm text-primary group-hover:text-primary/80 transition-colors duration-300 mt-auto">
+                Learn more
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1">
+                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </Link>
+          ))}
+        </Grid>
+      </SectionContainer>
     </section>
   );
 };

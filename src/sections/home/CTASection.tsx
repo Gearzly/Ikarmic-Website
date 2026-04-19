@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, MapPin } from 'lucide-react';
-import { notifyLead } from '../../lib/openclaw';
+import { getUtm } from '../../lib/utm';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,27 +22,20 @@ const CTASection = () => {
     const formData = new FormData(form);
 
     try {
-      const payload = new URLSearchParams(
-        Array.from(formData.entries()).map(([key, value]) => [key, String(value)])
-      ).toString();
-
-      await fetch('/', {
+      await fetch('/api/cta', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: payload
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name') || '',
+          email: formData.get('email') || '',
+          company: formData.get('company') || '',
+          message: formData.get('message') || '',
+          ...getUtm(),
+        }),
       });
 
       form.reset();
       setIsSubmitted(true);
-      notifyLead({
-        name: formData.get('name') as string || '',
-        email: formData.get('email') as string || '',
-        company: formData.get('company') as string || '',
-        message: formData.get('message') as string || '',
-        source: 'home-cta',
-      });
     } catch (error) {
       console.error('CTA form submission failed', error);
     } finally {
@@ -125,10 +118,10 @@ const CTASection = () => {
                 <div>
                   <p className="text-xs text-[#A7B1D8] uppercase tracking-wider mb-0.5">Email</p>
                   <a
-                    href="mailto:hello@ikarmic.ai"
+                    href="mailto:hello@ikarmic.com"
                     className="text-white hover:text-indigo-400 transition-colors duration-300"
                   >
-                    hello@ikarmic.ai
+                    hello@ikarmic.com
                   </a>
                 </div>
               </div>
@@ -138,7 +131,7 @@ const CTASection = () => {
                 </div>
                 <div>
                   <p className="text-xs text-[#A7B1D8] uppercase tracking-wider mb-0.5">Location</p>
-                  <p className="text-white">Bengaluru, India (Remote-first)</p>
+                  <p className="text-white">Hyderabad, India (Remote-first)</p>
                 </div>
               </div>
             </div>
@@ -162,11 +155,7 @@ const CTASection = () => {
             <form
               className="space-y-5"
               onSubmit={handleCtaSubmit}
-              name="home-cta"
-              method="POST"
-              data-netlify="true"
             >
-              <input type="hidden" name="form-name" value="home-cta" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm text-[#A7B1D8] mb-2">Name</label>
