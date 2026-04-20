@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CheckCircle } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,10 +51,10 @@ const ITEMS = [
     label: 'READY TO DEPLOY',
     title: 'Ready to Deploy',
     body: 'We ship clean APIs, reproducible training pipelines, and runbooks your team can own. From first model to hundredth, we keep delivery predictable.',
-    cta: { text: 'View delivery playbook', to: '/services' },
+    cta: { text: 'Our services', to: '/services' },
     image: '/images/deploy_image.jpg',
     imageAlt: 'Ready to Deploy AI',
-    pill: { icon: CheckCircle, text: 'Production-ready' },
+    pill: null,
   },
 ];
 
@@ -224,19 +223,6 @@ const ValuePropsSection = () => {
             <p className="text-[#A7B1D8] leading-relaxed mb-8 text-lg max-w-lg">
               {item.body}
             </p>
-
-            {item.pill && (
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{
-                  background: 'rgba(79, 70, 229, 0.12)',
-                  border: '1px solid rgba(79, 70, 229, 0.35)'
-                }}
-              >
-                <item.pill.icon className="w-4 h-4 text-indigo-400" aria-hidden="true" />
-                <span className="text-sm text-white font-medium">{item.pill.text}</span>
-              </div>
-            )}
 
             <Link
               to={item.cta.to}

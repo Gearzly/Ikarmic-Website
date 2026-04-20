@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Linkedin, Twitter, Mail } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { Grid } from '@/components/layout/Grid';
 import { Container } from '@/components/layout/Container';
 
 const FooterSection: React.FC<{ title: string; links: Array<{ name: string; path: string }> }> = ({ title, links }) => (
@@ -54,84 +53,83 @@ const Footer = () => {
     { name: 'Blog', path: '/blog' },
     { name: 'Industries', path: '/industries' },
     { name: 'Resources', path: '/resources' },
-  ];
-
-  const legalLinks = [
     { name: 'Privacy', path: '/privacy' },
     { name: 'Terms', path: '/terms' },
   ];
 
   return (
-    <footer className="bg-card border-t border-white/5 py-12 lg:py-16">
+    <footer className="bg-card border-t border-white/5 pt-16 pb-8">
       <Container>
-        <Grid cols="2" gap="lg" responsive>
-          {/* Brand Column */}
-          <div className="col-span-2 lg:col-span-1">
+        {/* Main grid: 2-col mobile → 4-col sm → 6-col desktop */}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-4 lg:grid-cols-6">
+
+          {/* Brand — full-width on mobile/sm, 2 units on lg */}
+          <div className="col-span-2 sm:col-span-4 lg:col-span-2">
             <Link to="/" className="inline-block">
               <img
                 src="/images/ikarmic-ai-logo.png"
                 alt="Ikarmic"
-                width={1326}
-                height={293}
+                width={181}
+                height={40}
+                decoding="async"
+                loading="lazy"
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-md">
+            <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-sm">
               Empowering businesses with intelligent AI technologies. We design and ship
               machine learning systems that are calm, reliable, and easy to adopt.
             </p>
-            <div className="flex items-center gap-4 mt-6">
+            <div className="flex items-center gap-3 mt-6">
               <a
                 href="https://www.linkedin.com/company/ikarmic-ai"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Ikarmic on LinkedIn"
-                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300"
+                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
-                <Linkedin size={18} />
+                <Linkedin size={18} aria-hidden="true" />
               </a>
               <a
                 href="https://x.com/ikarmicai"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Ikarmic on X"
-                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300"
+                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
-                <Twitter size={18} />
+                <Twitter size={18} aria-hidden="true" />
               </a>
               <a
                 href="mailto:hello@ikarmic.com"
                 aria-label="Email Ikarmic"
-                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300"
+                className="p-2.5 bg-white/5 rounded-lg text-muted-foreground hover:text-white hover:bg-white/10 transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
-                <Mail size={18} />
+                <Mail size={18} aria-hidden="true" />
               </a>
             </div>
           </div>
 
-          {/* Company Column */}
+          {/* Company */}
           <FooterSection title="Company" links={footerLinks} />
 
-          {/* Services Column */}
+          {/* Services */}
           <FooterSection title="Services" links={servicesLinks} />
 
-          {/* Solutions Column */}
+          {/* Solutions */}
           <FooterSection title="Solutions" links={solutionsLinks} />
 
-          {/* Resources Column */}
+          {/* Resources */}
           <FooterSection title="Resources" links={resourcesLinks} />
 
-          {/* Legal Column */}
-          <FooterSection title="Legal" links={legalLinks} />
-        </Grid>
+        </div>
 
-        {/* Bottom Bar */}
-        <Separator className="my-8" />
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+        {/* Bottom bar */}
+        <Separator className="mt-12 mb-6 bg-white/5" />
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-muted-foreground text-sm">
             © {currentYear} Ikarmic AI. All rights reserved.
           </p>
-          <p className="text-muted-foreground/60 text-xs">
+          <p className="text-muted-foreground/50 text-xs tracking-wide">
             Designed with precision. Built for impact.
           </p>
         </div>

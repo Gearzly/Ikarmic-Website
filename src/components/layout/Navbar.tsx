@@ -97,8 +97,9 @@ const Navbar = () => {
             <img
               src="/images/ikarmic-ai-logo.png"
               alt="Ikarmic"
-              width={1326}
-              height={293}
+              width={181}
+              height={40}
+              decoding="async"
               className="h-8 lg:h-10 w-auto"
             />
           </Link>

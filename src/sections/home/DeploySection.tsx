@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CheckCircle } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +11,6 @@ const DeploySection = () => {
   const labelRef = useRef<HTMLSpanElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const bodyRef = useRef<HTMLParagraphElement>(null);
-  const pillRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,10 +19,9 @@ const DeploySection = () => {
     const label = labelRef.current;
     const heading = headingRef.current;
     const body = bodyRef.current;
-    const pill = pillRef.current;
     const cta = ctaRef.current;
 
-    if (!section || !image || !label || !heading || !body || !pill || !cta) return;
+    if (!section || !image || !label || !heading || !body || !cta) return;
 
     const ctx = gsap.context(() => {
       const scrollTl = gsap.timeline({
@@ -59,11 +56,6 @@ const DeploySection = () => {
           { opacity: 1, y: 0, ease: 'power2.out' },
           0.12
         )
-        .fromTo(pill,
-          { opacity: 0, scale: 0.9 },
-          { opacity: 1, scale: 1, ease: 'power2.out' },
-          0.15
-        )
         .fromTo(cta,
           { opacity: 0, y: '3vh' },
           { opacity: 1, y: 0, ease: 'power2.out' },
@@ -72,7 +64,7 @@ const DeploySection = () => {
 
       // EXIT (70% - 100%)
       scrollTl
-        .fromTo([label, heading, body, pill, cta],
+        .fromTo([label, heading, body, cta],
           { opacity: 1, y: 0 },
           { opacity: 0, y: '-8vh', ease: 'power2.in', stagger: 0.02 },
           0.7
@@ -135,26 +127,12 @@ const DeploySection = () => {
             From first model to hundredth, we keep delivery predictable.
           </p>
 
-          {/* Status Pill */}
-          <div
-            ref={pillRef}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-            style={{
-              opacity: 0,
-              background: 'rgba(79, 70, 229, 0.12)',
-              border: '1px solid rgba(79, 70, 229, 0.35)'
-            }}
-          >
-            <CheckCircle className="w-4 h-4 text-indigo-400" />
-            <span className="text-sm text-white font-medium">Production-ready</span>
-          </div>
-
-          <div style={{ opacity: 0 }} ref={ctaRef}>
+          <div style={{ opacity: 0 }} ref={ctaRef} className="mb-6">
             <Link
               to="/services"
               className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors duration-300 link-underline"
             >
-              View delivery playbook
+              Explore our services
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -181,22 +159,12 @@ const DeploySection = () => {
             We ship clean APIs, reproducible training pipelines, and runbooks your team can own.
             From first model to hundredth, we keep delivery predictable.
           </p>
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-            style={{
-              background: 'rgba(79, 70, 229, 0.12)',
-              border: '1px solid rgba(79, 70, 229, 0.35)'
-            }}
-          >
-            <CheckCircle className="w-4 h-4 text-indigo-400" />
-            <span className="text-sm text-white font-medium">Production-ready</span>
-          </div>
-          <div>
+          <div className="mb-6">
             <Link
               to="/services"
               className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors duration-300"
             >
-              View delivery playbook
+              Explore our services
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>

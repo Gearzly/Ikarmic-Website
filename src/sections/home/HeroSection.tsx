@@ -41,8 +41,8 @@ const HeroSection = () => {
           '-=0.6'
         )
         .fromTo(headline,
-          { opacity: 0, y: 26 },
-          { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' },
+          { y: 26 },
+          { y: 0, duration: 0.9, ease: 'power2.out' },
           '-=0.4'
         )
         .fromTo(subheadline,
@@ -66,7 +66,8 @@ const HeroSection = () => {
           scrub: 0.6,
           onLeaveBack: () => {
             // Reset all elements when scrolling back to top
-            gsap.set([label, headline, subheadline, cta], { opacity: 1, y: 0, scale: 1 });
+            gsap.set([label, subheadline, cta], { opacity: 1, y: 0, scale: 1 });
+            gsap.set(headline, { y: 0 });
             gsap.set(bg, { opacity: 1, scale: 1 });
           }
         }
@@ -136,7 +137,6 @@ const HeroSection = () => {
         <h1
           ref={headlineRef}
           className="h1 mb-6"
-          style={{ opacity: 0 }}
         >
           AI that works for people.
         </h1>

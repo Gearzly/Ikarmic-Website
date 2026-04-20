@@ -28,7 +28,9 @@ const Technology = lazy(() => import('./pages/industries/Technology'));
 const Resources = lazy(() => import('./pages/Resources'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
-const Admin = lazy(() => import('./pages/Admin'));
+const Admin = lazy(() => import('./pages/admin/index'));
+const Portal = lazy(() => import('./pages/portal/index'));
+const ResetPassword = lazy(() => import('./pages/portal/ResetPassword'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy'));
@@ -586,6 +588,8 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/portal" element={<Portal />} />
+          <Route path="/portal/reset-password" element={<ResetPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>

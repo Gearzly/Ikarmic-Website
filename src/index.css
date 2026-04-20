@@ -1,8 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Adjusted fallback fonts to minimize CLS during font swap */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 109%;
+  ascent-override: 91%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
 
 @layer base {
   :root {
@@ -49,8 +66,8 @@
     --spacing-4xl: 6rem;
 
     /* Typography Scale */
-    --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Space Grotesk', 'Space Grotesk Fallback', sans-serif;
+    --font-body: 'Inter', 'Inter Fallback', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
 
     --text-xs: 0.75rem;
