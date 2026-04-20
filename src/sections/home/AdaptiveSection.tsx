@@ -94,7 +94,7 @@ const AdaptiveSection = () => {
           style={{ opacity: 0 }}
         >
           <img
-            src="/images/adaptive_image.jpg"
+            src="/images/adaptive_image.webp"
             alt="Adaptive AI Systems"
             loading="lazy"
             decoding="async"
@@ -144,7 +144,7 @@ const AdaptiveSection = () => {
       <div className="flex lg:hidden flex-col items-center justify-center h-full px-6 gap-8">
         <div className="w-full max-w-md aspect-[4/3] rounded-[20px] overflow-hidden">
           <img
-            src="/images/adaptive_image.jpg"
+            src="/images/adaptive_image.webp"
             alt="Adaptive AI Systems"
             loading="lazy"
             decoding="async"

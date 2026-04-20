@@ -14,6 +14,7 @@ const HeroSection = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subheadlineRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const ctxRef = useRef<ReturnType<typeof gsap.context> | null>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -26,58 +27,63 @@ const HeroSection = () => {
 
     if (!section || !content || !bg || !label || !headline || !subheadline || !cta) return;
 
-    const ctx = gsap.context(() => {
-      // Initial load animation
-      const loadTl = gsap.timeline();
+    // Defer GSAP setup to after first paint to avoid LCP/CLS impact
+    // Double rAF ensures we run after the browser has painted the first frame
+    let rafId2: number;
+    const rafId = requestAnimationFrame(() => {
+      rafId2 = requestAnimationFrame(() => {
+      const ctx = gsap.context(() => {
+        // Initial load animation — headline uses opacity only (no y-offset) to avoid CLS
+        const loadTl = gsap.timeline();
 
-      loadTl
-        .fromTo(bg,
-          { opacity: 0, scale: 1.06 },
-          { opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out' }
-        )
-        .fromTo(label,
-          { opacity: 0, y: -12 },
-          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-          '-=0.6'
-        )
-        .fromTo(headline,
-          { y: 26 },
-          { y: 0, duration: 0.9, ease: 'power2.out' },
-          '-=0.4'
-        )
-        .fromTo(subheadline,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-          '-=0.5'
-        )
-        .fromTo(cta,
-          { opacity: 0, y: 10, scale: 0.98 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power2.out' },
-          '-=0.4'
-        );
+        loadTl
+          .fromTo(bg,
+            { opacity: 0, scale: 1.06 },
+            { opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out' }
+          )
+          .fromTo(label,
+            { opacity: 0, y: -12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+            '-=0.6'
+          )
+          .fromTo(headline,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.7, ease: 'power2.out' },
+            '-=0.4'
+          )
+          .fromTo(subheadline,
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+            '-=0.5'
+          )
+          .fromTo(cta,
+            { opacity: 0, y: 10, scale: 0.98 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power2.out' },
+            '-=0.4'
+          );
 
-      // Scroll-driven exit animation
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: '+=130%',
-          pin: true,
-          scrub: 0.6,
-          onLeaveBack: () => {
-            // Reset all elements when scrolling back to top
-            gsap.set([label, subheadline, cta], { opacity: 1, y: 0, scale: 1 });
-            gsap.set(headline, { y: 0 });
-            gsap.set(bg, { opacity: 1, scale: 1 });
+        // Scroll-driven exit animation
+        const scrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: '+=130%',
+            pin: true,
+            scrub: 0.6,
+            onLeaveBack: () => {
+              // Reset all elements when scrolling back to top
+              gsap.set([label, subheadline, cta], { opacity: 1, y: 0, scale: 1 });
+              gsap.set(headline, { opacity: 1 });
+              gsap.set(bg, { opacity: 1, scale: 1 });
+            }
           }
-        }
-      });
+        });
 
-      // EXIT phase (70% - 100%)
-      scrollTl
-        .fromTo(content,
-          { opacity: 1, y: 0, scale: 1 },
-          { opacity: 0, y: '-18vh', scale: 0.98, ease: 'power2.in' },
+        // EXIT phase (70% - 100%)
+        scrollTl
+          .fromTo(content,
+            { opacity: 1, y: 0, scale: 1 },
+            { opacity: 0, y: '-18vh', scale: 0.98, ease: 'power2.in' },
           0.7
         )
         .fromTo(bg,
@@ -85,9 +91,17 @@ const HeroSection = () => {
           { opacity: 0.35, scale: 1.08, ease: 'power2.in' },
           0.7
         );
-    }, section);
+      }, section);
 
-    return () => ctx.revert();
+      ctxRef.current = ctx;
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(rafId2);
+      ctxRef.current?.revert();
+    };
   }, []);
 
   return (
@@ -103,7 +117,7 @@ const HeroSection = () => {
         style={{ opacity: 0 }}
       >
         <img
-          src="/images/hero_city_bg.jpg"
+          src="/images/hero_city_bg.webp"
           alt="Night city skyline"
           loading="eager"
           fetchPriority="high"

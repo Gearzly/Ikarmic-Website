@@ -66,15 +66,18 @@ const Footer = () => {
           {/* Brand — full-width on mobile/sm, 2 units on lg */}
           <div className="col-span-2 sm:col-span-4 lg:col-span-2">
             <Link to="/" className="inline-block">
-              <img
-                src="/images/ikarmic-ai-logo.png"
-                alt="Ikarmic"
-                width={181}
-                height={40}
-                decoding="async"
-                loading="lazy"
-                className="h-8 w-auto"
-              />
+              <picture>
+                <source srcSet="/images/ikarmic-ai-logo.webp" type="image/webp" />
+                <img
+                  src="/images/ikarmic-ai-logo.png"
+                  alt="Ikarmic"
+                  width={181}
+                  height={40}
+                  decoding="async"
+                  className="h-8 w-auto"
+                  style={{ aspectRatio: '181/40' }}
+                />
+              </picture>
             </Link>
             <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-sm">
               Empowering businesses with intelligent AI technologies. We design and ship

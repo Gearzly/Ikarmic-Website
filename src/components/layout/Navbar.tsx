@@ -94,14 +94,17 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img
-              src="/images/ikarmic-ai-logo.png"
-              alt="Ikarmic"
-              width={181}
-              height={40}
-              decoding="async"
-              className="h-8 lg:h-10 w-auto"
-            />
+            <picture>
+              <source srcSet="/images/ikarmic-ai-logo.webp" type="image/webp" />
+              <img
+                src="/images/ikarmic-ai-logo.png"
+                alt="Ikarmic"
+                width={181}
+                height={40}
+                decoding="async"
+                className="h-8 lg:h-10 w-auto"
+              />
+            </picture>
           </Link>
 
           {/* Desktop Navigation */}

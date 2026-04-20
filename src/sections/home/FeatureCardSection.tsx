@@ -93,13 +93,16 @@ const FeatureCardSection = () => {
         ref={bgRef}
         className="absolute inset-0 z-[1]"
       >
-        <img
-          src="/images/street_scene_bg.jpg"
-          alt="Night street scene"
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover img-cinematic"
-        />
+        <picture>
+          <source srcSet="/images/street_scene_bg.webp" type="image/webp" />
+          <img
+            src="/images/street_scene_bg.webp"
+            alt="Night street scene"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover img-cinematic"
+          />
+        </picture>
         <div className="absolute inset-0 bg-[#070A12]/55" />
       </div>
 
