@@ -14,25 +14,53 @@ const SERVICE_OPTIONS = [
   "Not sure yet — need advice",
 ];
 
+interface FieldErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
+function validate(payload: Record<string, string>): FieldErrors {
+  const errors: FieldErrors = {};
+  const name = (payload.name ?? "").trim();
+  const email = (payload.email ?? "").trim();
+  const message = (payload.message ?? "").trim();
+
+  if (!name || name.length < 2) errors.name = "Name must be at least 2 characters.";
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = "Please enter a valid email address.";
+  if (!message || message.length < 10) errors.message = "Message must be at least 10 characters.";
+
+  return errors;
+}
+
 export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const formRef = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("submitting");
     setErrorMsg("");
+    setFieldErrors({});
 
     const fd = new FormData(e.currentTarget);
     const payload = {
-      name: fd.get("name") as string,
-      email: fd.get("email") as string,
-      company: fd.get("company") as string,
-      phone: fd.get("phone") as string,
-      service: fd.get("service") as string,
-      message: fd.get("message") as string,
+      name: (fd.get("name") as string) ?? "",
+      email: (fd.get("email") as string) ?? "",
+      company: (fd.get("company") as string) ?? "",
+      phone: (fd.get("phone") as string) ?? "",
+      service: (fd.get("service") as string) ?? "",
+      message: (fd.get("message") as string) ?? "",
     };
+
+    const errors = validate(payload);
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setState("idle");
+      return;
+    }
 
     try {
       const res = await fetch("/api/contact", {
@@ -97,9 +125,11 @@ export default function ContactForm() {
                   name="name"
                   type="text"
                   required
+                  minLength={2}
                   placeholder="Jane Smith"
-                  className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-500 transition-colors"
+                  className={`w-full px-4 py-3 rounded-lg bg-neutral-800 border text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-500 transition-colors ${fieldErrors.name ? "border-rose-500" : "border-neutral-700"}`}
                 />
+                {fieldErrors.name && <p className="mt-1 text-xs text-rose-400">{fieldErrors.name}</p>}
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-neutral-300 mb-1.5">
@@ -111,8 +141,9 @@ export default function ContactForm() {
                   type="email"
                   required
                   placeholder="jane@company.com"
-                  className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-500 transition-colors"
+                  className={`w-full px-4 py-3 rounded-lg bg-neutral-800 border text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-500 transition-colors ${fieldErrors.email ? "border-rose-500" : "border-neutral-700"}`}
                 />
+                {fieldErrors.email && <p className="mt-1 text-xs text-rose-400">{fieldErrors.email}</p>}
               </div>
             </div>
 
@@ -170,10 +201,12 @@ export default function ContactForm() {
                 id="message"
                 name="message"
                 required
+                minLength={10}
                 rows={5}
                 placeholder="Describe the problem you're trying to solve…"
-                className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-500 transition-colors resize-none"
+                className={`w-full px-4 py-3 rounded-lg bg-neutral-800 border text-white placeholder-neutral-500 focus:outline-none focus:border-indigo-500 transition-colors resize-none ${fieldErrors.message ? "border-rose-500" : "border-neutral-700"}`}
               />
+              {fieldErrors.message && <p className="mt-1 text-xs text-rose-400">{fieldErrors.message}</p>}
             </div>
 
             {/* Error */}

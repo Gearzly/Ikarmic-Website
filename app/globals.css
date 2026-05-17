@@ -3,7 +3,7 @@
 @theme {
   --color-brand: #6366f1;
   --color-brand-dark: #4f46e5;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -14,25 +14,14 @@ body {
   @apply bg-neutral-950 text-neutral-100 antialiased;
 }
 
-/* ── Custom animation keyframes ── */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-22px) rotate(3deg); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
 }
 
 @keyframes float-delayed {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(-2deg); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.25; }
-  50% { opacity: 0.6; }
-}
-
-@keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes ticker {
@@ -40,79 +29,27 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -400px 0; }
-  100% { background-position: 400px 0; }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes fade-in {
+@keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes scale-in {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* ── Custom utility classes ── */
 @utility animate-float {
-  animation: float 9s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
 }
 
 @utility animate-float-delayed {
-  animation: float-delayed 11s ease-in-out 2s infinite;
-}
-
-@utility animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-@utility animate-gradient-x {
-  animation: gradient-x 8s ease infinite;
-  background-size: 200% 200%;
+  animation: float-delayed 10s ease-in-out 1s infinite;
 }
 
 @utility animate-ticker {
-  animation: ticker 32s linear infinite;
+  animation: ticker 30s linear infinite;
 }
 
-@utility animate-blink {
-  animation: blink 1s step-end infinite;
-}
-
-@utility animate-shimmer {
-  animation: shimmer 2.5s linear infinite;
-}
-
-@utility animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
-
-@utility animate-fade-in {
-  animation: fade-in 0.5s ease forwards;
-}
-
-@utility animate-scale-in {
-  animation: scale-in 0.5s ease forwards;
-}
-
-/* ── Gradient text utility ── */
 @utility text-gradient {
   @apply bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-300 bg-clip-text text-transparent;
 }
 
-/* ── Glass card utility ── */
-@utility glass-card {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
+@utility content-auto {
+  content-visibility: auto;
 }

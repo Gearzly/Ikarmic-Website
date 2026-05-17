@@ -1,20 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { type ReactNode } from "react";
+import { motion } from "framer-motion";
+import { type ReactNode, useMemo } from "react";
 
-// ── Shared easing ──────────────────────────────────────────────────────────
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
-
-// ── FadeUp ─────────────────────────────────────────────────────────────────
-const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, delay, ease },
-  }),
-};
 
 interface AnimProps {
   children: ReactNode;
@@ -25,61 +14,38 @@ interface AnimProps {
 export function FadeUp({ children, delay = 0, className = "" }: AnimProps) {
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      custom={delay}
-      variants={fadeUpVariants}
+      transition={{ duration: 0.4, delay }}
       className={className}
     >
       {children}
     </motion.div>
   );
 }
-
-// ── FadeLeft ───────────────────────────────────────────────────────────────
-const fadeLeftVariants: Variants = {
-  hidden: { opacity: 0, x: -36 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.65, delay, ease },
-  }),
-};
 
 export function FadeLeft({ children, delay = 0, className = "" }: AnimProps) {
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={{ opacity: 0, x: -24 }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      custom={delay}
-      variants={fadeLeftVariants}
+      transition={{ duration: 0.4, delay }}
       className={className}
     >
       {children}
     </motion.div>
   );
 }
-
-// ── FadeRight ──────────────────────────────────────────────────────────────
-const fadeRightVariants: Variants = {
-  hidden: { opacity: 0, x: 36 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.65, delay, ease },
-  }),
-};
 
 export function FadeRight({ children, delay = 0, className = "" }: AnimProps) {
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={{ opacity: 0, x: 24 }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      custom={delay}
-      variants={fadeRightVariants}
+      transition={{ duration: 0.4, delay }}
       className={className}
     >
       {children}
@@ -87,14 +53,13 @@ export function FadeRight({ children, delay = 0, className = "" }: AnimProps) {
   );
 }
 
-// ── ScaleIn ────────────────────────────────────────────────────────────────
 export function ScaleIn({ children, delay = 0, className = "" }: AnimProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.88 }}
+      initial={{ opacity: 0, scale: 0.92 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease }}
+      transition={{ duration: 0.4, delay }}
       className={className}
     >
       {children}
@@ -102,23 +67,23 @@ export function ScaleIn({ children, delay = 0, className = "" }: AnimProps) {
   );
 }
 
-// ── Stagger container ──────────────────────────────────────────────────────
 interface StaggerProps {
   children: ReactNode;
   className?: string;
   staggerDelay?: number;
 }
 
-export function Stagger({ children, className = "", staggerDelay = 0.1 }: StaggerProps) {
+export function Stagger({ children, className = "", staggerDelay = 0.08 }: StaggerProps) {
+  const variants = useMemo(() => ({
+    visible: { transition: { staggerChildren: staggerDelay } },
+  }), [staggerDelay]);
+
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
-      variants={{
-        visible: { transition: { staggerChildren: staggerDelay } },
-        hidden: {},
-      }}
+      variants={variants}
       className={className}
     >
       {children}
@@ -126,14 +91,12 @@ export function Stagger({ children, className = "", staggerDelay = 0.1 }: Stagge
   );
 }
 
-// ── StaggerItem ────────────────────────────────────────────────────────────
 export function StaggerItem({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 24 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
-      }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease }}
       className={className}
     >
       {children}
@@ -141,26 +104,21 @@ export function StaggerItem({ children, className = "" }: { children: ReactNode;
   );
 }
 
-// ── HoverCard – lift + subtle border glow on hover ─────────────────────────
 export function HoverCard({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <motion.div
-      whileHover={{ y: -5, transition: { duration: 0.2, ease: "easeOut" } }}
-      className={className}
-    >
+    <motion.div whileHover={{ y: -2 }} className={className}>
       {children}
     </motion.div>
   );
 }
 
-// ── CountUp – animated number (simple CSS-only fallback for SSR safety) ────
 export function CountUp({ value, className = "" }: { value: string; className?: string }) {
   return (
     <motion.span
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, ease }}
+      transition={{ duration: 0.3 }}
       className={className}
     >
       {value}

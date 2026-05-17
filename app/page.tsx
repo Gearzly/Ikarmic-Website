@@ -8,7 +8,6 @@ import {
   Stagger,
   StaggerItem,
   CountUp,
-  HoverCard,
 } from "@/components/AnimateIn";
 
 export const metadata: Metadata = {
@@ -238,20 +237,19 @@ export default function HomePage() {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Dot grid */}
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(99,102,241,0.25) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(99,102,241,0.15) 1px, transparent 1px)",
             backgroundSize: "36px 36px",
           }}
         />
         {/* Gradient vignette over grid */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent_40%,#030712_100%)]" />
 
-        {/* Animated blobs */}
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-indigo-700/12 blur-[130px] animate-float" />
-        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full bg-violet-700/10 blur-[110px] animate-float-delayed" />
-        <div className="absolute top-3/4 left-1/3 w-[300px] h-[300px] rounded-full bg-blue-700/8 blur-[100px] animate-float" />
+        {/* Animated blobs - reduced size for perf */}
+        <div className="absolute top-1/4 left-0 w-80 h-80 rounded-full bg-indigo-700/10 blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 right-0 w-72 h-72 rounded-full bg-violet-700/8 blur-3xl animate-float-delayed" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
@@ -265,7 +263,7 @@ export default function HomePage() {
                 </div>
               </FadeUp>
 
-              <FadeUp delay={0.07}>
+              <FadeUp delay={0.05}>
                 <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] font-bold text-white leading-[1.04] tracking-tight">
                   AI that works
                   <br />
@@ -273,18 +271,18 @@ export default function HomePage() {
                 </h1>
               </FadeUp>
 
-              <FadeUp delay={0.14}>
+              <FadeUp delay={0.1}>
                 <p className="mt-6 text-xl text-neutral-400 max-w-lg leading-relaxed">
                   We design and ship machine learning systems that are calm, reliable, and
                   easy to adopt — across products, operations, and customer experiences.
                 </p>
               </FadeUp>
 
-              <FadeUp delay={0.21}>
+              <FadeUp delay={0.15}>
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
                     href="/contact"
-                    className="group inline-flex items-center gap-2 px-7 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all hover:shadow-[0_0_40px_rgba(99,102,241,0.45)] text-base"
+                    className="group inline-flex items-center gap-2 px-7 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all text-base"
                   >
                     Get a Free AI Scoping Call
                     <svg
@@ -307,7 +305,7 @@ export default function HomePage() {
               </FadeUp>
 
               {/* Mini stats row */}
-              <FadeUp delay={0.3}>
+              <FadeUp delay={0.2}>
                 <div className="mt-12 pt-8 border-t border-neutral-800/60 grid grid-cols-4 gap-4">
                   {[
                     { v: "50+", l: "AI Projects" },
@@ -325,7 +323,7 @@ export default function HomePage() {
             </div>
 
             {/* Right: Live chat demo */}
-            <FadeRight delay={0.18}>
+            <FadeRight delay={0.12}>
               <HeroChatDemo />
             </FadeRight>
           </div>
@@ -354,7 +352,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           3. IMPACT STATS
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-20 content-auto">
         <FadeUp>
           <p className="text-center text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">
             Proven Impact
@@ -384,7 +382,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           4. SERVICES — featured + 4 grid
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-8 pb-20">
+      <section className="max-w-7xl mx-auto px-6 py-8 pb-20 content-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
           <FadeLeft>
             <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">
@@ -504,7 +502,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           5. HOW WE WORK
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-8 pb-24">
+      <section className="max-w-7xl mx-auto px-6 py-8 pb-24 content-auto">
         <div className="rounded-3xl bg-neutral-900 border border-neutral-800 overflow-hidden">
           <div className="p-10 md:p-14">
             <FadeUp>
@@ -574,7 +572,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           6. TESTIMONIALS
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-8 pb-24">
+      <section className="max-w-7xl mx-auto px-6 py-8 pb-24 content-auto">
         <FadeUp>
           <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">
             Client Results
@@ -623,7 +621,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           7. BLOG
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-8 pb-24">
+      <section className="max-w-7xl mx-auto px-6 py-8 pb-24 content-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
           <FadeLeft>
             <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">
@@ -686,7 +684,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           8. FINAL CTA
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 pb-28">
+      <section className="max-w-7xl mx-auto px-6 pb-28 content-auto">
         <FadeUp>
           <div className="relative overflow-hidden rounded-3xl border border-indigo-900/50 bg-gradient-to-br from-indigo-950 via-neutral-900 to-neutral-950 text-center px-10 md:px-20 py-20">
             {/* Background blobs */}
