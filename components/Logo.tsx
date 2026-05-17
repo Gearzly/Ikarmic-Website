@@ -19,6 +19,7 @@ export default function Logo({ className = "" }: LogoProps) {
           width={160}
           height={40}
           priority
+          unoptimized
           className="h-9 w-auto"
           onError={() => setImgFailed(true)}
         />

@@ -158,6 +158,7 @@ export default function IndustriesPage() {
                     alt={ind.name}
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    unoptimized
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   {/* Gradient overlay */}

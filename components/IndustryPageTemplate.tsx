@@ -69,6 +69,7 @@ export default function IndustryPageTemplate({
           fill
           className="object-cover"
           priority
+          unoptimized
           sizes="100vw"
         />
         {/* Multi-layer overlay for depth */}
