@@ -42,16 +42,29 @@ export async function POST(req: NextRequest) {
     const cleanMessage = sanitize(message)
 
     // ── SMTP Transport ──────────────────────────────────────────────────────
+    const smtpHost = process.env.SMTP_HOST
+    const smtpPort = Number(process.env.SMTP_PORT ?? 587)
+    const smtpUser = process.env.SMTP_USER
+    const smtpPass = process.env.SMTP_PASS
+
+    if (!smtpHost || !smtpUser || !smtpPass) {
+      console.error('[contact/route] Missing SMTP config')
+      return NextResponse.json({ error: 'Server configuration error.' }, { status: 500 })
+    }
+
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT ?? 587),
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      connectionTimeout: 10000,
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
+      auth: { user: smtpUser, pass: smtpPass },
+      authMethod: 'LOGIN',
+      connectionTimeout: 15000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
+      tls: { rejectUnauthorized: false },
     })
+
+    await transporter.verify()
 
     // ── Email to Ikarmic team ───────────────────────────────────────────────
     await transporter.sendMail({
