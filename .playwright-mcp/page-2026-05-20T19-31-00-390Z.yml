@@ -1,0 +1,499 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Ikarmic AI" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Ikarmic AI" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - generic [ref=e9]:
+          - button "Services" [ref=e10]:
+            - text: Services
+            - img [ref=e11]
+          - generic [ref=e15]:
+            - generic [ref=e17]:
+              - link "AI Chatbots 24/7 support without extra headcount" [ref=e18] [cursor=pointer]:
+                - /url: /services/ai-chatbots
+                - img [ref=e20]
+                - generic [ref=e22]:
+                  - paragraph [ref=e23]: AI Chatbots
+                  - paragraph [ref=e24]: 24/7 support without extra headcount
+              - link "Business Automation Eliminate repetitive manual work" [ref=e25] [cursor=pointer]:
+                - /url: /services/business-automation
+                - img [ref=e27]
+                - generic [ref=e29]:
+                  - paragraph [ref=e30]: Business Automation
+                  - paragraph [ref=e31]: Eliminate repetitive manual work
+              - link "Data Analytics Surface insights from your data" [ref=e32] [cursor=pointer]:
+                - /url: /services/data-analytics
+                - img [ref=e34]
+                - generic [ref=e36]:
+                  - paragraph [ref=e37]: Data Analytics
+                  - paragraph [ref=e38]: Surface insights from your data
+              - link "Generative AI Content and code at scale" [ref=e39] [cursor=pointer]:
+                - /url: /services/generative-ai
+                - img [ref=e41]
+                - generic [ref=e43]:
+                  - paragraph [ref=e44]: Generative AI
+                  - paragraph [ref=e45]: Content and code at scale
+              - link "Custom AI Built for your specific workflow" [ref=e46] [cursor=pointer]:
+                - /url: /services/custom-ai
+                - img [ref=e48]
+                - generic [ref=e50]:
+                  - paragraph [ref=e51]: Custom AI
+                  - paragraph [ref=e52]: Built for your specific workflow
+            - generic [ref=e53]:
+              - paragraph [ref=e54]: Not sure which fits?
+              - link "All Services →" [ref=e55] [cursor=pointer]:
+                - /url: /services
+        - generic [ref=e56]:
+          - button "Solutions" [ref=e57]:
+            - text: Solutions
+            - img [ref=e58]
+          - generic [ref=e62]:
+            - generic [ref=e64]:
+              - link "CX & Support AI 60% ticket deflection on day one" [ref=e65] [cursor=pointer]:
+                - /url: /solutions/cx-support-ai
+                - img [ref=e67]
+                - generic [ref=e69]:
+                  - paragraph [ref=e70]: CX & Support AI
+                  - paragraph [ref=e71]: 60% ticket deflection on day one
+              - link "Intelligent Automation 80% faster back-office processing" [ref=e72] [cursor=pointer]:
+                - /url: /solutions/intelligent-automation
+                - img [ref=e74]
+                - generic [ref=e76]:
+                  - paragraph [ref=e77]: Intelligent Automation
+                  - paragraph [ref=e78]: 80% faster back-office processing
+              - link "Predictive Intelligence Forecast demand & churn early" [ref=e79] [cursor=pointer]:
+                - /url: /solutions/predictive-intelligence
+                - img [ref=e81]
+                - generic [ref=e83]:
+                  - paragraph [ref=e84]: Predictive Intelligence
+                  - paragraph [ref=e85]: Forecast demand & churn early
+              - link "AI-Powered Marketing 4× content velocity" [ref=e86] [cursor=pointer]:
+                - /url: /solutions/ai-powered-marketing
+                - img [ref=e88]
+                - generic [ref=e90]:
+                  - paragraph [ref=e91]: AI-Powered Marketing
+                  - paragraph [ref=e92]: 4× content velocity
+              - link "Enterprise AI Platform POC to production in 8 weeks" [ref=e93] [cursor=pointer]:
+                - /url: /solutions/enterprise-ai-platform
+                - img [ref=e95]
+                - generic [ref=e97]:
+                  - paragraph [ref=e98]: Enterprise AI Platform
+                  - paragraph [ref=e99]: POC to production in 8 weeks
+            - generic [ref=e100]:
+              - paragraph [ref=e101]: Not sure which fits?
+              - link "All Solutions →" [ref=e102] [cursor=pointer]:
+                - /url: /solutions
+        - generic [ref=e103]:
+          - button "Industries" [ref=e104]:
+            - text: Industries
+            - img [ref=e105]
+          - generic [ref=e109]:
+            - generic [ref=e111]:
+              - link "Retail & E-Commerce Personalisation, demand forecasting & CX AI" [ref=e112] [cursor=pointer]:
+                - /url: /industries/retail
+                - img [ref=e114]
+                - generic [ref=e116]:
+                  - paragraph [ref=e117]: Retail & E-Commerce
+                  - paragraph [ref=e118]: Personalisation, demand forecasting & CX AI
+              - link "Manufacturing Predictive maintenance & quality automation" [ref=e119] [cursor=pointer]:
+                - /url: /industries/manufacturing
+                - img [ref=e121]
+                - generic [ref=e123]:
+                  - paragraph [ref=e124]: Manufacturing
+                  - paragraph [ref=e125]: Predictive maintenance & quality automation
+              - link "Education Adaptive learning & administrative AI" [ref=e126] [cursor=pointer]:
+                - /url: /industries/education
+                - img [ref=e128]
+                - generic [ref=e130]:
+                  - paragraph [ref=e131]: Education
+                  - paragraph [ref=e132]: Adaptive learning & administrative AI
+              - link "Technology AI-native product features & MLOps" [ref=e133] [cursor=pointer]:
+                - /url: /industries/technology
+                - img [ref=e135]
+                - generic [ref=e137]:
+                  - paragraph [ref=e138]: Technology
+                  - paragraph [ref=e139]: AI-native product features & MLOps
+            - generic [ref=e140]:
+              - paragraph [ref=e141]: Not sure which fits?
+              - link "All Industries →" [ref=e142] [cursor=pointer]:
+                - /url: /industries
+        - link "Blog" [ref=e143] [cursor=pointer]:
+          - /url: /blog
+        - link "Contact" [ref=e144] [cursor=pointer]:
+          - /url: /contact
+      - link "Start a project" [ref=e145] [cursor=pointer]:
+        - /url: /contact
+      - button "Toggle menu" [ref=e146]:
+        - img
+  - main [ref=e148]:
+    - generic [ref=e151]:
+      - generic [ref=e152]:
+        - generic [ref=e154]: AI Services & Solutions Company
+        - heading "AI that works for people." [level=1] [ref=e156]:
+          - text: AI that works
+          - text: for people.
+        - paragraph [ref=e158]: We design and ship machine learning systems that are calm, reliable, and easy to adopt — across products, operations, and customer experiences.
+        - generic [ref=e160]:
+          - link "Get a Free AI Scoping Call" [ref=e161] [cursor=pointer]:
+            - /url: /contact
+            - text: Get a Free AI Scoping Call
+            - img [ref=e162]
+          - link "View Solutions" [ref=e164] [cursor=pointer]:
+            - /url: /solutions
+        - generic [ref=e166]:
+          - generic [ref=e167]:
+            - generic [ref=e168]: 50+
+            - generic [ref=e169]: AI Projects
+          - generic [ref=e170]:
+            - generic [ref=e171]: "4"
+            - generic [ref=e172]: Industries
+          - generic [ref=e173]:
+            - generic [ref=e174]: 6 wks
+            - generic [ref=e175]: POC to Prod
+          - generic [ref=e176]:
+            - generic [ref=e177]: 2-day
+            - generic [ref=e178]: Response SLA
+      - generic [ref=e180]:
+        - generic [ref=e182]: Ikarmic AI
+        - generic [ref=e183]:
+          - generic [ref=e184]:
+            - generic [ref=e185]: How fast can you deploy an AI chatbot?
+            - generic [ref=e186]: You
+          - generic [ref=e187]:
+            - generic [ref=e188]: AI
+            - generic [ref=e189]: Typically 2-3 weeks. We handle integration, training data, and testing.
+          - generic [ref=e190]:
+            - generic [ref=e191]: What channels does it support?
+            - generic [ref=e192]: You
+          - generic [ref=e193]:
+            - generic [ref=e194]: AI
+            - generic [ref=e195]: Web chat, WhatsApp, Slack, and email — from one model, simultaneously.
+          - generic [ref=e197]: AI
+        - generic [ref=e198]:
+          - generic [ref=e199]: Ask about AI services, timelines, pricing…
+          - button [ref=e200]:
+            - img
+    - generic [ref=e204]:
+      - generic [ref=e205]: AI Chatbots & Conversational AI
+      - generic [ref=e206]: Demand Forecasting
+      - generic [ref=e207]: Generative AI
+      - generic [ref=e208]: Predictive Analytics
+      - generic [ref=e209]: Custom ML Models
+      - generic [ref=e210]: Business Automation
+      - generic [ref=e211]: RAG Pipelines
+      - generic [ref=e212]: LLM Fine-Tuning
+      - generic [ref=e213]: Computer Vision
+      - generic [ref=e214]: Data Engineering
+      - generic [ref=e215]: MLOps & Monitoring
+      - generic [ref=e216]: Responsible AI
+      - generic [ref=e217]: AI Chatbots & Conversational AI
+      - generic [ref=e218]: Demand Forecasting
+      - generic [ref=e219]: Generative AI
+      - generic [ref=e220]: Predictive Analytics
+      - generic [ref=e221]: Custom ML Models
+      - generic [ref=e222]: Business Automation
+      - generic [ref=e223]: RAG Pipelines
+      - generic [ref=e224]: LLM Fine-Tuning
+      - generic [ref=e225]: Computer Vision
+      - generic [ref=e226]: Data Engineering
+      - generic [ref=e227]: MLOps & Monitoring
+      - generic [ref=e228]: Responsible AI
+    - generic [ref=e229]:
+      - generic [ref=e230]:
+        - paragraph [ref=e231]: Proven Impact
+        - heading "Numbers that move the needle" [level=2] [ref=e232]
+      - generic [ref=e233]:
+        - generic [ref=e236]:
+          - text: 50+
+          - paragraph [ref=e237]: AI Projects Delivered
+          - paragraph [ref=e238]: across 4 industries
+        - generic [ref=e241]:
+          - text: 65%
+          - paragraph [ref=e242]: Avg. Ticket Deflection
+          - paragraph [ref=e243]: for chatbot deployments
+        - generic [ref=e246]:
+          - text: 6 wks
+          - paragraph [ref=e247]: POC to Production
+          - paragraph [ref=e248]: median delivery time
+        - generic [ref=e251]:
+          - text: 100%
+          - paragraph [ref=e252]: IP Ownership
+          - paragraph [ref=e253]: always transferred to you
+    - generic [ref=e254]:
+      - generic [ref=e255]:
+        - generic [ref=e256]:
+          - paragraph [ref=e257]: Core Services
+          - heading "Five capabilities, one clear outcome." [level=2] [ref=e258]:
+            - text: Five capabilities,
+            - text: one clear outcome.
+        - link "All services" [ref=e260] [cursor=pointer]:
+          - /url: /services
+          - text: All services
+          - img [ref=e261]
+      - generic [ref=e263]:
+        - link "Most Popular 01 AI Chatbots & Conversational AI Intelligent chatbots across web, WhatsApp, and messaging platforms — resolving tier-1 and tier-2 queries 24/7 without adding headcount. Learn more" [ref=e265] [cursor=pointer]:
+          - /url: /services/ai-chatbots
+          - generic [ref=e267]:
+            - generic [ref=e268]: Most Popular
+            - img [ref=e270]
+            - paragraph [ref=e272]: "01"
+            - heading "AI Chatbots & Conversational AI" [level=3] [ref=e273]
+            - paragraph [ref=e274]: Intelligent chatbots across web, WhatsApp, and messaging platforms — resolving tier-1 and tier-2 queries 24/7 without adding headcount.
+            - generic [ref=e275]:
+              - text: Learn more
+              - img [ref=e276]
+        - generic [ref=e278]:
+          - link "02 Business Automation Automate repetitive workflows, document processing, and operations to cut costs and free your team for high-value work." [ref=e280] [cursor=pointer]:
+            - /url: /services/business-automation
+            - generic [ref=e282]:
+              - img [ref=e284]
+              - paragraph [ref=e286]: "02"
+              - heading "Business Automation" [level=3] [ref=e287]
+              - paragraph [ref=e288]: Automate repetitive workflows, document processing, and operations to cut costs and free your team for high-value work.
+          - link "03 Data Analytics & Predictive AI Turn raw data into strategic decisions — forecasting outcomes, detecting risk, and optimising margins at scale." [ref=e290] [cursor=pointer]:
+            - /url: /services/data-analytics
+            - generic [ref=e292]:
+              - img [ref=e294]
+              - paragraph [ref=e296]: "03"
+              - heading "Data Analytics & Predictive AI" [level=3] [ref=e297]
+              - paragraph [ref=e298]: Turn raw data into strategic decisions — forecasting outcomes, detecting risk, and optimising margins at scale.
+          - link "04 Generative AI Solutions Production-grade LLM systems — RAG pipelines, fine-tuned models, guardrails — that create real content and real leverage." [ref=e300] [cursor=pointer]:
+            - /url: /services/generative-ai
+            - generic [ref=e302]:
+              - img [ref=e304]
+              - paragraph [ref=e306]: "04"
+              - heading "Generative AI Solutions" [level=3] [ref=e307]
+              - paragraph [ref=e308]: Production-grade LLM systems — RAG pipelines, fine-tuned models, guardrails — that create real content and real leverage.
+          - link "05 Custom AI Development Bespoke models designed for your specific problem — from prototype to production with full IP transfer and team enablement." [ref=e310] [cursor=pointer]:
+            - /url: /services/custom-ai
+            - generic [ref=e312]:
+              - img [ref=e314]
+              - paragraph [ref=e316]: "05"
+              - heading "Custom AI Development" [level=3] [ref=e317]
+              - paragraph [ref=e318]: Bespoke models designed for your specific problem — from prototype to production with full IP transfer and team enablement.
+    - generic [ref=e321]:
+      - generic [ref=e322]:
+        - paragraph [ref=e323]: How We Work
+        - heading "From idea to production in six weeks." [level=2] [ref=e324]:
+          - text: From idea to production
+          - text: in six weeks.
+        - paragraph [ref=e325]: Every engagement follows the same three-phase structure. Predictable pace, working demos at every milestone, no surprises.
+      - generic [ref=e327]:
+        - generic [ref=e329]:
+          - img [ref=e331]
+          - generic [ref=e333]:
+            - heading "Discovery" [level=3] [ref=e334]
+            - text: Week 1
+          - paragraph [ref=e335]: A focused 3-day working session to map your data, systems, and goals — no slide decks, all real work.
+        - generic [ref=e337]:
+          - img [ref=e339]
+          - generic [ref=e341]:
+            - heading "Design & Build" [level=3] [ref=e342]
+            - text: Weeks 2–5
+          - paragraph [ref=e343]: Rapid sprints with weekly working demos. You see real models running against your data before each sprint ends.
+        - generic [ref=e345]:
+          - img [ref=e347]
+          - generic [ref=e349]:
+            - heading "Deploy & Scale" [level=3] [ref=e350]
+            - text: Week 6+
+          - paragraph [ref=e351]: Production-grade deployment with monitoring, retraining schedules, and full team enablement — then we step back.
+      - generic [ref=e353]:
+        - link "Start with a free scoping call" [ref=e354] [cursor=pointer]:
+          - /url: /contact
+          - text: Start with a free scoping call
+          - img [ref=e355]
+        - link "Learn about us →" [ref=e357] [cursor=pointer]:
+          - /url: /about
+    - generic [ref=e358]:
+      - generic [ref=e359]:
+        - paragraph [ref=e360]: Client Results
+        - heading "Heard from people who've shipped with us" [level=2] [ref=e361]
+      - generic [ref=e362]:
+        - generic [ref=e364]:
+          - generic [ref=e365]:
+            - img [ref=e366]
+            - img [ref=e368]
+            - img [ref=e370]
+            - img [ref=e372]
+            - img [ref=e374]
+          - blockquote [ref=e376]: “Our customer support ticket volume dropped 62% in the first month. The chatbot handles what used to take 8 agents, and CSAT actually went up.”
+          - generic [ref=e377]:
+            - generic [ref=e378]: PR
+            - generic [ref=e379]:
+              - paragraph [ref=e380]: Priya R.
+              - paragraph [ref=e381]: Head of Customer Experience, Retail Brand
+        - generic [ref=e383]:
+          - generic [ref=e384]:
+            - img [ref=e385]
+            - img [ref=e387]
+            - img [ref=e389]
+            - img [ref=e391]
+            - img [ref=e393]
+          - blockquote [ref=e395]: “The demand forecasting model paid for itself within three weeks. We cut overstock losses by ₹40L in Q1 alone. The ROI case was immediate.”
+          - generic [ref=e396]:
+            - generic [ref=e397]: AM
+            - generic [ref=e398]:
+              - paragraph [ref=e399]: Ankit M.
+              - paragraph [ref=e400]: VP Operations, Manufacturing Group
+        - generic [ref=e402]:
+          - generic [ref=e403]:
+            - img [ref=e404]
+            - img [ref=e406]
+            - img [ref=e408]
+            - img [ref=e410]
+            - img [ref=e412]
+          - blockquote [ref=e414]: “Ikarmic moved at a pace we'd never seen from an AI vendor. POC in week two, production in week six, full IP handover on day forty.”
+          - generic [ref=e415]:
+            - generic [ref=e416]: SL
+            - generic [ref=e417]:
+              - paragraph [ref=e418]: Sarah L.
+              - paragraph [ref=e419]: CTO, EdTech Startup
+    - generic [ref=e420]:
+      - generic [ref=e421]:
+        - generic [ref=e422]:
+          - paragraph [ref=e423]: Insights
+          - heading "Thinking out loud about AI that lasts." [level=2] [ref=e424]:
+            - text: Thinking out loud
+            - text: about AI that lasts.
+        - link "All articles" [ref=e426] [cursor=pointer]:
+          - /url: /blog
+          - text: All articles
+          - img [ref=e427]
+      - generic [ref=e429]:
+        - link "STRATEGY7 min read Why Adaptive AI Systems Outperform Static Models Static models decay. Markets shift, data drifts. Here's how Ikarmic's adaptive systems keep AI accurate long after launch. 19 Apr 2026Read" [ref=e431] [cursor=pointer]:
+          - /url: /blog/why-adaptive-ai-systems-outperform-static-models
+          - generic [ref=e432]:
+            - generic [ref=e433]:
+              - text: STRATEGY
+              - generic [ref=e434]: 7 min read
+            - heading "Why Adaptive AI Systems Outperform Static Models" [level=3] [ref=e435]
+            - paragraph [ref=e436]: Static models decay. Markets shift, data drifts. Here's how Ikarmic's adaptive systems keep AI accurate long after launch.
+            - generic [ref=e437]:
+              - text: 19 Apr 2026
+              - generic [ref=e438]:
+                - text: Read
+                - img [ref=e439]
+        - 'link "GOVERNANCE5 min read Ethical by Design: AI Governance Can''t Be a Checklist Compliance isn''t a finish line — it''s a baseline. Ikarmic builds bias checks and privacy guardrails into every system from day one. 19 Apr 2026Read" [ref=e442] [cursor=pointer]':
+          - /url: /blog/ethical-by-design-ai-governance-not-a-checklist
+          - generic [ref=e443]:
+            - generic [ref=e444]:
+              - text: GOVERNANCE
+              - generic [ref=e445]: 5 min read
+            - 'heading "Ethical by Design: AI Governance Can''t Be a Checklist" [level=3] [ref=e446]'
+            - paragraph [ref=e447]: Compliance isn't a finish line — it's a baseline. Ikarmic builds bias checks and privacy guardrails into every system from day one.
+            - generic [ref=e448]:
+              - text: 19 Apr 2026
+              - generic [ref=e449]:
+                - text: Read
+                - img [ref=e450]
+        - 'link "PRODUCT6 min read The Invisible AI: Human-Centered Design Meets ML The best AI doesn''t announce itself. It surfaces the right answer, explains its confidence, and hands control back to the user. 19 Apr 2026Read" [ref=e453] [cursor=pointer]':
+          - /url: /blog/invisible-ai-human-centered-design-machine-learning
+          - generic [ref=e454]:
+            - generic [ref=e455]:
+              - text: PRODUCT
+              - generic [ref=e456]: 6 min read
+            - 'heading "The Invisible AI: Human-Centered Design Meets ML" [level=3] [ref=e457]'
+            - paragraph [ref=e458]: The best AI doesn't announce itself. It surfaces the right answer, explains its confidence, and hands control back to the user.
+            - generic [ref=e459]:
+              - text: 19 Apr 2026
+              - generic [ref=e460]:
+                - text: Read
+                - img [ref=e461]
+    - generic [ref=e466]:
+      - paragraph [ref=e467]: Free 30-min session, no commitment
+      - heading "Let's build something precise." [level=2] [ref=e468]:
+        - text: Let's build something
+        - text: precise.
+      - paragraph [ref=e469]: Tell us what you're trying to automate, predict, or personalise. We'll reply within two business days with a concrete scoping plan — no slides, no fluff.
+      - generic [ref=e470]:
+        - link "Book a Free Scoping Call" [ref=e471] [cursor=pointer]:
+          - /url: /contact
+        - link "Explore All Services" [ref=e472] [cursor=pointer]:
+          - /url: /services
+      - generic [ref=e473]:
+        - link "hello@ikarmic.com" [ref=e474] [cursor=pointer]:
+          - /url: mailto:hello@ikarmic.com
+        - text: Hyderabad, India · Remote-first
+        - text: Respond within 2 business days
+  - contentinfo [ref=e475]:
+    - generic [ref=e476]:
+      - generic [ref=e477]:
+        - generic [ref=e478]:
+          - link "Ikarmic AI" [ref=e479] [cursor=pointer]:
+            - /url: /
+            - img "Ikarmic AI" [ref=e480]
+          - paragraph [ref=e481]: Empowering businesses with intelligent AI technologies. We design and ship machine learning systems that are calm, reliable, and easy to adopt.
+          - generic [ref=e482]:
+            - link "LinkedIn" [ref=e483] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/ikarmic-ai
+            - link "X / Twitter" [ref=e484] [cursor=pointer]:
+              - /url: https://x.com/ikarmicai
+            - link "Email" [ref=e485] [cursor=pointer]:
+              - /url: mailto:hello@ikarmic.com
+        - generic [ref=e486]:
+          - paragraph [ref=e487]: Company
+          - list [ref=e488]:
+            - listitem [ref=e489]:
+              - link "Home" [ref=e490] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e491]:
+              - link "About" [ref=e492] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e493]:
+              - link "Services" [ref=e494] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e495]:
+              - link "Solutions" [ref=e496] [cursor=pointer]:
+                - /url: /solutions
+            - listitem [ref=e497]:
+              - link "Contact" [ref=e498] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e499]:
+          - paragraph [ref=e500]: Services
+          - list [ref=e501]:
+            - listitem [ref=e502]:
+              - link "AI Chatbots" [ref=e503] [cursor=pointer]:
+                - /url: /services/ai-chatbots
+            - listitem [ref=e504]:
+              - link "Business Automation" [ref=e505] [cursor=pointer]:
+                - /url: /services/business-automation
+            - listitem [ref=e506]:
+              - link "Data Analytics" [ref=e507] [cursor=pointer]:
+                - /url: /services/data-analytics
+            - listitem [ref=e508]:
+              - link "Generative AI" [ref=e509] [cursor=pointer]:
+                - /url: /services/generative-ai
+            - listitem [ref=e510]:
+              - link "Custom AI" [ref=e511] [cursor=pointer]:
+                - /url: /services/custom-ai
+        - generic [ref=e512]:
+          - paragraph [ref=e513]: Resources
+          - list [ref=e514]:
+            - listitem [ref=e515]:
+              - link "Blog" [ref=e516] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e517]:
+              - link "Industries" [ref=e518] [cursor=pointer]:
+                - /url: /industries
+            - listitem [ref=e519]:
+              - link "Privacy" [ref=e520] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e521]:
+              - link "Terms" [ref=e522] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e523]:
+              - button "Cookie Settings" [ref=e524]
+      - generic [ref=e525]:
+        - paragraph [ref=e526]: © 2026 Ikarmic AI. All rights reserved.
+        - generic [ref=e527]:
+          - link "Privacy" [ref=e528] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e529] [cursor=pointer]:
+            - /url: /terms
+          - button "Cookie Settings" [ref=e530]

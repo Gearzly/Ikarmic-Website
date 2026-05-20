@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: '/:path((?!_next/static).*)',
         headers: [
           {
             key: 'Cache-Control',
