@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 
 interface LogoProps {
@@ -13,13 +12,11 @@ export default function Logo({ className = "" }: LogoProps) {
   return (
     <Link href="/" className={`flex items-center ${className}`}>
       {!imgFailed ? (
-        <Image
+        <img
           src="/logo.png"
           alt="Ikarmic AI"
           width={160}
-          height={40}
-          priority
-          unoptimized
+          height={36}
           className="h-9 w-auto"
           onError={() => setImgFailed(true)}
         />

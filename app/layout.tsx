@@ -64,6 +64,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://images.unsplash.com" />
       </head>
       <body>
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <OrganizationJsonLd
           type="Organization"
           name="Ikarmic AI"
@@ -74,7 +77,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ]}
         />
         <Navbar />
-        <main className="pt-16">{children}</main>
+        <main id="main-content" className="pt-16" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
         <CookieBanner />
       </body>

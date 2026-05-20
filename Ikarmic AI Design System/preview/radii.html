@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><link rel="stylesheet" href="common.css">
+<style>
+.row { display: flex; gap: 18px; align-items: flex-end; }
+.r { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.r .box { width: 64px; height: 64px; background: #171717; border: 1px solid #262626; }
+.r .name { font-size: 10px; color: #f5f5f5; font-weight: 600; }
+.r .px { font-size: 10px; color: #525252; font-family: "JetBrains Mono", monospace; }
+</style></head><body>
+<div class="card" style="padding: 24px 28px;">
+  <p class="eyebrow" style="margin-bottom: 0;">Border Radii</p>
+  <div class="row">
+    <div class="r"><div class="box" style="border-radius: 6px;"></div><div class="name">md</div><div class="px">6 · inputs</div></div>
+    <div class="r"><div class="box" style="border-radius: 8px;"></div><div class="name">lg</div><div class="px">8 · btn-sm</div></div>
+    <div class="r"><div class="box" style="border-radius: 12px;"></div><div class="name">xl</div><div class="px">12 · CTA / ico</div></div>
+    <div class="r"><div class="box" style="border-radius: 16px;"></div><div class="name">2xl</div><div class="px">16 · cards</div></div>
+    <div class="r"><div class="box" style="border-radius: 24px;"></div><div class="name">3xl</div><div class="px">24 · feature</div></div>
+    <div class="r"><div class="box" style="border-radius: 9999px;"></div><div class="name">pill</div><div class="px">∞ · badges</div></div>
+  </div>
+</div>
+</body></html>

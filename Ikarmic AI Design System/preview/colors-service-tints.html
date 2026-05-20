@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><link rel="stylesheet" href="common.css">
+<style>
+.grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.tile { background: #171717; border: 1px solid #262626; border-radius: 14px; padding: 14px; }
+.tile .ico { width: 36px; height: 36px; border-radius: 10px; border: 1px solid; display: flex; align-items: center; justify-content: center; font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.tile .nm { font-size: 11px; font-weight: 600; color: #f5f5f5; }
+.tile .hx { font-size: 10px; color: #525252; font-family: "JetBrains Mono", monospace; margin-top: 2px; }
+</style></head><body>
+<div class="card">
+  <div>
+    <p class="eyebrow" style="margin-bottom: 4px;">Per-Service Tints</p>
+    <p class="meta" style="margin: 0;">Decorative only · used on home Services grid · do not promote to general palette</p>
+  </div>
+  <div class="grid">
+    <div class="tile"><div class="ico" style="background:#312e81; color:#818cf8; border-color:rgba(67,56,202,0.6);">01</div><div class="nm">Indigo</div><div class="hx">Chatbots</div></div>
+    <div class="tile"><div class="ico" style="background:#2e1065; color:#a78bfa; border-color:rgba(91,33,182,0.6);">02</div><div class="nm">Violet</div><div class="hx">Automation</div></div>
+    <div class="tile"><div class="ico" style="background:#172554; color:#60a5fa; border-color:rgba(30,64,175,0.6);">03</div><div class="nm">Blue</div><div class="hx">Analytics</div></div>
+    <div class="tile"><div class="ico" style="background:#022c22; color:#34d399; border-color:rgba(6,95,70,0.6);">04</div><div class="nm">Emerald</div><div class="hx">Generative</div></div>
+    <div class="tile"><div class="ico" style="background:#431407; color:#fb923c; border-color:rgba(154,52,18,0.6);">05</div><div class="nm">Orange</div><div class="hx">Custom AI</div></div>
+  </div>
+</div>
+</body></html>

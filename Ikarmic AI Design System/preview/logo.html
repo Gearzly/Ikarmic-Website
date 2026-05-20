@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><link rel="stylesheet" href="common.css">
+<style>
+.logo-card { background: #0a0a0a; display: flex; align-items: center; gap: 28px; padding: 28px; }
+.logo-card .logo-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 18px 28px; background: #0a0a0a; border-radius: 14px; border: 1px solid #262626; }
+.logo-card .logo-wrap.light { background: #f5f5f5; }
+.logo-card img { height: 56px; width: auto; display: block; }
+.logo-card img.dark-bg { filter: none; }
+.logo-card img.light-bg { filter: invert(1); }
+.tag { font-size: 10px; color: #525252; font-family: "JetBrains Mono", monospace; margin-top: 8px; text-align: center; }
+.col { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+</style></head><body>
+<div class="card logo-card">
+  <div class="col">
+    <div class="logo-wrap"><img src="../assets/logo.png" class="dark-bg" alt="Ikarmic"></div>
+    <div class="tag">PRIMARY · ON DARK</div>
+  </div>
+  <div class="col">
+    <div class="logo-wrap light"><img src="../assets/logo.png" class="light-bg" alt="Ikarmic"></div>
+    <div class="tag">INVERTED · ON LIGHT</div>
+  </div>
+</div>
+</body></html>

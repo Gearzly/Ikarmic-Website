@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><link rel="stylesheet" href="common.css">
+<style>
+.row { display: flex; align-items: center; gap: 16px; }
+.bar { background: rgba(99,102,241,0.4); height: 14px; border-radius: 3px; }
+.name { font-size: 10px; color: #818cf8; font-family: "JetBrains Mono", monospace; min-width: 50px; }
+.px { font-size: 10px; color: #525252; font-family: "JetBrains Mono", monospace; min-width: 50px; text-align: right; }
+.use { font-size: 11px; color: #a3a3a3; }
+</style></head><body>
+<div class="card" style="padding: 24px 28px; gap: 8px;">
+  <p class="eyebrow" style="margin-bottom: 6px;">Spacing Scale · 4px base</p>
+  <div class="row"><span class="name">--space-2</span><div class="bar" style="width:8px;"></div><span class="px">8px</span><span class="use">inline gap, dot-text</span></div>
+  <div class="row"><span class="name">--space-3</span><div class="bar" style="width:12px;"></div><span class="px">12px</span><span class="use">chip padding</span></div>
+  <div class="row"><span class="name">--space-4</span><div class="bar" style="width:16px;"></div><span class="px">16px</span><span class="use">input padding</span></div>
+  <div class="row"><span class="name">--space-6</span><div class="bar" style="width:24px;"></div><span class="px">24px</span><span class="use">card pad sm · grid gap</span></div>
+  <div class="row"><span class="name">--space-8</span><div class="bar" style="width:32px;"></div><span class="px">32px</span><span class="use">card pad lg · feature</span></div>
+  <div class="row"><span class="name">--space-20</span><div class="bar" style="width:80px;"></div><span class="px">80px</span><span class="use">section vertical</span></div>
+  <div class="row"><span class="name">--space-24</span><div class="bar" style="width:96px;"></div><span class="px">96px</span><span class="use">hero vertical</span></div>
+</div>
+</body></html>

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import { useState } from "react";
+import { useState, type FocusEvent } from "react";
 
 const services = [
   { label: "AI Chatbots", desc: "24/7 support without extra headcount", href: "/services/ai-chatbots", icon: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" },
@@ -26,11 +26,11 @@ const solutions = [
   { label: "Enterprise AI Platform", desc: "POC to production in 8 weeks", href: "/solutions/enterprise-ai-platform", icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
 ];
 
-function FlyoutMenu({ items, footer }: { items: typeof services; footer: { label: string; href: string } }) {
+function FlyoutMenu({ items, footer, label, id }: { items: typeof services; footer: { label: string; href: string }; label: string; id: string }) {
   const isOdd = items.length % 2 === 1;
   return (
     /* pt-3 creates an invisible mouse-bridge over the gap so the menu stays open */
-    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[480px]">
+    <div id={id} className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[480px]" role="region" aria-label={label}>
       <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-white/[0.06]" style={{ background: "linear-gradient(160deg, #1a1a2e 0%, #16161a 100%)" }}>
         {/* Accent top bar */}
         <div className="h-px bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent" />
@@ -72,7 +72,15 @@ function FlyoutMenu({ items, footer }: { items: typeof services; footer: { label
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [desktopExpanded, setDesktopExpanded] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+
+  function handleDesktopBlur(event: FocusEvent<HTMLDivElement>) {
+    const nextTarget = event.relatedTarget as Node | null;
+    if (!event.currentTarget.contains(nextTarget)) {
+      setDesktopExpanded(null);
+    }
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/90 backdrop-blur border-b border-neutral-800">
@@ -80,56 +88,75 @@ export default function Navbar() {
         <Logo />
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          <Link href="/" className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors">Home</Link>
-          <Link href="/about" className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors">About</Link>
+        <nav aria-label="Primary" className="hidden md:flex items-center gap-1">
+          <Link href="/" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">Home</Link>
+          <Link href="/about" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">About</Link>
 
           {/* Services flyout */}
-          <div className="relative group">
-            <button className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors flex items-center gap-1 group-hover:text-white">
+          <div
+            className="relative"
+            onMouseEnter={() => setDesktopExpanded("Services")}
+            onMouseLeave={() => setDesktopExpanded(null)}
+            onFocus={() => setDesktopExpanded("Services")}
+            onBlur={handleDesktopBlur}
+          >
+            <button aria-haspopup="true" aria-expanded={desktopExpanded === "Services"} aria-controls="desktop-services-menu" className={`px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors flex items-center gap-1 ${desktopExpanded === "Services" ? "text-white" : ""}`}>
               Services
-              <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className={`w-3 h-3 transition-transform ${desktopExpanded === "Services" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div className="hidden group-hover:block">
-              <FlyoutMenu items={services} footer={{ label: "All Services", href: "/services" }} />
-            </div>
+            {desktopExpanded === "Services" && (
+              <FlyoutMenu id="desktop-services-menu" items={services} footer={{ label: "All Services", href: "/services" }} label="Services menu" />
+            )}
           </div>
 
           {/* Solutions flyout */}
-          <div className="relative group">
-            <button className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors flex items-center gap-1 group-hover:text-white">
+          <div
+            className="relative"
+            onMouseEnter={() => setDesktopExpanded("Solutions")}
+            onMouseLeave={() => setDesktopExpanded(null)}
+            onFocus={() => setDesktopExpanded("Solutions")}
+            onBlur={handleDesktopBlur}
+          >
+            <button aria-haspopup="true" aria-expanded={desktopExpanded === "Solutions"} aria-controls="desktop-solutions-menu" className={`px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors flex items-center gap-1 ${desktopExpanded === "Solutions" ? "text-white" : ""}`}>
               Solutions
-              <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className={`w-3 h-3 transition-transform ${desktopExpanded === "Solutions" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div className="hidden group-hover:block">
-              <FlyoutMenu items={solutions} footer={{ label: "All Solutions", href: "/solutions" }} />
-            </div>
+            {desktopExpanded === "Solutions" && (
+              <FlyoutMenu id="desktop-solutions-menu" items={solutions} footer={{ label: "All Solutions", href: "/solutions" }} label="Solutions menu" />
+            )}
           </div>
 
           {/* Industries flyout */}
-          <div className="relative group">
-            <button className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors flex items-center gap-1 group-hover:text-white">
+          <div
+            className="relative"
+            onMouseEnter={() => setDesktopExpanded("Industries")}
+            onMouseLeave={() => setDesktopExpanded(null)}
+            onFocus={() => setDesktopExpanded("Industries")}
+            onBlur={handleDesktopBlur}
+          >
+            <button aria-haspopup="true" aria-expanded={desktopExpanded === "Industries"} aria-controls="desktop-industries-menu" className={`px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors flex items-center gap-1 ${desktopExpanded === "Industries" ? "text-white" : ""}`}>
               Industries
-              <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className={`w-3 h-3 transition-transform ${desktopExpanded === "Industries" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div className="hidden group-hover:block">
-              <FlyoutMenu items={industries} footer={{ label: "All Industries", href: "/industries" }} />
-            </div>
+            {desktopExpanded === "Industries" && (
+              <FlyoutMenu id="desktop-industries-menu" items={industries} footer={{ label: "All Industries", href: "/industries" }} label="Industries menu" />
+            )}
           </div>
 
-          <Link href="/blog" className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors">Blog</Link>
-          <Link href="/contact" className="px-4 py-2 text-sm text-neutral-300 hover:text-white transition-colors">Contact</Link>
+          <Link href="/products" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">Products</Link>
+          <Link href="/blog" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">Blog</Link>
+          <Link href="/contact" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">Contact</Link>
         </nav>
 
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors"
+          className="hidden md:inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-all hover:shadow-[0_0_28px_rgba(99,102,241,0.4)]"
         >
           Start a project
         </Link>
@@ -160,6 +187,8 @@ export default function Navbar() {
           <div>
             <button
               onClick={() => setMobileExpanded(mobileExpanded === "Services" ? null : "Services")}
+              aria-expanded={mobileExpanded === "Services"}
+              aria-controls="mobile-services-menu"
               className="w-full flex items-center justify-between px-3 py-2 text-sm text-neutral-300 hover:text-white"
             >
               Services
@@ -168,7 +197,7 @@ export default function Navbar() {
               </svg>
             </button>
             {mobileExpanded === "Services" && (
-              <div className="pl-4 space-y-1 pb-1">
+              <div id="mobile-services-menu" className="pl-4 space-y-1 pb-1">
                 {services.map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-400 hover:text-white">
                     {s.label}
@@ -185,6 +214,8 @@ export default function Navbar() {
           <div>
             <button
               onClick={() => setMobileExpanded(mobileExpanded === "Solutions" ? null : "Solutions")}
+              aria-expanded={mobileExpanded === "Solutions"}
+              aria-controls="mobile-solutions-menu"
               className="w-full flex items-center justify-between px-3 py-2 text-sm text-neutral-300 hover:text-white"
             >
               Solutions
@@ -193,7 +224,7 @@ export default function Navbar() {
               </svg>
             </button>
             {mobileExpanded === "Solutions" && (
-              <div className="pl-4 space-y-1 pb-1">
+              <div id="mobile-solutions-menu" className="pl-4 space-y-1 pb-1">
                 {solutions.map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-400 hover:text-white">
                     {s.label}
@@ -210,6 +241,8 @@ export default function Navbar() {
           <div>
             <button
               onClick={() => setMobileExpanded(mobileExpanded === "Industries" ? null : "Industries")}
+              aria-expanded={mobileExpanded === "Industries"}
+              aria-controls="mobile-industries-menu"
               className="w-full flex items-center justify-between px-3 py-2 text-sm text-neutral-300 hover:text-white"
             >
               Industries
@@ -218,7 +251,7 @@ export default function Navbar() {
               </svg>
             </button>
             {mobileExpanded === "Industries" && (
-              <div className="pl-4 space-y-1 pb-1">
+              <div id="mobile-industries-menu" className="pl-4 space-y-1 pb-1">
                 {industries.map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-400 hover:text-white">
                     {s.label}
@@ -231,6 +264,7 @@ export default function Navbar() {
             )}
           </div>
 
+          <Link href="/products" onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-300 hover:text-white">Products</Link>
           <Link href="/blog" onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-300 hover:text-white">Blog</Link>
           <Link href="/contact" onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-300 hover:text-white">Contact</Link>
         </div>

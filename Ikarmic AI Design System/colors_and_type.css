@@ -1,0 +1,240 @@
+/* =============================================================
+   Ikarmic AI — Colors & Type
+   Extracted from app/globals.css + Tailwind v4 usage across the
+   Next.js codebase. Brand is dark-first; indigo is the only
+   real accent; violet/blue/emerald/orange appear only as per-
+   service tints in the home page service cards.
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------- Brand accent ---------- */
+  --color-brand:           #6366f1;   /* indigo-500 — primary brand */
+  --color-brand-dark:      #4f46e5;   /* indigo-600 — primary button bg */
+  --color-brand-hover:     #6366f1;   /* indigo-500 — button hover bg */
+  --color-brand-soft:      #818cf8;   /* indigo-400 — text accent on dark */
+  --color-brand-glow:      rgba(99, 102, 241, 0.40);  /* used in box-shadow glow */
+  --color-brand-glow-soft: rgba(99, 102, 241, 0.12);
+
+  /* ---------- Neutrals (Tailwind neutral scale) ---------- */
+  --color-bg:          #0a0a0a;   /* neutral-950 — page background */
+  --color-bg-elev-1:   #171717;   /* neutral-900 — cards, footer, navbar overlay */
+  --color-bg-elev-2:   #262626;   /* neutral-800 — input bg, secondary surfaces */
+  --color-bg-elev-3:   #404040;   /* neutral-700 — input borders, avatar bg */
+
+  --color-border:      #262626;   /* neutral-800 — primary border */
+  --color-border-soft: #404040;   /* neutral-700 — focus / hover border */
+
+  --color-fg:          #f5f5f5;   /* neutral-100 — body text */
+  --color-fg-strong:   #ffffff;   /* white — headings */
+  --color-fg-muted:    #a3a3a3;   /* neutral-400 — secondary text */
+  --color-fg-soft:     #737373;   /* neutral-500 — meta / labels */
+  --color-fg-faint:    #525252;   /* neutral-600 — captions, dates */
+  --color-fg-ghost:    #404040;   /* neutral-700 — disabled, dividers */
+
+  /* ---------- White-alpha overlays (used everywhere) ---------- */
+  --surface-alpha-1:   rgba(255, 255, 255, 0.03);  /* faint footer card */
+  --surface-alpha-2:   rgba(255, 255, 255, 0.05);  /* hover surface */
+  --surface-alpha-3:   rgba(255, 255, 255, 0.10);  /* secondary button */
+  --border-alpha-1:    rgba(255, 255, 255, 0.06);
+  --border-alpha-2:    rgba(255, 255, 255, 0.10);
+  --border-alpha-3:    rgba(255, 255, 255, 0.20);
+
+  /* ---------- Service / per-card tints ---------- */
+  --color-violet:      #a78bfa;   /* violet-400 — gradient mid + Generative */
+  --color-violet-bg:   #2e1065;   /* violet-950 */
+  --color-blue:        #60a5fa;   /* blue-400 — Data Analytics */
+  --color-blue-bg:     #172554;   /* blue-950 */
+  --color-emerald:     #34d399;   /* emerald-400 — Generative AI / success */
+  --color-emerald-bg:  #022c22;   /* emerald-950 */
+  --color-orange:      #fb923c;   /* orange-400 — Custom AI */
+  --color-orange-bg:   #431407;   /* orange-950 */
+  --color-rose:        #fb7185;   /* rose-400 — errors */
+  --color-rose-bg:     #4c0519;   /* rose-950 */
+
+  /* ---------- Semantic ---------- */
+  --color-success:     var(--color-emerald);
+  --color-warning:     var(--color-orange);
+  --color-danger:      var(--color-rose);
+  --color-info:        var(--color-brand-soft);
+
+  /* ---------- Gradients ---------- */
+  --gradient-text:        linear-gradient(90deg, #818cf8, #a78bfa, #a5b4fc);
+  --gradient-card-border: linear-gradient(135deg, rgba(79, 70, 229, 0.40), rgba(124, 58, 237, 0.20), rgba(79, 70, 229, 0.40));
+  --gradient-hero-cta:    linear-gradient(135deg, #312e81, #171717, #0a0a0a);
+  --gradient-flyout:      linear-gradient(160deg, #1a1a2e 0%, #16161a 100%);
+
+  /* ---------- Shadows & glows ---------- */
+  --shadow-card:    0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-flyout:  0 25px 50px -12px rgba(0, 0, 0, 0.60);
+  --shadow-cta:     0 0 28px rgba(99, 102, 241, 0.40);
+  --shadow-cta-lg:  0 0 40px rgba(99, 102, 241, 0.45);
+  --shadow-feature: 0 0 40px rgba(99, 102, 241, 0.12);
+  --ring-focus:     0 0 0 2px var(--color-brand);
+
+  /* ---------- Radii ---------- */
+  --radius-sm:  0.5rem;    /*  8px — chips, tags, small inputs  */
+  --radius-md:  0.75rem;   /* 12px — input fields, primary CTA  */
+  --radius-lg:  1rem;      /* 16px — buttons, secondary cards   */
+  --radius-xl:  1.25rem;   /* 20px — primary cards, modals      */
+  --radius-2xl: 1.5rem;    /* 24px — feature/CTA blocks         */
+  --radius-3xl: 1.75rem;   /* 28px — hero CTA panels            */
+  --radius-pill: 9999px;   /* pills, eyebrow badges, avatars    */
+
+  /* ---------- Spacing scale (Tailwind 4-multiple base) ---------- */
+  --space-1:   0.25rem;   /*  4px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px — section gutter, card padding sm */
+  --space-7:   1.75rem;   /* 28px — card padding md */
+  --space-8:   2rem;      /* 32px — card padding lg */
+  --space-10:  2.5rem;    /* 40px — section header gap */
+  --space-12:  3rem;      /* 48px */
+  --space-14:  3.5rem;    /* 56px */
+  --space-16:  4rem;      /* 64px — section vertical padding sm */
+  --space-20:  5rem;      /* 80px — section vertical padding md */
+  --space-24:  6rem;      /* 96px — section vertical padding lg */
+
+  /* ---------- Type — families ---------- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ---------- Type — sizes (used in product) ---------- */
+  --text-display-1: 5.5rem;     /* 88px — hero headline lg */
+  --text-display-2: 4.5rem;     /* 72px — hero headline */
+  --text-display-3: 3.75rem;    /* 60px — page H1 */
+  --text-h1:        3rem;       /* 48px — section H2 lg */
+  --text-h2:        2.25rem;    /* 36px — section H2 */
+  --text-h3:        1.875rem;   /* 30px — section H2 sm */
+  --text-h4:        1.5rem;     /* 24px — card title lg */
+  --text-h5:        1.25rem;    /* 20px — card title */
+  --text-h6:        1.125rem;   /* 18px — card title sm */
+  --text-body-lg:   1.125rem;   /* 18px — lede paragraph */
+  --text-body:      1rem;       /* 16px — body */
+  --text-sm:        0.875rem;   /* 14px — body sm */
+  --text-xs:        0.75rem;    /* 12px — meta, captions */
+  --text-2xs:       0.625rem;   /* 10px — micro labels, badges */
+
+  /* ---------- Tracking ---------- */
+  --tracking-tight: -0.02em;     /* headlines */
+  --tracking-normal: 0;
+  --tracking-wide:  0.025em;
+  --tracking-widest:0.15em;      /* eyebrow labels */
+
+  /* ---------- Line heights ---------- */
+  --lh-tight:   1.04;            /* hero */
+  --lh-snug:    1.15;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.625;
+}
+
+/* =============================================================
+   Semantic element styles — apply these in HTML directly
+   ============================================================= */
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Display + headings ------------------------------------------------ */
+.display-1, h1.display {
+  font-family: var(--font-sans);
+  font-size: var(--text-display-2);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 700;
+  color: var(--color-fg-strong);
+}
+
+h1, .h1 {
+  font-size: var(--text-display-3);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 700;
+  color: var(--color-fg-strong);
+}
+
+h2, .h2 {
+  font-size: var(--text-h2);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-tight);
+  font-weight: 700;
+  color: var(--color-fg-strong);
+}
+
+h3, .h3 {
+  font-size: var(--text-h4);
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--color-fg-strong);
+}
+
+h4, .h4 {
+  font-size: var(--text-h5);
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--color-fg-strong);
+}
+
+/* Body --------------------------------------------------------------- */
+p, .body {
+  font-size: var(--text-body);
+  line-height: var(--lh-relaxed);
+  color: var(--color-fg-muted);
+}
+
+.body-lg {
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--color-fg-muted);
+}
+
+.body-sm {
+  font-size: var(--text-sm);
+  line-height: var(--lh-normal);
+  color: var(--color-fg-muted);
+}
+
+/* Eyebrow label — the signature Ikarmic small-cap intro -------------- */
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-brand-soft);
+}
+
+/* Meta / captions ---------------------------------------------------- */
+.meta { font-size: var(--text-xs); color: var(--color-fg-faint); }
+.label-mono { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-fg-faint); }
+
+/* Code --------------------------------------------------------------- */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--color-bg-elev-2);
+  border: 1px solid var(--color-border);
+  padding: 0.1em 0.4em;
+  border-radius: 0.35em;
+  color: var(--color-fg);
+}
+
+/* Gradient text utility (used on every hero headline accent word) ---- */
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Links -------------------------------------------------------------- */
+a { color: var(--color-brand-soft); text-decoration: none; transition: color 0.18s ease; }
+a:hover { color: #a5b4fc; /* indigo-300 */ }

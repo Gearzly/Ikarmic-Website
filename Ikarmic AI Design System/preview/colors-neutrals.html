@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><link rel="stylesheet" href="common.css">
+<style>
+.scale { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+.swatch .chip { height: 56px; border: 1px solid rgba(255,255,255,0.06); }
+.swatch .name { color: #f5f5f5; font-weight: 600; font-size: 10px; }
+</style></head><body>
+<div class="card">
+  <div>
+    <p class="eyebrow" style="margin-bottom: 4px;">Neutrals · Tailwind Scale</p>
+    <p class="meta" style="margin: 0;">The substrate — dark-first, no light theme</p>
+  </div>
+  <div class="scale">
+    <div class="swatch"><div class="chip" style="background:#ffffff"></div><div class="name">white</div><div>headings</div></div>
+    <div class="swatch"><div class="chip" style="background:#f5f5f5"></div><div class="name">100</div><div>body</div></div>
+    <div class="swatch"><div class="chip" style="background:#a3a3a3"></div><div class="name">400</div><div>muted</div></div>
+    <div class="swatch"><div class="chip" style="background:#737373"></div><div class="name">500</div><div>label</div></div>
+    <div class="swatch"><div class="chip" style="background:#525252"></div><div class="name">600</div><div>faint</div></div>
+    <div class="swatch"><div class="chip" style="background:#404040"></div><div class="name">700</div><div>border-soft</div></div>
+    <div class="swatch"><div class="chip" style="background:#262626"></div><div class="name">800</div><div>border</div></div>
+    <div class="swatch"><div class="chip" style="background:#171717"></div><div class="name">900</div><div>card</div></div>
+  </div>
+  <div style="display:flex; gap: 6px; align-items: center; padding-top: 4px;">
+    <div style="background:#0a0a0a; border: 1px solid #262626; height: 28px; flex: 1; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; font-size: 11px; color:#a3a3a3; font-family: 'JetBrains Mono', monospace;">neutral-950 · #0a0a0a · page background</div>
+  </div>
+</div>
+</body></html>

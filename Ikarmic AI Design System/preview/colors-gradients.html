@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><link rel="stylesheet" href="common.css">
+<style>
+.row { display: flex; flex-direction: column; gap: 10px; }
+.item { display: flex; align-items: center; gap: 14px; }
+.item .preview { width: 200px; height: 56px; border-radius: 12px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; }
+.item .label { font-size: 12px; font-weight: 600; color: #f5f5f5; }
+.item .desc { font-size: 11px; color: #a3a3a3; margin-top: 2px; font-family: "JetBrains Mono", monospace; }
+</style></head><body>
+<div class="card">
+  <p class="eyebrow" style="margin-bottom: 0;">Gradients</p>
+  <div class="row">
+    <div class="item">
+      <div class="preview" style="background: #0a0a0a;">
+        <span style="font-size: 22px; font-weight: 700; background: linear-gradient(90deg, #818cf8, #a78bfa, #a5b4fc); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">for people.</span>
+      </div>
+      <div><div class="label">Text gradient</div><div class="desc">indigo-400 → violet-400 → indigo-300</div></div>
+    </div>
+    <div class="item">
+      <div class="preview" style="background: linear-gradient(135deg, rgba(79,70,229,0.40), rgba(124,58,237,0.20), rgba(79,70,229,0.40)); padding: 1px;">
+        <div style="background:#0a0a0a; width:100%; height:100%; border-radius:11px;"></div>
+      </div>
+      <div><div class="label">Card-border gradient</div><div class="desc">p-px wrapper · stats &amp; outcome cards</div></div>
+    </div>
+    <div class="item">
+      <div class="preview" style="background: linear-gradient(135deg, #312e81, #171717, #0a0a0a);"></div>
+      <div><div class="label">Hero-CTA panel</div><div class="desc">indigo-950 → neutral-900 → neutral-950</div></div>
+    </div>
+    <div class="item">
+      <div class="preview" style="background: linear-gradient(160deg, #1a1a2e 0%, #16161a 100%); position: relative;">
+        <div style="position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, rgba(99,102,241,0.6), transparent);"></div>
+      </div>
+      <div><div class="label">Flyout menu</div><div class="desc">subtle blue-shifted neutral + indigo top bar</div></div>
+    </div>
+  </div>
+</div>
+</body></html>

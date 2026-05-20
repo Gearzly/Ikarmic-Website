@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><link rel="stylesheet" href="common.css">
+<style>
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.tok { background: #171717; border: 1px solid #262626; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.tok .row { display: flex; align-items: center; gap: 8px; }
+.tok .dot { width: 12px; height: 12px; border-radius: 4px; flex-shrink:0; }
+.tok .label { font-size: 12px; font-weight: 600; color: #f5f5f5; }
+.tok .hex { font-size: 10px; color: #525252; font-family: "JetBrains Mono", monospace; }
+.tok .use { font-size: 10px; color: #a3a3a3; line-height: 1.4; }
+</style></head><body>
+<div class="card">
+  <p class="eyebrow" style="margin-bottom: 0;">Semantic Color</p>
+  <div class="grid">
+    <div class="tok"><div class="row"><div class="dot" style="background:#818cf8"></div><div><div class="label">Info / Brand</div><div class="hex">indigo-400</div></div></div><div class="use">Links, eyebrows, icons, focus rings, accents.</div></div>
+    <div class="tok"><div class="row"><div class="dot" style="background:#34d399"></div><div><div class="label">Success</div><div class="hex">emerald-400</div></div></div><div class="use">Form success, "Message sent!" check, status dots.</div></div>
+    <div class="tok"><div class="row"><div class="dot" style="background:#fb923c"></div><div><div class="label">Warning</div><div class="hex">orange-400</div></div></div><div class="use">Custom AI service tint. Reserved.</div></div>
+    <div class="tok"><div class="row"><div class="dot" style="background:#fb7185"></div><div><div class="label">Danger</div><div class="hex">rose-400</div></div></div><div class="use">Field errors, validation, error states.</div></div>
+  </div>
+</div>
+</body></html>

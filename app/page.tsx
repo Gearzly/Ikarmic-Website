@@ -83,7 +83,7 @@ const services = [
   {
     num: "04",
     title: "Generative AI Solutions",
-    desc: "Production-grade LLM systems — RAG pipelines, fine-tuned models, guardrails — that create real content and real leverage.",
+    desc: "Production-grade LLM systems — RAG pipelines, fine-tuned models, guardrails — that create reliable content and measurable lift.",
     href: "/services/generative-ai",
     featured: false,
     accent: "emerald",
@@ -232,32 +232,25 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen bg-neutral-950">
+      <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-neutral-950">
         {/* Clip container for blobs — prevents horizontal overflow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Dot grid */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(99,102,241,0.15) 1px, transparent 1px)",
-            backgroundSize: "36px 36px",
-          }}
-        />
+        <div className="absolute inset-0 opacity-20 ik-cosmic-grid" />
         {/* Gradient vignette over grid */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent_40%,#030712_100%)]" />
+        <div className="absolute inset-0 ik-vignette" />
 
-        {/* Animated blobs - reduced size for perf */}
-        <div className="absolute top-1/4 left-0 w-80 h-80 rounded-full bg-indigo-700/10 blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-0 w-72 h-72 rounded-full bg-violet-700/8 blur-3xl animate-float-delayed" />
+        {/* Animated blobs - brand motif, CSS-only */}
+        <div className="absolute top-24 -left-20 h-[28rem] w-[28rem] rounded-full bg-indigo-600/15 blur-[90px] animate-float" />
+        <div className="absolute bottom-16 -right-16 h-[24rem] w-[24rem] rounded-full bg-violet-600/10 blur-[90px] animate-float-delayed" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
+        <div className="relative z-10 ik-container py-24 lg:py-28 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Text */}
             <div>
               <FadeUp>
-                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-indigo-950/80 border border-indigo-800/50 text-xs font-semibold text-indigo-300 uppercase tracking-widest mb-8 backdrop-blur-sm">
+                <div className="ik-pill mb-8">
                   <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
                   AI Services &amp; Solutions Company
                 </div>
@@ -282,7 +275,7 @@ export default function HomePage() {
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
                     href="/contact"
-                    className="group inline-flex items-center gap-2 px-7 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all text-base"
+                    className="group ik-button-primary"
                   >
                     Get a Free AI Scoping Call
                     <svg
@@ -297,7 +290,7 @@ export default function HomePage() {
                   </Link>
                   <Link
                     href="/solutions"
-                    className="px-7 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all backdrop-blur-sm text-base"
+                    className="ik-button-secondary"
                   >
                     View Solutions
                   </Link>
@@ -306,7 +299,7 @@ export default function HomePage() {
 
               {/* Mini stats row */}
               <FadeUp delay={0.2}>
-                <div className="mt-12 pt-8 border-t border-neutral-800/60 grid grid-cols-4 gap-4">
+                <div className="mt-12 grid grid-cols-2 gap-4 border-t border-neutral-800/60 pt-8 sm:grid-cols-4">
                   {[
                     { v: "50+", l: "AI Projects" },
                     { v: "4", l: "Industries" },
@@ -352,9 +345,9 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           3. IMPACT STATS
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-20 content-auto">
+      <section className="ik-section">
         <FadeUp>
-          <p className="text-center text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">
+          <p className="ik-eyebrow mb-4 text-center">
             Proven Impact
           </p>
           <h2 className="text-center text-3xl md:text-4xl font-bold text-white mb-14">
@@ -364,7 +357,7 @@ export default function HomePage() {
         <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5" staggerDelay={0.08}>
           {stats.map((s) => (
             <StaggerItem key={s.label}>
-              <div className="p-px rounded-2xl bg-gradient-to-br from-indigo-600/40 via-violet-600/20 to-indigo-600/40">
+              <div className="ik-gradient-border">
                 <div className="rounded-[calc(1rem-1px)] bg-neutral-950 p-7 text-center h-full">
                   <CountUp
                     value={s.value}
@@ -382,10 +375,10 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           4. SERVICES — featured + 4 grid
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-8 pb-20 content-auto">
+      <section className="ik-container py-8 pb-20 content-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
           <FadeLeft>
-            <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">
+            <p className="ik-eyebrow mb-3">
               Core Services
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
@@ -416,7 +409,7 @@ export default function HomePage() {
               <FadeLeft className="md:col-span-2">
                 <Link href={s.href} className="group block h-full">
                   <div
-                    className={`h-full p-8 rounded-2xl bg-neutral-900 border border-neutral-800 transition-all ${a.border} relative overflow-hidden`}
+                    className={`ik-card h-full p-8 transition-all ${a.border} relative overflow-hidden`}
                   >
                     {/* Glow bg */}
                     <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/5 transition-colors rounded-2xl" />
@@ -466,14 +459,14 @@ export default function HomePage() {
           })()}
 
           {/* 4 smaller cards */}
-          <Stagger className="md:col-span-3 grid grid-cols-2 gap-5" staggerDelay={0.08}>
+          <Stagger className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-5" staggerDelay={0.08}>
             {services.slice(1).map((s) => {
               const a = accentMap[s.accent];
               return (
                 <StaggerItem key={s.href}>
                   <Link href={s.href} className="group block h-full">
                     <div
-                      className={`h-full p-6 rounded-2xl bg-neutral-900 border border-neutral-800 transition-all ${a.border} relative overflow-hidden`}
+                      className={`ik-card h-full p-6 transition-all ${a.border} relative overflow-hidden`}
                     >
                       <div className="absolute inset-0 bg-current/0 group-hover:bg-white/[0.02] transition-colors rounded-2xl" />
                       <div className="relative z-10">
@@ -502,11 +495,12 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           5. HOW WE WORK
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-8 pb-24 content-auto">
-        <div className="rounded-3xl bg-neutral-900 border border-neutral-800 overflow-hidden">
-          <div className="p-10 md:p-14">
+      <section className="ik-container py-8 pb-24 content-auto">
+        <div className="relative overflow-hidden rounded-3xl border border-indigo-900/40 bg-gradient-to-br from-neutral-900 via-neutral-900 to-indigo-950/30">
+          <div className="absolute inset-0 opacity-10 ik-cosmic-grid pointer-events-none" />
+          <div className="relative z-10 p-10 md:p-14">
             <FadeUp>
-              <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">
+              <p className="ik-eyebrow mb-3">
                 How We Work
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
@@ -527,7 +521,7 @@ export default function HomePage() {
               <Stagger className="grid md:grid-cols-3 gap-6" staggerDelay={0.12}>
                 {steps.map((step) => (
                   <StaggerItem key={step.num}>
-                    <div className="p-7 rounded-2xl bg-neutral-800/50 border border-neutral-700/50 hover:border-indigo-800/50 transition-colors group">
+                    <div className="ik-card p-7 bg-neutral-800/50 border-neutral-700/50 group">
                       <div className="w-12 h-12 rounded-2xl bg-indigo-950 border border-indigo-800/60 flex items-center justify-center mb-6 relative z-10 group-hover:border-indigo-600/60 transition-colors">
                         <svg className="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d={step.iconPath} />
@@ -550,7 +544,7 @@ export default function HomePage() {
               <div className="mt-10 flex items-center gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all hover:shadow-[0_0_28px_rgba(99,102,241,0.4)] text-sm"
+                  className="ik-button-primary !px-6 !py-3 !text-sm"
                 >
                   Start with a free scoping call
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -572,9 +566,9 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           6. TESTIMONIALS
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-8 pb-24 content-auto">
+      <section className="ik-container py-8 pb-24 content-auto">
         <FadeUp>
-          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">
+          <p className="ik-eyebrow mb-3">
             Client Results
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 leading-tight">
@@ -585,7 +579,7 @@ export default function HomePage() {
         <Stagger className="grid md:grid-cols-3 gap-6" staggerDelay={0.1}>
           {testimonials.map((t) => (
             <StaggerItem key={t.name}>
-              <div className="h-full p-7 rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors flex flex-col">
+              <div className="ik-card h-full p-7 flex flex-col">
                 {/* Stars */}
                 <div className="flex gap-1 mb-5">
                   {[...Array(5)].map((_, i) => (
@@ -621,10 +615,10 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           7. BLOG
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 py-8 pb-24 content-auto">
+      <section className="ik-container py-8 pb-24 content-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
           <FadeLeft>
-            <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">
+            <p className="ik-eyebrow mb-3">
               Insights
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
@@ -650,7 +644,7 @@ export default function HomePage() {
           {blogPosts.map((post) => (
             <StaggerItem key={post.href}>
               <Link href={post.href} className="group block h-full">
-                <div className="h-full p-7 rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all flex flex-col group-hover:bg-neutral-800/50">
+                <div className="ik-card h-full p-7 transition-all flex flex-col group-hover:bg-neutral-800/50">
                   <div className="flex items-center justify-between mb-5">
                     <span
                       className={`text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${post.tagColor}`}
@@ -684,21 +678,14 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           8. FINAL CTA
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-6 pb-28 content-auto">
+      <section className="ik-container pb-28 content-auto">
         <FadeUp>
           <div className="relative overflow-hidden rounded-3xl border border-indigo-900/50 bg-gradient-to-br from-indigo-950 via-neutral-900 to-neutral-950 text-center px-10 md:px-20 py-20">
             {/* Background blobs */}
             <div className="absolute top-[-30%] right-[-8%] w-[40%] h-[130%] rounded-full bg-indigo-700/10 blur-[90px] pointer-events-none" />
             <div className="absolute bottom-[-30%] left-[-8%] w-[35%] h-[110%] rounded-full bg-violet-700/10 blur-[80px] pointer-events-none" />
             {/* Dot grid */}
-            <div
-              className="absolute inset-0 opacity-20 pointer-events-none"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle, rgba(99,102,241,0.4) 1px, transparent 1px)",
-                backgroundSize: "28px 28px",
-              }}
-            />
+            <div className="absolute inset-0 opacity-20 pointer-events-none ik-cosmic-grid [background-size:28px_28px]" />
 
             <div className="relative z-10">
               <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-800/50 text-xs font-semibold text-indigo-300 uppercase tracking-widest mb-6 backdrop-blur-sm">
@@ -720,13 +707,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
                 <Link
                   href="/contact"
-                  className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all hover:shadow-[0_0_40px_rgba(99,102,241,0.45)] text-base"
+                  className="ik-button-primary !px-8"
                 >
                   Book a Free Scoping Call
                 </Link>
                 <Link
                   href="/services"
-                  className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all text-base"
+                  className="ik-button-secondary !px-8"
                 >
                   Explore All Services
                 </Link>

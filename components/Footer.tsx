@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Logo />
             <p className="mt-3 text-sm text-neutral-400 max-w-xs">
-              Empowering businesses with intelligent AI technologies. We design and ship machine learning systems that are calm, reliable, and easy to adopt.
+              AI systems shipped in weeks, not quarters. We design calm, reliable machine learning for support, operations, analytics, and product teams.
             </p>
             <div className="mt-4 flex gap-3">
               <a
@@ -48,6 +48,7 @@ export default function Footer() {
                 { label: "About", href: "/about" },
                 { label: "Services", href: "/services" },
                 { label: "Solutions", href: "/solutions" },
+                { label: "Products", href: "/products" },
                 { label: "Contact", href: "/contact" },
               ].map((l) => (
                 <li key={l.href}>
