@@ -48,7 +48,7 @@ export default function Footer() {
                 { label: "About", href: "/about" },
                 { label: "Services", href: "/services" },
                 { label: "Solutions", href: "/solutions" },
-                { label: "Products", href: "/products" },
+                { label: "Ikarmic AIOS", href: "/ikarmic-aios" },
                 { label: "Contact", href: "/contact" },
               ].map((l) => (
                 <li key={l.href}>

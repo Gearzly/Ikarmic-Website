@@ -149,7 +149,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/products" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">Products</Link>
+          <Link href="/ikarmic-aios" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">Ikarmic AIOS</Link>
           <Link href="/blog" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">Blog</Link>
           <Link href="/contact" className="px-4 py-2 text-sm text-neutral-300 hover:text-white focus-visible:text-white transition-colors">Contact</Link>
         </nav>
@@ -264,7 +264,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/products" onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-300 hover:text-white">Products</Link>
+          <Link href="/ikarmic-aios" onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-300 hover:text-white">Ikarmic AIOS</Link>
           <Link href="/blog" onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-300 hover:text-white">Blog</Link>
           <Link href="/contact" onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-neutral-300 hover:text-white">Contact</Link>
         </div>

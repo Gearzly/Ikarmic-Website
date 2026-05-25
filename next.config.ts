@@ -1,6 +1,20 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/products',
+        destination: '/ikarmic-aios',
+        permanent: true,
+      },
+      {
+        source: '/products/socialdukaan',
+        destination: '/ikarmic-aios',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {
