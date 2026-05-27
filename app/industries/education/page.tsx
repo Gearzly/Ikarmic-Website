@@ -30,8 +30,7 @@ export default function EducationPage() {
         tag="AI for Education"
         headline="Personalised Learning at Scale"
         intro="We help education organisations deliver adaptive learning experiences, automate administrative tasks, and surface actionable student insights — ethically and at scale."
-        heroImage="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400&q=80&auto=format&fit=crop"
-        heroImageAlt="Students learning with technology in a modern classroom"
+
         challengeTitle="What Education Teams Face"
         challenges={[
           { text: "One-size-fits-all curricula fail to keep diverse learners engaged — completion rates suffer." },

@@ -93,6 +93,15 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes megaIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+@utility animate-mega-in {
+  animation: megaIn 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
 @utility animate-float {
   animation: float 8s ease-in-out infinite;
 }

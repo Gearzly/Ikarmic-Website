@@ -30,8 +30,7 @@ export default function ManufacturingPage() {
         tag="AI for Manufacturing"
         headline="Intelligent Factories, Zero Guesswork"
         intro="We help manufacturers cut downtime, automate document workflows, and deploy precision AI models — all built around your operational data."
-        heroImage="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1400&q=80&auto=format&fit=crop"
-        heroImageAlt="Modern manufacturing facility with automated production lines"
+
         challengeTitle="What Manufacturing Teams Face"
         challenges={[
           { text: "Unplanned downtime costs manufacturers $50B+ annually worldwide — and most failures are predictable." },

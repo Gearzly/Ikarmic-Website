@@ -68,7 +68,7 @@ export default function BlogPage() {
               <Link href={`/blog/${post.slug}`} className="group block h-full">
                 <div className="h-full p-8 rounded-2xl bg-neutral-900 border border-neutral-800 group-hover:border-indigo-700 transition-colors flex flex-col">
                   <div className="flex items-center gap-3 mb-5">
-                    <span className="text-xs font-semibold text-indigo-400 uppercase tracking-widest">{post.tag}</span>
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold text-indigo-300 bg-indigo-950/60 border border-indigo-800/40 uppercase tracking-widest">{post.tag}</span>
                     <span className="text-xs text-neutral-500">{post.readTime}</span>
                   </div>
                   <h2 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-300 transition-colors flex-1">

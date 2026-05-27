@@ -30,8 +30,7 @@ export default function RetailPage() {
         tag="AI for Retail & E-commerce"
         headline="Smarter Retail, Better Margins"
         intro="From demand forecasting to conversational commerce, we help retailers reduce waste, lift revenue, and delight customers — without adding headcount."
-        heroImage="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1400&q=80&auto=format&fit=crop"
-        heroImageAlt="Retail store interior with digital technology displays"
+
         challengeTitle="What Retail Teams Face"
         challenges={[
           { text: "Demand volatility makes inventory planning unreliable — over-stocking and stock-outs erode margin." },

@@ -30,8 +30,7 @@ export default function TechnologyPage() {
         tag="AI for Technology & Startups"
         headline="Ship AI Features. Own the Infra."
         intro="We help tech companies and startups move from AI idea to production in weeks — with the infrastructure, models, and team enablement to scale independently."
-        heroImage="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80&auto=format&fit=crop"
-        heroImageAlt="Technology circuit board and hardware"
+
         challengeTitle="What Technology Teams Face"
         challenges={[
           { text: "Shipping AI features fast is hard — model selection, evals, guardrails, and serving infra all take longer than expected." },

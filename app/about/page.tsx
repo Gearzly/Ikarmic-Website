@@ -93,15 +93,24 @@ const stats = [
 export default function AboutPage() {
   return (
     <>
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <FadeUp>
-          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">About Us</p>
-          <h1 className="text-5xl md:text-6xl font-bold text-white max-w-3xl leading-tight">Who We Are</h1>
-          <p className="mt-6 text-lg text-neutral-400 max-w-2xl leading-relaxed">
-            Ikarmic AI Services and Solutions is dedicated to helping organizations harness the power of artificial
-            intelligence to improve business performance and innovation.
-          </p>
-        </FadeUp>
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-neutral-950">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 opacity-20 ik-cosmic-grid" />
+          <div className="absolute inset-0 ik-vignette" />
+          <div className="absolute top-20 -left-20 h-[26rem] w-[26rem] rounded-full bg-indigo-600/15 blur-[90px] animate-float" />
+          <div className="absolute bottom-0 -right-16 h-[20rem] w-[20rem] rounded-full bg-violet-600/10 blur-[90px] animate-float-delayed" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
+          <FadeUp>
+            <p className="ik-eyebrow mb-4">About Us</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-white max-w-3xl leading-[1.04] tracking-tight">Who we are</h1>
+            <p className="mt-6 text-xl text-neutral-400 max-w-2xl leading-relaxed">
+              Ikarmic AI builds and deploys practical AI systems that reduce operating cost, accelerate decisions,
+              and generate measurable returns — without the fluff.
+            </p>
+          </FadeUp>
+        </div>
       </section>
 
       {/* Mission & Vision */}
@@ -109,14 +118,14 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-6">
           <FadeLeft>
             <div className="p-8 rounded-2xl bg-neutral-900 border border-neutral-800 h-full">
-              <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">Our Mission</p>
-              <h2 className="text-2xl font-bold text-white mb-4">Empowering businesses with intelligent AI solutions</h2>
-              <p className="text-neutral-400">To empower businesses with intelligent AI solutions that drive automation, improve decision-making, and accelerate digital transformation.</p>
+              <p className="ik-eyebrow mb-3">Our Mission</p>
+              <h2 className="text-2xl font-bold text-white mb-4">AI that works for your business, not against it</h2>
+              <p className="text-neutral-400">We build AI systems that automate the repetitive, sharpen the analytical, and integrate with the tools your teams already use — delivering clear, trackable returns.</p>
             </div>
           </FadeLeft>
           <FadeRight>
             <div className="p-8 rounded-2xl bg-neutral-900 border border-neutral-800 h-full">
-              <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">Our Vision</p>
+              <p className="ik-eyebrow mb-3">Our Vision</p>
               <h2 className="text-2xl font-bold text-white mb-4">A trusted global partner for AI innovation</h2>
               <p className="text-neutral-400">To become a trusted global partner for businesses seeking innovative, scalable, and ethical AI solutions.</p>
             </div>
@@ -143,8 +152,8 @@ export default function AboutPage() {
       {/* Values */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <FadeUp>
-          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Our Values</p>
-          <h2 className="text-3xl font-bold text-white mb-10">What Drives Us</h2>
+          <p className="ik-eyebrow mb-4">Our Values</p>
+          <h2 className="text-3xl font-bold text-white mb-10">What drives us</h2>
         </FadeUp>
         <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.08}>
           {values.map((v) => (
@@ -161,8 +170,8 @@ export default function AboutPage() {
       {/* Advantages */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <FadeUp>
-          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Why Choose Us</p>
-          <h2 className="text-3xl font-bold text-white mb-10">The Ikarmic Advantage</h2>
+          <p className="ik-eyebrow mb-4">Why Choose Us</p>
+          <h2 className="text-3xl font-bold text-white mb-10">The Ikarmic advantage</h2>
         </FadeUp>
         <Stagger className="grid sm:grid-cols-2 gap-6" staggerDelay={0.1}>
           {advantages.map((a) => (
@@ -182,8 +191,8 @@ export default function AboutPage() {
       {/* Outcomes */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <FadeUp>
-          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Proof Snapshots</p>
-          <h2 className="text-3xl font-bold text-white mb-10">Outcomes We Focus On</h2>
+          <p className="ik-eyebrow mb-4">Proof Snapshots</p>
+          <h2 className="text-3xl font-bold text-white mb-10">Outcomes we focus on</h2>
         </FadeUp>
         <Stagger className="grid md:grid-cols-3 gap-6" staggerDelay={0.1}>
           {outcomes.map((o) => (
@@ -201,16 +210,18 @@ export default function AboutPage() {
       {/* Delivery model */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <FadeUp>
-          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Delivery Model</p>
-          <h2 className="text-3xl font-bold text-white mb-10">How We Work</h2>
+          <p className="ik-eyebrow mb-4">Delivery Model</p>
+          <h2 className="text-3xl font-bold text-white mb-10">How we work</h2>
         </FadeUp>
         <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
           {deliverySteps.map((step) => (
             <StaggerItem key={step.num}>
-              <div className="p-6 rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-indigo-800/50 transition-colors h-full">
-                <p className="text-3xl font-bold text-indigo-900 mb-4">{step.num}.</p>
+              <div className="p-6 rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-indigo-800/50 transition-colors h-full group">
+                <div className="w-11 h-11 rounded-xl bg-indigo-950 border border-indigo-800/60 flex items-center justify-center mb-5 group-hover:border-indigo-600/60 transition-colors">
+                  <span className="text-xs font-bold font-mono text-indigo-400">{step.num}</span>
+                </div>
                 <h3 className="font-semibold text-white mb-2">{step.title}</h3>
-                <p className="text-sm text-neutral-400">{step.desc}</p>
+                <p className="text-sm text-neutral-400 leading-relaxed">{step.desc}</p>
               </div>
             </StaggerItem>
           ))}
@@ -220,14 +231,30 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="max-w-7xl mx-auto px-6 py-16 pb-24">
         <FadeUp>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-950 to-neutral-900 border border-indigo-900/50 p-10 md:p-14 text-center">
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-indigo-700/10 blur-[80px] pointer-events-none" />
+          <div className="relative overflow-hidden rounded-3xl border border-indigo-900/50 bg-gradient-to-br from-indigo-950 via-neutral-900 to-neutral-950 text-center px-10 md:px-20 py-20">
+            {/* Background blobs */}
+            <div className="absolute top-[-30%] right-[-8%] w-[40%] h-[130%] rounded-full bg-indigo-700/10 blur-[90px] pointer-events-none" />
+            <div className="absolute bottom-[-30%] left-[-8%] w-[35%] h-[110%] rounded-full bg-violet-700/10 blur-[80px] pointer-events-none" />
+            {/* Dot grid */}
+            <div className="absolute inset-0 opacity-15 pointer-events-none ik-cosmic-grid [background-size:28px_28px]" />
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to work with us?</h2>
-              <p className="text-neutral-400 mb-8 max-w-xl mx-auto">Tell us about your AI initiative. We'll respond within two business days.</p>
-              <Link href="/contact" className="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-xl transition-all hover:shadow-[0_0_28px_rgba(99,102,241,0.4)]">
-                Get in touch
-              </Link>
+              <p className="ik-pill inline-flex mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                Free 30-min session, no commitment
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Let&rsquo;s build something real</h2>
+              <p className="text-neutral-400 mb-8 max-w-xl mx-auto leading-relaxed">Tell us about your AI initiative. We&rsquo;ll respond within two business days with a clear, honest assessment.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/contact" className="group ik-button-primary hover:shadow-[0_0_40px_rgba(99,102,241,0.45)]">
+                  Get in touch
+                  <svg className="w-4 h-4 translate-x-0 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+                <Link href="/services" className="ik-button-secondary">
+                  Explore Services
+                </Link>
+              </div>
             </div>
           </div>
         </FadeUp>
