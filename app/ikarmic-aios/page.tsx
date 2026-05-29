@@ -4,28 +4,28 @@ import { FadeUp, FadeLeft, FadeRight, Stagger, StaggerItem, CountUp } from "@/co
 import { BreadcrumbJsonLd, SoftwareApplicationJsonLd, FAQJsonLd } from "next-seo";
 
 export const metadata: Metadata = {
-  title: "Ikarmic AIOS — Self-Hosted AI Workforce Platform",
-  description: "Self-hosted, white-label Agentic Operating System. Deploy role-based AI employees with governance controls, audit trails, and human-in-the-loop approvals. No per-seat fees.",
+  title: "Ikarmic AIOS — Hire AI Employees. Keep Humans in Control.",
+  description: "Deploy role-based AI employees — SDR, Recruiter, Ops Coordinator, and Support Agent — that work with your existing tools. Human-in-the-loop governance. Immutable audit trails. SaaS pricing coming soon.",
   keywords: [
     "Ikarmic AIOS", "Agentic Operating System", "AI employees", "AI workforce platform",
-    "self-hosted AI agents", "white-label AI platform", "AI governance controls",
     "AI sales development rep", "AI recruiter", "AI operations coordinator",
-    "enterprise AI agents", "human-in-the-loop AI",
+    "AI support agent", "enterprise AI agents", "human-in-the-loop AI",
+    "AI governance controls", "AI employee platform",
   ],
   alternates: { canonical: "https://ikarmic.com/ikarmic-aios" },
   openGraph: {
-    title: "Ikarmic AIOS — Self-Hosted AI Workforce Platform | Ikarmic",
-    description: "Self-hosted, white-label Agentic Operating System. Deploy role-based AI employees with governance controls, audit trails, and human-in-the-loop approvals.",
+    title: "Ikarmic AIOS — Hire AI Employees. Keep Humans in Control. | Ikarmic",
+    description: "Deploy role-based AI employees that work with your existing tools. Human-in-the-loop governance, immutable audit trails, and AI staff that follow your business rules.",
     url: "https://ikarmic.com/ikarmic-aios",
     images: [{ url: "/og-default.png", width: 1200, height: 630 }],
   },
-  twitter: { card: "summary_large_image", title: "Ikarmic AIOS | Ikarmic", description: "Hire AI employees. Keep humans in control. Own your workforce.", images: ["/og-default.png"] },
+  twitter: { card: "summary_large_image", title: "Ikarmic AIOS | Ikarmic", description: "Hire AI employees. Keep humans in control.", images: ["/og-default.png"] },
 };
 
 const painPoints = [
   {
     title: "Repetitive Operational Work",
-    desc: "Your team spends hours on lead sourcing, candidate screening, task tracking, and status reporting. AIOS employees handle this high-volume grind around the clock, freeing your people for high-judgment work.",
+    desc: "Your team spends hours on lead sourcing, candidate screening, task tracking, and ticket triage. AIOS employees handle this high-volume grind around the clock, freeing your people for high-judgement work.",
   },
   {
     title: "Inconsistent Outreach & Follow-up",
@@ -36,20 +36,20 @@ const painPoints = [
     desc: "Recruiters drown in sourcing and screening. The AI Recruiter sources candidates, screens resumes against your job requirements, and schedules interviews continuously — dramatically reducing time-to-hire.",
   },
   {
+    title: "Support Backlogs",
+    desc: "Support teams waste hours triaging repetitive tickets. The AI Support Agent classifies incoming issues, searches your knowledge base, drafts replies, and escalates only what needs human judgement — first-response times drop to minutes.",
+  },
+  {
     title: "Lack of Operational Visibility",
     desc: "Projects stall without anyone noticing. The AI Ops Coordinator continuously monitors tasks, flags delays the moment they arise, and provides clear status summaries — nothing falls through the cracks.",
   },
   {
     title: "Fear of Unsupervised AI",
-    desc: "Enterprises cannot risk AI sending emails or updating systems without oversight. AIOS's governance gate requires human approval for sensitive actions, uses single-use approval tokens, and maintains an immutable audit trail for every decision.",
-  },
-  {
-    title: "Vendor Lock-in",
-    desc: "SaaS AI platforms mean you don't own your data or your instance. Ikarmic AIOS is self-hosted source code — you own everything. No per-seat pricing. No vendor dependency. No data leaving your infrastructure.",
+    desc: "Businesses cannot risk AI sending emails or updating systems without oversight. Every action passes through a governance gate. Sensitive actions pause for human approval with single-use tokens. An immutable audit trail records every decision permanently.",
   },
   {
     title: "Disconnected Tools",
-    desc: "Your team toggles between CRM, email, calendar, ATS, and project tools. AIOS connects to all of them — HubSpot, Gmail, Google Calendar, Greenhouse, Linear — so your AI employees work with your real systems, not a walled garden.",
+    desc: "Your team toggles between CRM, email, calendar, ATS, and project tools. AIOS connects to all of them through 250+ integrations — HubSpot, Gmail, Google Calendar, Greenhouse, Linear — so your AI employees work with your real systems, not a walled garden.",
   },
 ];
 
@@ -59,7 +59,7 @@ const employees = [
     role: "AI Sales Development Rep",
     desc: "Your always-on sales assistant. She finds and qualifies leads, drafts personalised outreach, books meetings on your calendar, and keeps your CRM up to date. Aria never sends an email without your approval — every outbound message pauses in the approval inbox for a human to review before it goes out.",
     skills: ["Find & qualify leads", "Draft outreach emails", "Book meetings", "Update CRM", "Schedule follow-ups", "Log all activity"],
-    icon: "M3 3v18h18 M8 12h8 M12 8v8 M12 4v16 M3 21l18-18",
+    icon: "M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75 M8 7a4 4 0 100-8 4 4 0 000 8z",
     gradient: "from-indigo-500 to-violet-500",
   },
   {
@@ -78,36 +78,42 @@ const employees = [
     icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
     gradient: "from-emerald-500 to-teal-500",
   },
+  {
+    name: "Sage",
+    role: "AI Support Agent",
+    desc: "Sage is your first line of support. He triages incoming tickets, searches your knowledge base for relevant answers, drafts support replies grounded in your documentation, and escalates complex issues when human expertise is required. Every escalation includes full context — no repeating yourself.",
+    skills: ["Triage tickets", "Search knowledge base", "Draft support replies", "Escalate tickets", "Send email", "Log activity"],
+    icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z",
+    gradient: "from-amber-500 to-orange-500",
+  },
 ];
 
 const platformFeatures = [
   {
     title: "Governance & Trust",
-    desc: "Every action an AI employee takes passes through a gate that checks permissions, confidence levels, and approval rules. Human-in-the-loop approvals with single-use tokens. Role-based access control. Confidence scoring escalates low-confidence actions. Immutable audit log. Rate limiting with per-tenant caps. CAN-SPAM compliance built in.",
-    items: ["Human-in-the-loop approvals", "Single-use approval tokens", "Role-based access control", "Confidence scoring & escalation", "Immutable audit log", "Rate limiting & CAN-SPAM"],
+    desc: "Every action an AI employee takes passes through a gate that checks permissions, confidence levels, and approval rules. You decide what runs automatically and what needs human sign-off.",
+    items: ["Human-in-the-loop approvals", "Single-use approval tokens", "Role-based access control", "Confidence scoring & escalation", "Immutable audit log", "Rate limiting & compliance"],
     icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
   },
   {
-    title: "Integrations",
-    desc: "AIOS connects to your existing tools so your AI employees work with your real systems. All credentials are encrypted at rest. Live validation ensures integrations work correctly.",
-    items: ["HubSpot CRM — OAuth2", "Google Calendar — OAuth2", "Gmail / SendGrid — OAuth2", "Greenhouse ATS — API Key", "Linear — API Key", "Extensible — add Salesforce, Slack, Jira"],
+    title: "250+ Integrations",
+    desc: "AIOS connects to your existing tools so your AI employees work with your real systems. All credentials are encrypted at rest with per-tenant isolation.",
+    items: ["HubSpot CRM", "Gmail & Google Calendar", "SendGrid", "Greenhouse ATS", "Linear", "250+ more via Composio"],
     icon: "M13 10V3L4 14h7v7l9-11h-7z",
   },
   {
-    title: "Skill Marketplace",
-    desc: "New capabilities can be created without writing code. Browse, publish, and install skills across your organisation. AI employees can only use marketplace skills your tenant has installed.",
-    items: ["Prompt Skills — define system prompts, no code", "Workflow Skills — chain existing skills together", "Code Skills — Python-powered, ships in the box", "Install-gated access — tenant-level control"],
+    title: "Skill Ecosystem",
+    desc: "20+ built-in skills shipping today. New capabilities can be created without writing code — Prompt Skills, Workflow Skills, and Code Skills. AI employees reuse the same skills across roles.",
+    items: ["Prompt Skills — no-code system prompts", "Workflow Skills — chain existing skills", "Code Skills — Python-powered, in the box", "Skills are reusable across roles"],
     icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
   },
 ];
 
-const roadmap = [
-  { title: "AI Support Agent", desc: "Inbox triage, knowledge-base-grounded replies, ticket escalation." },
-  { title: "AI Finance Assistant", desc: "Invoice drafts, expense categorisation, reconciliation." },
-  { title: "Autonomous Triggers", desc: "Cron schedules and webhook triggers so AI employees run on their own." },
-  { title: "ROI Scorecards", desc: "Per-role cost accounting and outcome metrics." },
-  { title: "Multi-channel Approvals", desc: "Approve actions from Slack, email, or SMS." },
-  { title: "Visual Workflow Builder", desc: "Drag-and-drop canvas for composing multi-step automations." },
+const whatIsBuilt = [
+  { label: "AI Employees", value: "4", suffix: " pre-built roles shipped" },
+  { label: "Skills", value: "20+", suffix: " executable, reusable skills" },
+  { label: "Integrations", value: "250+", suffix: " tools via Composio" },
+  { label: "Database", value: "46", suffix: " migrations with full RLS" },
 ];
 
 export default function ProductsPage() {
@@ -122,34 +128,30 @@ export default function ProductsPage() {
       <SoftwareApplicationJsonLd
         name="Ikarmic AIOS"
         applicationCategory="BusinessApplication"
-        operatingSystem="Self-hosted, Docker"
-        description="Self-hosted, white-label Agentic Operating System. Deploy role-based AI employees with governance controls, audit trails, and human-in-the-loop approvals."
+        operatingSystem="Web"
+        description="A hosted Agentic Operating System that lets businesses deploy role-based AI employees — SDR, Recruiter, Ops Coordinator, and Support Agent — with governance controls and human-in-the-loop approvals."
         url="https://ikarmic.com/ikarmic-aios"
         author={{ name: "Ikarmic AI" }}
         publisher={{ name: "Ikarmic AI" }}
         datePublished="2025-05-25"
-        offers={{
-          price: 0,
-          priceCurrency: "INR",
-        }}
       />
       <FAQJsonLd
         questions={[
           {
             question: "How is Ikarmic AIOS different from other AI agent platforms?",
-            answer: "Ikarmic AIOS is self-hosted source code — you own everything. Unlike SaaS platforms, your data never leaves your infrastructure. It is white-label, governed by human-in-the-loop approvals, and priced per license (not per seat). Every action is audited. Every decision is logged.",
+            answer: "Ikarmic AIOS is not a chatbot builder or a prompt-workflow tool. It is a full Agentic Operating System with pre-built AI employee roles (SDR, Recruiter, Ops, Support), a governance engine that enforces human approval for sensitive actions, and immutable audit trails. Unlike single-purpose AI tools, the same platform runs sales, recruitment, operations, and support.",
           },
           {
             question: "Can I customise AI employees for my specific business?",
-            answer: "Yes. AI employees are pure configuration — role, persona, skills, KPIs, and permissions. Adding a new department requires only defining a new role and skills, not new infrastructure or agent code. The Skill Marketplace lets you create Prompt Skills, Workflow Skills, and Code Skills without writing new code.",
+            answer: "Yes. AI employees are pure configuration — role, persona, skills, KPIs, and permissions. Adding a new department requires only defining a new role and skills, not new infrastructure or agent code. The Skill Ecosystem lets you create Prompt Skills, Workflow Skills, and Code Skills.",
           },
           {
             question: "How does the governance and approval system work?",
-            answer: "Every action an AI employee takes passes through a governance gate that checks permissions, confidence levels, and approval rules. Sensitive actions pause in a web approval inbox for human review. Approvals use single-use tokens. An immutable audit trail records every decision permanently.",
+            answer: "Every action an AI employee takes passes through a governance gate that checks permissions, confidence levels, and approval rules. Sensitive actions pause in a web approval inbox for human review. Approvals use single-use tokens bound to the exact action. An immutable audit trail records every decision permanently.",
           },
           {
-            question: "What does deployment look like?",
-            answer: "Single-command deployment via Docker Compose. Your AI workforce runs on your own infrastructure with your own database. Cryptographic Ed25519 offline license keys validate your deployment without phoning home. Built-in JWT authentication with refresh tokens — no external identity provider needed.",
+            question: "How do I get started?",
+            answer: "Ikarmic AIOS is a hosted platform. Reach out through our contact form to discuss your requirements, team size, and which AI employees you need. We are currently onboarding early customers and working on a self-serve SaaS subscription model.",
           },
         ]}
       />
@@ -168,13 +170,14 @@ export default function ProductsPage() {
               <span className="text-gradient">Keep Humans in Control.</span>
             </h1>
             <p className="mt-6 text-lg text-neutral-400 max-w-2xl leading-relaxed">
-              Ikarmic AIOS is a self-hosted, white-label Agentic Operating System that lets any company deploy
-              role-based AI employees — not chatbots, but AI staff that work alongside your human team with
-              defined roles, skills, and governance controls.
+              Ikarmic AIOS is a hosted Agentic Operating System that lets any business deploy
+              role-based AI employees — not chatbots, but AI staff with defined roles, skills,
+              and governance controls that work alongside your human team.
             </p>
             <p className="mt-3 text-neutral-500 max-w-xl leading-relaxed">
-              Every action is governed. Every decision is audited. Every email is approved by a human before
-              it goes out. You own the code, the data, and the brand — no vendor lock-in, no per-seat fees.
+              Every action is governed. Every decision is audited. Sensitive actions require
+              human approval before executing. Four pre-built AI employees ship today — SDR,
+              Recruiter, Ops Coordinator, and Support Agent.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -241,25 +244,46 @@ export default function ProductsPage() {
                 ))}
               </div>
               <p className="text-neutral-500 text-sm mt-6 pt-4 border-t border-neutral-800">
-                The same platform runs sales, recruitment, and operations today. Adding a new department requires
-                only new role definitions and skills — not new infrastructure or agent code.
+                The same platform runs sales, recruitment, operations, and support today. Adding a new department
+                requires only new role definitions and skills — not new infrastructure or agent code.
               </p>
             </div>
           </FadeRight>
         </div>
       </section>
 
+      {/* What's Built — Proof Points */}
+      <section className="max-w-7xl mx-auto px-6 py-12">
+        <FadeUp>
+          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">What's Built Today</p>
+          <h2 className="text-3xl font-bold text-white mb-10">Production-Ready, Not a Prototype</h2>
+        </FadeUp>
+        <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-6" staggerDelay={0.08}>
+          {whatIsBuilt.map((o) => (
+            <StaggerItem key={o.label}>
+              <div className="p-px rounded-2xl bg-gradient-to-br from-indigo-600/40 via-violet-600/20 to-indigo-600/40 h-full">
+                <div className="rounded-[calc(1rem-1px)] bg-neutral-950 p-6 text-center h-full">
+                  <span className="text-3xl font-bold text-indigo-400 mb-2 block">{o.value}</span>
+                  <p className="text-xs text-neutral-500 mb-1">{o.label}</p>
+                  <p className="text-sm text-neutral-400">{o.suffix}</p>
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </section>
+
       {/* Meet Your AI Employees */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-8">
         <FadeUp>
           <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Your AI Workforce</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meet Your AI Employees</h2>
           <p className="text-neutral-400 max-w-2xl leading-relaxed mb-10">
-            Three AI employees running on the same platform, sharing skills where it makes sense.
-            All governed. All auditable. All white-label.
+            Four AI employees running on the same platform, sharing skills where it makes sense.
+            All governed. All auditable. All configured — not coded.
           </p>
         </FadeUp>
-        <Stagger className="grid lg:grid-cols-3 gap-6" staggerDelay={0.1}>
+        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
           {employees.map((emp) => (
             <StaggerItem key={emp.name}>
               <div className="p-px rounded-2xl bg-gradient-to-br from-neutral-800 via-neutral-800 to-neutral-800 hover:from-indigo-800/40 hover:via-violet-800/30 hover:to-indigo-800/40 transition-all duration-500 group h-full">
@@ -294,10 +318,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Pain Areas */}
-      <section className="max-w-7xl mx-auto px-6 py-8">
+      <section className="max-w-7xl mx-auto px-6 py-12">
         <FadeUp>
           <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Why AIOS Exists</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">Pain Areas We Address</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">Problems We Solve</h2>
         </FadeUp>
         <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.08}>
           {painPoints.map((p) => (
@@ -312,7 +336,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Platform Features */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="max-w-7xl mx-auto px-6 py-8">
         <FadeUp>
           <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Under the Hood</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">Platform Features</h2>
@@ -344,37 +368,8 @@ export default function ProductsPage() {
         </Stagger>
       </section>
 
-      {/* Ownership & White Label */}
-      <section className="max-w-7xl mx-auto px-6 py-8">
-        <FadeUp>
-          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Ownership</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">You Own Everything.</h2>
-          <p className="text-neutral-400 max-w-2xl leading-relaxed mb-10">
-            Ikarmic AIOS is delivered as self-hosted source code, not a SaaS subscription. You run it on your own
-            infrastructure with your own database. Your data never leaves your control.
-          </p>
-        </FadeUp>
-        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.08}>
-          {[
-            { title: "Self-hosted", desc: "Single-command deployment via Docker Compose. One command, and your AI workforce is running." },
-            { title: "White-label", desc: "Customise company name, logo, colours, and email sender identity. Your team sees your brand, not ours." },
-            { title: "No per-seat fees", desc: "One license, unlimited AI employees, unlimited actions. No surprise bills." },
-            { title: "Offline license keys", desc: "Cryptographic Ed25519 keys validate your deployment without phoning home." },
-          ].map((o) => (
-            <StaggerItem key={o.title}>
-              <div className="p-px rounded-2xl bg-gradient-to-br from-indigo-600/40 via-violet-600/20 to-indigo-600/40 h-full">
-                <div className="rounded-[calc(1rem-1px)] bg-neutral-950 p-6 h-full">
-                  <h3 className="font-semibold text-white mb-2">{o.title}</h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed">{o.desc}</p>
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </Stagger>
-      </section>
-
       {/* Security */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section className="max-w-7xl mx-auto px-6 py-8">
         <FadeUp>
           <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Security Built In</p>
           <h2 className="text-3xl font-bold text-white mb-6">Enterprise-Grade Security</h2>
@@ -405,17 +400,17 @@ export default function ProductsPage() {
       <section className="max-w-7xl mx-auto px-6 py-16">
         <FadeUp>
           <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">The AIOS Advantage</p>
-          <h2 className="text-3xl font-bold text-white mb-10">Why Enterprises Choose AIOS</h2>
+          <h2 className="text-3xl font-bold text-white mb-10">Why Businesses Choose AIOS</h2>
         </FadeUp>
         <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-6" staggerDelay={0.08}>
           {[
-            { value: "100%", label: "Data ownership — you own the source code and your data" },
-            { value: "0", label: "Per-seat fees — one license, unlimited AI employees" },
-            { value: "< 30 min", label: "Deploy your full AI workforce with one command" },
-            { value: "∞", label: "Scalable — add new roles without new infrastructure" },
+            { value: "4", label: "AI employee roles — SDR, Recruiter, Ops, and Support — shipping today" },
+            { value: "250+", label: "Tool integrations so AI employees work with your real systems" },
+            { value: "20+", label: "Built-in skills that any role can reuse across departments" },
+            { value: "100%", label: "Governed — every action goes through permissions, confidence, and approval checks" },
           ].map((o) => (
             <StaggerItem key={o.label}>
-              <div className="p-px rounded-2xl bg-gradient-to-br from-indigo-600/40 via-violet-600/20 to-indigo-600/40">
+              <div className="p-px rounded-2xl bg-gradient-to-br from-indigo-600/40 via-violet-600/20 to-indigo-600/40 h-full">
                 <div className="rounded-[calc(1rem-1px)] bg-neutral-950 p-6 text-center h-full">
                   <CountUp value={o.value} className="text-3xl font-bold text-indigo-400 mb-2 block" />
                   <p className="text-sm text-neutral-400">{o.label}</p>
@@ -426,29 +421,35 @@ export default function ProductsPage() {
         </Stagger>
       </section>
 
-      {/* Roadmap */}
+      {/* SaaS Pricing Coming Soon */}
       <section className="max-w-7xl mx-auto px-6 py-8">
         <FadeUp>
-          <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">What's Next</p>
-          <h2 className="text-3xl font-bold text-white mb-10">Roadmap</h2>
-        </FadeUp>
-        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" staggerDelay={0.06}>
-          {roadmap.map((r) => (
-            <StaggerItem key={r.title}>
-              <div className="p-5 rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-indigo-800/30 transition-colors h-full">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
-                  <h3 className="font-semibold text-white text-sm">{r.title}</h3>
-                </div>
-                <p className="text-xs text-neutral-500 leading-relaxed">{r.desc}</p>
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-950/40 to-neutral-900 border border-emerald-900/50 p-10 md:p-14 text-center">
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-emerald-700/10 blur-[80px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-teal-700/10 blur-[80px] pointer-events-none" />
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Coming Soon</span>
               </div>
-            </StaggerItem>
-          ))}
-        </Stagger>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                SaaS Pricing Is On the Way
+              </h2>
+              <p className="text-neutral-400 mb-3 max-w-xl mx-auto leading-relaxed">
+                We are building a self-serve SaaS subscription model with per-month pricing.
+                Choose your AI employees, pick a plan, and get started in minutes — no sales calls required.
+              </p>
+              <p className="text-neutral-500 text-sm max-w-xl mx-auto leading-relaxed">
+                Until then, we are onboarding early customers directly. Reach out and we will get
+                your AI workforce running while the self-serve experience is being finalised.
+              </p>
+            </div>
+          </div>
+        </FadeUp>
       </section>
 
       {/* FAQ */}
-      <section className="max-w-7xl mx-auto px-6 py-8">
+      <section className="max-w-7xl mx-auto px-6 py-12">
         <FadeUp>
           <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-4">Questions & Answers</p>
           <h2 className="text-3xl font-bold text-white mb-10">Frequently Asked Questions</h2>
@@ -457,19 +458,19 @@ export default function ProductsPage() {
           {[
             {
               q: "How is Ikarmic AIOS different from other AI agent platforms?",
-              a: "Ikarmic AIOS is self-hosted source code — you own everything. Unlike SaaS platforms, your data never leaves your infrastructure. It is white-label, governed by human-in-the-loop approvals, and priced per license (not per seat). Every action is audited. Every decision is logged.",
+              a: "Ikarmic AIOS is not a chatbot builder or a prompt-workflow tool. It is a full Agentic Operating System with pre-built AI employee roles (SDR, Recruiter, Ops, Support), a governance engine that enforces human approval for sensitive actions, and immutable audit trails. Unlike single-purpose AI tools, the same platform runs sales, recruitment, operations, and support.",
             },
             {
               q: "Can I customise AI employees for my specific business?",
-              a: "Yes. AI employees are pure configuration — role, persona, skills, KPIs, and permissions. Adding a new department requires only defining a new role and skills, not new infrastructure or agent code. The Skill Marketplace lets you create Prompt Skills, Workflow Skills, and Code Skills without writing new code.",
+              a: "Yes. AI employees are pure configuration — role, persona, skills, KPIs, and permissions. Adding a new department requires only defining a new role and skills, not new infrastructure or agent code. The Skill Ecosystem lets you create Prompt Skills, Workflow Skills, and Code Skills.",
             },
             {
               q: "How does the governance and approval system work?",
               a: "Every action an AI employee takes passes through a governance gate that checks permissions, confidence levels, and approval rules. Sensitive actions pause in a web approval inbox for human review. Approvals use single-use tokens. An immutable audit trail records every decision permanently.",
             },
             {
-              q: "What does deployment look like?",
-              a: "Single-command deployment via Docker Compose. Your AI workforce runs on your own infrastructure with your own database. Cryptographic Ed25519 offline license keys validate your deployment without phoning home. Built-in JWT authentication with refresh tokens — no external identity provider needed.",
+              q: "How do I get started?",
+              a: "Ikarmic AIOS is a hosted platform. Reach out through our contact form to discuss your requirements, team size, and which AI employees you need. We are currently onboarding early customers and building a self-serve SaaS subscription experience with monthly pricing.",
             },
           ].map((faq) => (
             <StaggerItem key={faq.q}>
@@ -514,11 +515,12 @@ export default function ProductsPage() {
             <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-violet-700/10 blur-[80px] pointer-events-none" />
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Own Your AI Workforce
+                Put AI Employees to Work
               </h2>
               <p className="text-neutral-400 mb-8 max-w-xl mx-auto">
-                Ikarmic AIOS is an AI workforce that works for you, on your terms, under your control.
-                Self-hosted. White-label. Enterprise-governed. Let's talk about deploying AIOS in your organisation.
+                Four pre-built AI employees. 20+ skills. 250+ integrations. Full governance and
+                audit trails. SaaS pricing coming soon — until then, reach out and we will get
+                your workforce running.
               </p>
               <Link
                 href="/contact"

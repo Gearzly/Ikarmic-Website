@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iKarmic — Agentic Operating System: Technical Documentation</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+  :root {
+    --bg: #0b1120;
+    --surface: #111827;
+    --surface2: #1e293b;
+    --border: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --green: #4ade80;
+    --amber: #fbbf24;
+    --red: #f87171;
+    --purple: #c084fc;
+    --pink: #f472b6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+  .sidebar {
+    position: fixed; left: 0; top: 0; bottom: 0;
+    width: 260px; background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto; padding: 24px 16px; z-index: 10;
+  }
+  .sidebar h2 {
+    font-size: 16px; color: var(--accent); margin-bottom: 16px; font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .sidebar nav a {
+    display: block; color: var(--muted); text-decoration: none;
+    padding: 6px 12px; border-radius: 6px; font-size: 13px;
+    transition: all 0.15s; margin-bottom: 2px;
+  }
+  .sidebar nav a:hover, .sidebar nav a.active {
+    background: var(--surface2); color: var(--text);
+  }
+  .sidebar .section-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); margin-top: 20px; margin-bottom: 8px; font-weight: 600;
+  }
+  main {
+    margin-left: 260px; max-width: 1280px; padding: 48px 56px 96px;
+  }
+  h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; line-height: 1.2; }
+  h2 { font-size: 24px; font-weight: 700; margin-top: 48px; margin-bottom: 16px; color: var(--accent); letter-spacing: -0.02em; }
+  h3 { font-size: 18px; font-weight: 600; margin-top: 32px; margin-bottom: 10px; color: var(--text); }
+  h4 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-top: 28px; margin-bottom: 8px; }
+  p { margin: 12px 0; color: var(--muted); }
+  .hero-subtitle { font-size: 17px; color: var(--muted); margin-bottom: 32px; line-height: 1.6; max-width: 760px; }
+  .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 12px;
+    font-weight: 600; margin-right: 6px; margin-bottom: 4px;
+  }
+  .badge-blue { background: rgba(56,189,248,0.15); color: var(--accent); }
+  .badge-green { background: rgba(74,222,128,0.15); color: var(--green); }
+  .badge-amber { background: rgba(251,191,36,0.15); color: var(--amber); }
+  .badge-red { background: rgba(248,113,113,0.15); color: var(--red); }
+  .badge-purple { background: rgba(192,132,252,0.15); color: var(--purple); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 24px; margin: 20px 0;
+  }
+  .card h3 { margin-top: 0; }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+  .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 800px) { .card-grid, .card-grid-3 { grid-template-columns: 1fr; } }
+  .mermaid {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 28px 20px; margin: 0;
+    overflow-x: auto; min-height: 80px;
+  }
+  .mermaid svg { max-width: 100%; height: auto; display: block; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border);
+  }
+  th { color: var(--accent); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--muted); }
+  tr:last-child td { border-bottom: none; }
+  code {
+    background: var(--surface2); padding: 2px 7px; border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 13px; color: var(--accent);
+  }
+  pre {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px 20px; overflow-x: auto; margin: 16px 0;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 13px;
+    line-height: 1.6;
+  }
+  pre code { background: none; padding: 0; color: var(--text); }
+  .gap-item {
+    border-left: 3px solid var(--amber); padding: 6px 16px; margin: 10px 0; background: rgba(251,191,36,0.05);
+  }
+  .gap-item.severe { border-left-color: var(--red); background: rgba(248,113,113,0.05); }
+  .gap-item .gap-label {
+    font-weight: 600; color: var(--text); font-size: 14px; display: inline;
+  }
+  .gap-item .gap-severity {
+    font-size: 11px; padding: 1px 8px; border-radius: 99px; font-weight: 600;
+    margin-left: 8px; vertical-align: middle;
+  }
+  .sev-critical { background: rgba(248,113,113,0.2); color: var(--red); }
+  .sev-high { background: rgba(251,191,36,0.2); color: var(--amber); }
+  .sev-medium { background: rgba(56,189,248,0.2); color: var(--accent); }
+  .sev-low { background: rgba(148,163,184,0.2); color: var(--muted); }
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  ul, ol { color: var(--muted); padding-left: 24px; margin: 10px 0; }
+  li { margin: 4px 0; }
+  .layer-diagram { display: flex; flex-direction: column; gap: 8px; margin: 20px 0; }
+  .layer-row {
+    display: flex; align-items: center; gap: 12px; padding: 10px 16px;
+    border-radius: 8px; font-size: 14px; font-weight: 600;
+  }
+  .layer-l1 { background: rgba(56,189,248,0.12); border-left: 4px solid var(--accent); }
+  .layer-l2 { background: rgba(74,222,128,0.12); border-left: 4px solid var(--green); }
+  .layer-l3 { background: rgba(192,132,252,0.12); border-left: 4px solid var(--purple); }
+  .layer-l4 { background: rgba(244,114,182,0.12); border-left: 4px solid var(--pink); }
+  .layer-l5 { background: rgba(251,191,36,0.12); border-left: 4px solid var(--amber); }
+  .layer-l6 { background: rgba(248,113,113,0.12); border-left: 4px solid var(--red); }
+  .layer-l0 { background: rgba(148,163,184,0.08); border-left: 4px solid var(--muted); }
+  .layer-num {
+    width: 28px; height: 28px; border-radius: 6px; display: flex;
+    align-items: center; justify-content: center; font-size: 13px; font-weight: 700;
+    flex-shrink: 0; color: var(--bg);
+  }
+  .layer-l0 .layer-num { background: var(--muted); }
+  .layer-l1 .layer-num { background: var(--accent); }
+  .layer-l2 .layer-num { background: var(--green); }
+  .layer-l3 .layer-num { background: var(--purple); }
+  .layer-l4 .layer-num { background: var(--pink); }
+  .layer-l5 .layer-num { background: var(--amber); }
+  .layer-l6 .layer-num { background: var(--red); }
+  .value-prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .vp-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; border-top: 3px solid var(--accent);
+  }
+  .vp-card.purple { border-top-color: var(--purple); }
+  .vp-card.green { border-top-color: var(--green); }
+  .vp-card.amber { border-top-color: var(--amber); }
+  .vp-card.pink { border-top-color: var(--pink); }
+  .vp-card.red { border-top-color: var(--red); }
+  .vp-card h4 { margin-top: 0; }
+
+  /* ── Diagram expand / fullscreen ───────────────────────────────────────── */
+  .diagram-wrapper {
+    position: relative; margin: 20px 0;
+  }
+  .diagram-expand-btn {
+    position: absolute; top: 8px; right: 8px; z-index: 5;
+    width: 32px; height: 32px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--muted); cursor: pointer; display: flex;
+    align-items: center; justify-content: center; font-size: 16px;
+    transition: all 0.15s; line-height: 1;
+    text-decoration: none; user-select: none;
+  }
+  .diagram-expand-btn:hover {
+    background: var(--surface2); color: var(--text); border-color: var(--accent);
+  }
+  .diagram-expand-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* ── Fullscreen modal ──────────────────────────────────────────────────── */
+  .diagram-modal {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .diagram-modal.open { display: flex; }
+  .diagram-modal-panel {
+    position: relative; width: 95vw; height: 92vh;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+  }
+  .diagram-modal-panel img {
+    width: 100%; height: 100%; object-fit: contain;
+    transform-origin: 0 0; /* transform managed by JS */
+  }
+  .diagram-modal-close {
+    position: absolute; top: 10px; right: 14px; z-index: 10;
+    width: 36px; height: 36px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--text); font-size: 22px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .diagram-modal-close:hover { background: var(--surface2); border-color: var(--red); color: var(--red); }
+  .diagram-zoom-controls {
+    position: absolute; bottom: 14px; right: 14px; z-index: 10;
+    display: flex; gap: 6px;
+  }
+  .diagram-zoom-controls button {
+    width: 36px; height: 36px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--text); font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .diagram-zoom-controls button:hover {
+    background: var(--surface2); border-color: var(--accent);
+  }
+  .diagram-modal-hint {
+    position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);
+    z-index: 10; padding: 6px 14px; border-radius: 99px;
+    background: rgba(0,0,0,0.7); color: var(--muted); font-size: 12px;
+    pointer-events: none; transition: opacity 0.4s;
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>iKarmic Docs v0.0.1</h2>
+  <nav>
+    <div class="section-title">Overview</div>
+    <a href="#executive-summary">Executive Summary</a>
+    <a href="#core-purpose">Core Purpose &amp; Problem</a>
+    <a href="#value-propositions">Value Propositions</a>
+    <a href="#industry-applications">Industry Applications</a>
+    <a href="#tech-stack">Technology Stack</a>
+
+    <div class="section-title">Architecture</div>
+    <a href="#system-architecture">System Architecture</a>
+    <a href="#layered-os-model">The 6-Layer Agentic OS</a>
+    <a href="#orchestrator-deep-dive">Orchestrator Deep Dive</a>
+    <a href="#governance-gate">Governance Gate</a>
+    <a href="#skill-ecosystem">Skill Ecosystem</a>
+    <a href="#llm-gateway">LLM Gateway</a>
+    <a href="#auth-isolation">Auth &amp; Data Isolation</a>
+    <a href="#deployment-architecture">Deployment Architecture</a>
+
+    <div class="section-title">Flows &amp; Journeys</div>
+    <a href="#user-flows">User Flow Diagrams</a>
+    <a href="#functional-flows">Functional Flow Diagrams</a>
+
+    <div class="section-title">Analysis</div>
+    <a href="#gap-analysis">Gap Analysis</a>
+    <a href="#value-add-features">Value-Add Features</a>
+  </nav>
+</div>
+
+<main>
+
+<h1>iKarmic — Agentic Operating System</h1>
+<p class="hero-subtitle">
+  Comprehensive Technical Documentation covering system architecture, user &amp; functional flows,
+  value propositions, industry applications, and a production-readiness gap analysis for the
+  AI Employees‑as‑a‑Service platform.
+</p>
+
+<p>
+  <span class="badge badge-blue">LangGraph</span>
+  <span class="badge badge-green">FastAPI</span>
+  <span class="badge badge-amber">PostgreSQL + pgvector</span>
+  <span class="badge badge-purple">Next.js</span>
+  <span class="badge badge-red">SaaS Entitlements</span>
+</p>
+
+<hr>
+
+<!-- ==================== EXECUTIVE SUMMARY ==================== -->
+<h2 id="executive-summary">Executive Summary</h2>
+<p>
+  <strong>iKarmic</strong> is a production-grade, multi-tenant SaaS platform that delivers
+  <em>AI Employees‑as‑a‑Service</em>. It is not a chatbot builder or a prompt-workflow tool —
+  it is a full <strong>reusable Agentic Operating System</strong> with a layered architecture
+  designed to make every "AI employee" a data configuration change rather than custom code.
+</p>
+<p>
+  The system ships with <strong>four pre-built AI employee roles</strong> (SDR, Recruiter, Ops
+  Coordinator, Support), 20+ skills, a governance engine with immutable audit, durable
+  LangGraph orchestration, multi-provider LLM gateway (Claude, OpenAI, Gemini), RAG knowledge
+  base, visual workflow builder (React Flow), TOTP MFA, database-driven SaaS entitlements, and full
+  Postgres Row-Level Security across 46 SQL migrations.
+</p>
+
+<div class="card-grid">
+  <div class="card">
+    <h3>4 AI Employees Live</h3>
+    <p>Aria (SDR), Rio (Recruiter), Otto (Ops), Sage (Support) — each is a <code>Role</code> row with persona, KPIs, scopes, and skill allowlists.</p>
+  </div>
+  <div class="card">
+    <h3>20+ Executable Skills</h3>
+    <p>Code-backed, prompt-declarative, and workflow-composed skills. All go through the same governance gate with scope enforcement and payload-bound approvals.</p>
+  </div>
+  <div class="card">
+    <h3>46 Database Migrations</h3>
+    <p>Full multi-tenant RLS, usage events, schedule runs, webhook triggers, MFA recovery codes, skill definitions, org profiles, system config.</p>
+  </div>
+  <div class="card">
+    <h3>250+ External Integrations</h3>
+    <p>Every tool (CRM, email, calendar, ATS, projects, enrichment, helpdesk) routes through Composio with per-tenant OAuth credential isolation.</p>
+  </div>
+</div>
+
+<hr>
+
+<!-- ==================== CORE PURPOSE ==================== -->
+<h2 id="core-purpose">Core Purpose &amp; Problem Solved</h2>
+
+<h3>The Problem</h3>
+<p>
+  Small and medium businesses cannot afford to hire specialists for every revenue-generating
+  function — SDR, recruiter, operations coordinator, support agent. Manual "AI chatbot" builders
+  require prompt engineering expertise, lack governance, and produce unreliable output.
+  Existing enterprise RPA platforms are expensive and heavy. There is no <strong>shrink-wrapped
+  AI workforce</strong> that businesses can "hire" off a shelf and trust to operate within
+  compliance boundaries.
+</p>
+
+<h3>The Solution</h3>
+<p>
+  iKarmic provides <strong>role-based AI employees</strong> that behave like real staff: they
+  have personas, performance KPIs, allowed skills, SOPs, and permission scopes. They execute
+  autonomously through a governance gate that enforces human approval for high-risk actions
+  (sending emails, escalating tickets), produces immutable audit trails, and surfaces
+  confidence scores for every decision. The platform is delivered as a hosted multi-tenant
+  SaaS so companies sign up and hire AI employees in minutes — no data scientist required.
+</p>
+
+<p>
+  The strategic moat is the <strong>"App Store for AI Employees"</strong>: new employees are
+  <code>Role</code> rows (data), and new capabilities are reusable <code>Skill</code>
+  definitions that any role can use. Proof: the AI Recruiter reuses 4 of the SDR's skills and
+  adds 4 of its own. A new "AI Finance Assistant" would reuse the same email, calendar,
+  enrichment tools and governance pipeline.
+</p>
+
+<hr>
+
+<!-- ==================== VALUE PROPOSITIONS ==================== -->
+<h2 id="value-propositions">Value Propositions</h2>
+
+<div class="value-prop-grid">
+  <div class="vp-card">
+    <h4>Enterprise Governance Without Enterprise Cost</h4>
+    <p>RBAC scopes, payload-bound single-use approvals, immutable audit trails — the same compliance primitives Fortune 500s demand, packaged as a SaaS subscription.</p>
+  </div>
+  <div class="vp-card purple">
+    <h4>Roles-as-Data, Not Classes</h4>
+    <p>Adding a new AI employee is a database row (persona + KPIs + skill allowlist). The same generic runtime executes all roles. Zero code changes per new hire.</p>
+  </div>
+  <div class="vp-card green">
+    <h4>Skills Are the Moat</h4>
+    <p>Typed, versioned, reusable skill units. Code skills ship in the box; Prompt and Workflow skills are declarative. An ecosystem of third-party Marketplace skills creates defensibility.</p>
+  </div>
+  <div class="vp-card amber">
+    <h4>Multi‑Provider LLM Gateway</h4>
+    <p>One API: Claude, OpenAI, Gemini. Per‑tenant key management with no‑restart hot‑reload. FakeLLM for offline dev. Token‑accurate cost tracking per role per skill.</p>
+  </div>
+  <div class="vp-card pink">
+    <h4>Durable, Checkpointed Execution</h4>
+    <p>LangGraph state persists to Postgres. If an approval pauses a 10‑step goal, the graph survives restarts and resumes from the exact interrupt point.</p>
+  </div>
+  <div class="vp-card red">
+    <h4>Self‑Contained Auth + MFA</h4>
+    <p>No external identity provider dependency. JWT+bcrypt+TOTP MFA. Refresh token rotation with single-flight dedupe. httpOnly cookie storage for XSS resistance.</p>
+  </div>
+</div>
+
+<hr>
+
+<!-- ==================== INDUSTRY APPLICATIONS ==================== -->
+<h2 id="industry-applications">Industry &amp; Business Model Applications</h2>
+
+<p>The platform's 17-industry catalog is backed by a typed <code>INDUSTRY_CATALOG</code> in <code>packages/core/src/ikarmic_core/marketplace.py</code>. Each vertical gets pre-configured role+sop bundles.</p>
+
+<table>
+  <tr><th>Industry</th><th>AI Employee</th><th>Key Skills</th><th>Business Model</th></tr>
+  <tr>
+    <td><strong>Sales &amp; SDR</strong></td>
+    <td>Aria</td>
+    <td>find_leads, qualify_lead, draft_outreach, send_email†, book_meeting, update_crm</td>
+    <td>Per-seat SaaS + usage metering</td>
+  </tr>
+  <tr>
+    <td><strong>Recruiting &amp; HR</strong></td>
+    <td>Rio</td>
+    <td>source_candidates, screen_resume, schedule_interview, update_ats, draft_outreach</td>
+    <td>Agency white-label licensing</td>
+  </tr>
+  <tr>
+    <td><strong>Customer Support</strong></td>
+    <td>Sage</td>
+    <td>triage_ticket, search_kb, draft_support_reply, escalate_ticket†</td>
+    <td>Tier-based subscription (Standard/Pro/Enterprise)</td>
+  </tr>
+  <tr>
+    <td><strong>Operations &amp; Project Mgmt</strong></td>
+    <td>Otto</td>
+    <td>list_tasks, flag_delays, assign_task, summarize_status</td>
+    <td>Per-seat SaaS</td>
+  </tr>
+  <tr>
+    <td><strong>Finance &amp; Accounting</strong></td>
+    <td>(Planned)</td>
+    <td>Invoice draft, expense categorization, reconciliation</td>
+    <td>Premium add-on (Professional tier)</td>
+  </tr>
+  <tr>
+    <td><strong>Legal &amp; Compliance</strong></td>
+    <td>(Marketplace)</td>
+    <td>Contract review prompts, deadline tracking workflows</td>
+    <td>Industry vertical pack</td>
+  </tr>
+  <tr>
+    <td><strong>Healthcare</strong></td>
+    <td>(Marketplace)</td>
+    <td>HIPAA-scoped communication, appointment scheduling</td>
+    <td>Regulated vertical (Enterprise only)</td>
+  </tr>
+  <tr>
+    <td><strong>E‑commerce</strong></td>
+    <td>(Marketplace)</td>
+    <td>Order triage, refund approval workflows, inventory alerts</td>
+    <td>Platform integration partnership</td>
+  </tr>
+  <tr>
+    <td><strong>Real Estate</strong></td>
+    <td>(Marketplace)</td>
+    <td>Lead qualification, property-match workflows, showing scheduler</td>
+    <td>Vertical niche SaaS</td>
+  </tr>
+  <tr>
+    <td><strong>EdTech</strong></td>
+    <td>(Marketplace)</td>
+    <td>Student inquiry triage, enrollment workflow, course recommendations</td>
+    <td>Institution licensing</td>
+  </tr>
+</table>
+
+<p style="font-size:12px;color:var(--muted)">† = approval-gated by default (requires human sign-off). All other skills auto-execute within granted scopes.</p>
+
+<hr>
+
+<!-- ==================== TECH STACK ==================== -->
+<h2 id="tech-stack">Technology Stack</h2>
+
+<table>
+  <tr><th>Layer</th><th>Technology</th><th>Rationale</th></tr>
+  <tr><td>Orchestration</td><td><strong>LangGraph 0.2+</strong></td><td>Durable StateGraph with Postgres checkpointer; interrupt/resume for human-in-the-loop</td></tr>
+  <tr><td>Backend</td><td><strong>FastAPI + Pydantic v2</strong></td><td>Async Python 3.12; typed contracts across all layers; 20 REST routers</td></tr>
+  <tr><td>Database</td><td><strong>PostgreSQL 16 + pgvector</strong></td><td>RLS enforcement, vector similarity search (cosine distance), asyncpg driver</td></tr>
+  <tr><td>Auth</td><td><strong>Self-contained JWT (HS256) + bcrypt + TOTP MFA</strong></td><td>No external IdP; dual token rotation; httpOnly cookie option</td></tr>
+  <tr><td>LLM Providers</td><td><strong>Claude + OpenAI + Gemini</strong></td><td>Behind a unified gateway with auto-fallback, per-tenant key management, hot-reload</td></tr>
+  <tr><td>Frontend</td><td><strong>Next.js 16 (App Router) + Tailwind CSS 3.4</strong></td><td>React 19; React Flow 12 canvas; Vercel AI SDK v5 for streaming</td></tr>
+  <tr><td>External Tools</td><td><strong>Composio</strong></td><td>250+ app integrations; per-tenant OAuth credential isolation; single API surface</td></tr>
+  <tr><td>Crypto</td><td><strong>Fernet</strong></td><td>Symmetric credential encryption at rest; no external KMS dependency</td></tr>
+  <tr><td>Deployment</td><td><strong>Cloud Run + Docker Compose</strong></td><td>Serverless autoscaling; Cloud Build CI/CD; Cloud SQL for Postgres</td></tr>
+  <tr><td>Observability</td><td><strong>LangSmith (optional)</strong></td><td>LLM tracing; SSE event bus for real-time; Redis-backed rate limiter (multi-instance)</td></tr>
+</table>
+
+<hr>
+
+<!-- ==================== SYSTEM ARCHITECTURE ==================== -->
+<h2 id="system-architecture">1. System Architecture</h2>
+
+<h3>High-Level Architecture Diagram</h3>
+
+<div class="mermaid">
+graph TB
+    subgraph Client["Client Layer"]
+        WEB["Next.js Web App<br/>React 19 · Tailwind · React Flow"]
+        API_EXT["External Systems<br/>Webhooks · Scheduler · OAuth"]
+    end
+
+    subgraph API_Layer["API Layer · apps/api"]
+        FASTAPI["FastAPI Application<br/>20 Routers · DI · Rate Limits"]
+        AUTH["Auth Module<br/>JWT · bcrypt · TOTP MFA"]
+        LICENSING["Entitlements<br/>Plan Tiers · Edition Gate"]
+        SSE["Event Bus · SSE Streaming"]
+    end
+
+    subgraph Core["Agentic OS Core · packages/core"]
+        CEO["CEO Orchestrator<br/>LangGraph StateGraph"]
+        ROLE_AGENT["RoleAgent<br/>Generic Skill Execution Loop"]
+        GATE["Governance Gate<br/>Scope Check → Approval → Execute → Audit"]
+        SKILLS["Skill Registry<br/>Code · Prompt · Workflow"]
+        TOOLS["Toolbox<br/>Composio: 250+ Apps"]
+        MEMORY["Memory Store<br/>pgvector Semantic Search"]
+    end
+
+    subgraph Adapters["Ports &amp; Adapters"]
+        PG["Postgres Adapters<br/>asyncpg · RLS · pgvector"]
+        MEM_F["InMemory Adapters<br/>Fakes · Tests · Local Dev"]
+    end
+
+    subgraph Infra["Infrastructure"]
+        DB["PostgreSQL 16<br/>pgvector · 46 Migrations"]
+        REDIS["Redis<br/>Rate Limiter · SSE (multi-pod)"]
+        LLM["LLM Providers<br/>Claude · OpenAI · Gemini"]
+        COMPOSIO["Composio<br/>OAuth · Entity Mgmt"]
+    end
+
+    WEB -->|"REST · SSE · Cookies"| FASTAPI
+    API_EXT -->|"Webhooks · OAuth Callback"| FASTAPI
+    FASTAPI --> AUTH
+    FASTAPI --> LICENSING
+    FASTAPI --> SSE
+    FASTAPI -->|"launch_goal()"| CEO
+    CEO -->|"decompose → delegrate"| ROLE_AGENT
+    ROLE_AGENT -->|"LLM picks skill →"| GATE
+    GATE -->|"execute"| SKILLS
+    SKILLS -->|"uses"| TOOLS
+    SKILLS -->|"recalls"| MEMORY
+    TOOLS -.->|"Composio API"| COMPOSIO
+    MEMORY -.->|"embed → search"| LLM
+    ROLE_AGENT -.->|"converse"| LLM
+    CEO -.->|"decompose"| LLM
+    GATE --> PG
+    PG --> DB
+    GATE --> MEM_F
+    REDIS --> FASTAPI
+</div>
+
+<h3 id="layered-os-model">The 6-Layer Agentic OS</h3>
+
+<div class="layer-diagram">
+  <div class="layer-row layer-l1">
+    <span class="layer-num">1</span>
+    <div><strong>Business Layer</strong> — Tenant / Company Profile, Goals, Subscription &amp; Licensing</div>
+  </div>
+  <div class="layer-row layer-l2">
+    <span class="layer-num">2</span>
+    <div><strong>Department Layer</strong> — Grouping of roles (Sales, Talent, Operations, Support)</div>
+  </div>
+  <div class="layer-row layer-l3">
+    <span class="layer-num">3</span>
+    <div><strong>Role Layer ★ THE AI EMPLOYEE</strong> — Persona, KPIs, Allowed Skills, SOPs, Permission Scopes</div>
+  </div>
+  <div class="layer-row layer-l4">
+    <span class="layer-num">4</span>
+    <div><strong>Skill Layer ★ THE MOAT</strong> — Typed, Reusable Work Units. Code / Prompt / Workflow</div>
+  </div>
+  <div class="layer-row layer-l5">
+    <span class="layer-num">5</span>
+    <div><strong>Tool Layer</strong> — CRM, Email, Calendar, ATS, Enrichment, Projects, Helpdesk — all Composio-backed</div>
+  </div>
+  <div class="layer-row layer-l6">
+    <span class="layer-num">6</span>
+    <div><strong>Memory + Governance</strong> — Semantic Memory (pgvector), RBAC Scopes, Payload-Bound Approvals, Immutable Audit, Confidence Scoring</div>
+  </div>
+  <div class="layer-row layer-l0">
+    <span class="layer-num">0</span>
+    <div><strong>CEO Orchestrator (Cross-Cutting)</strong> — LangGraph decomposes goals → delegates to RoleAgent → synthesizes reports</div>
+  </div>
+</div>
+
+<h4>Key Architectural Principles</h4>
+<div class="card-grid">
+  <div class="card"><h3>Roles Are Data</h3><p>A new employee is a <code>Role</code> row: persona + KPIs + allowed skills + permissions + SOPs. One generic <code>RoleAgent</code> runtime executes any role.</p></div>
+  <div class="card"><h3>Ports &amp; Adapters</h3><p>Core defines protocols (<code>MemoryStore</code>, <code>AuditLog</code>, <code>ApprovalStore</code>). In-memory fakes for dev/tests; Postgres/pgvector for production.</p></div>
+  <div class="card"><h3>Governance Chokepoint</h3><p>Agents <em>never</em> call <code>skill.run()</code> directly. Every execution passes through the governance gate: evaluate scopes → check approvals → execute → audit.</p></div>
+  <div class="card"><h3>Dual-Axis Operation</h3><p>Database axis (Postgres vs InMemory) and LLM axis (Claude/OpenAI/Gemini vs FakeLLM) are independent. Keyless local dev works with both fake adapters.</p></div>
+</div>
+
+<hr>
+
+<h3 id="orchestrator-deep-dive">Orchestrator — LangGraph StateGraph</h3>
+
+<div class="mermaid">
+stateDiagram-v2
+    [*] --> decompose: START
+    decompose --> run_subtask: subtasks[]
+    run_subtask --> run_subtask: next subtask
+    run_subtask --> await_approval: approval pending
+    run_subtask --> report: all done
+    await_approval --> run_subtask: approved · graph resumes
+    await_approval --> report: resumed · all done
+    report --> [*]: END
+
+    note right of decompose: LLM breaks goal into<br/>ordered subtask list<br/>e.g. ["find leads",<br/>"qualify top 3",<br/>"draft outreach"]
+    note right of await_approval: LangGraph interrupt()<br/>pauses graph · persists<br/>state to Postgres<br/>checkpointer<br/>resume() unblocks
+</div>
+
+<p><strong>CEOState fields:</strong> <code>goal</code>, <code>tenant_id</code>, <code>thread_id</code>, <code>subtasks[]</code>, <code>current_idx</code>, <code>results[]</code>, <code>pending_approval_id</code>, <code>report</code>.</p>
+<p><strong>Durability:</strong> <code>AsyncPostgresSaver</code> in production persists every state transition. After an approval pause, the graph survives restart and resumes from the exact interrupt point via <code>Command(resume=...)</code>. In-memory <code>InMemorySaver</code> used for local dev.</p>
+
+<h3>RoleAgent — The Generic Execution Loop</h3>
+
+<div class="mermaid">
+flowchart TD
+    A["Receive Task + Role"] --> B["Build System Prompt<br/>(persona · KPIs · SOPs · memory recall)"]
+    B --> C["Convert Allowed Skills → ToolSpecs"]
+    C --> D{"LLM Converse<br/>(system + messages + tools)"}
+    D --> E{"Tool Calls?"}
+    E -->|"No tool calls"| F["Return RUN_RESULT<br/>status=DONE · report=LLM text"]
+    E -->|"Has tool calls"| G["For each tool_call"]
+    G --> H["GovernanceGate.execute()"]
+    H --> I{"PENDING_APPROVAL?"}
+    I -->|"Yes"| J["Return RunResult<br/>status=PAUSED · approval_id"]
+    I -->|"No"| K["Append tool_result to messages"]
+    K --> L{"Step < max_steps?"}
+    L -->|"Yes"| D
+    L -->|"No"| M["Return RunResult<br/>status=MAX_STEPS"]
+</div>
+
+<p><strong>Key constraint:</strong> The <code>RoleAgent</code> loop maxes at 8 steps by default. Each step either produces a tool call (executed through the gate) or signals completion with a text response. Prompt-skills require per-tenant install verification before being exposed as tools.</p>
+
+<hr>
+
+<h3 id="governance-gate">Governance Gate — The Execution Chokepoint</h3>
+
+<div class="mermaid">
+flowchart TD
+    A["gate.execute(skill, ctx, payload, permissions)"] --> B["evaluate()<br/>Pure Policy Check"]
+    B --> C{"Decision?"}
+    C -->|"DENY<br/>(missing scopes)"| D["Emit skill.denied audit event"]
+    D --> E["Return GateOutcome<br/>status=DENIED"]
+    C -->|"NEEDS_APPROVAL"| F{"Approved + Unconsumed<br/>Approval Exists?"}
+    F -->|"No (or wrong payload hash)"| G["Create PENDING Approval<br/>(SHA-256 bound)"]
+    G --> H["Emit approval.requested audit event"]
+    H --> I["Return GateOutcome<br/>status=PENDING_APPROVAL · approval_id"]
+    F -->|"Yes (payload hash matches)"| J["↓ Fall through to execute"]
+    C -->|"ALLOW"| J
+    J --> K["skill.run(ctx, payload)"]
+    K -->|"Success"| L["Consume single-use approval<br/>(if one was used)"]
+    L --> M["Emit skill.executed audit event"]
+    M --> N{"Confidence < min_autonomous_confidence?"}
+    N -->|"Yes"| O["Emit skill.low_confidence event"]
+    N -->|"No"| P["Return GateOutcome<br/>status=EXECUTED"]
+    O --> P
+    K -->|"Exception"| Q["Emit skill.failed audit event"]
+    Q --> R["Return GateOutcome<br/>status=ERROR"]
+</div>
+
+<p><strong>Integrity Properties:</strong></p>
+<ul>
+  <li><strong>Payload binding</strong> — approval is SHA-256 bound to the exact skill name + payload JSON. A different payload cannot ride a stale approval.</li>
+  <li><strong>Single-use consumption</strong> — after execution, the approval row is consumed. Replay is impossible.</li>
+  <li><strong>Approve → Execute</strong> — <code>POST /approvals/{id}/approve</code> runs the bound skill through the gate. Approving actually triggers the action.</li>
+  <li><strong>Immutable audit</strong> — every outcome (denied, approved, executed, failed, low_confidence) produces an <code>AuditEvent</code> that cannot be mutated.</li>
+</ul>
+
+<hr>
+
+<h3 id="skill-ecosystem">Skill Ecosystem</h3>
+
+<div class="mermaid">
+graph LR
+    subgraph "Code Skills (shipped in box)"
+        SDR["8 SDR Skills<br/>find_leads · qualify_lead · draft_outreach<br/>send_email† · book_meeting<br/>update_crm · schedule_followup · log_activity"]
+        REC["4 Recruiter Skills<br/>source_candidates · screen_resume<br/>schedule_interview · update_ats"]
+        OPS["4 Ops Skills<br/>list_tasks · flag_delays<br/>assign_task · summarize_status"]
+        SUP["4 Support Skills<br/>triage_ticket · search_kb<br/>draft_support_reply · escalate_ticket†"]
+    end
+
+    subgraph "Declarative Skills (Marketplace)"
+        PROMPT["PromptSkill<br/>(prompt_template + system_prompt + input_fields<br/>→ rendered → LLM → output)"]
+        WF["WorkflowSkill<br/>(ordered steps → {step.field} interpolation<br/>→ conditional branching<br/>→ retry + stop_on_failure)"]
+    end
+
+    subgraph "Execution"
+        GATE["Governance Gate<br/>Same path for ALL kinds"]
+    end
+
+    SDR --> GATE
+    REC --> GATE
+    OPS --> GATE
+    SUP --> GATE
+    PROMPT --> GATE
+    WF --> GATE
+</div>
+
+<h4>Cross-Employee Skill Reuse</h4>
+<table>
+  <tr><th>Skill</th><th>SDR</th><th>Recruiter</th><th>Ops</th><th>Support</th></tr>
+  <tr><td>draft_outreach</td><td>✓</td><td>✓</td><td></td><td></td></tr>
+  <tr><td>send_email</td><td>✓</td><td>✓</td><td>✓</td><td></td></tr>
+  <tr><td>schedule_followup</td><td>✓</td><td>✓</td><td>✓</td><td></td></tr>
+  <tr><td>log_activity</td><td>✓</td><td>✓</td><td>✓</td><td></td></tr>
+  <tr><td>book_meeting</td><td>✓</td><td></td><td></td><td></td></tr>
+  <tr><td>screen_resume</td><td></td><td>✓</td><td></td><td></td></tr>
+  <tr><td>flag_delays</td><td></td><td></td><td>✓</td><td></td></tr>
+  <tr><td>triage_ticket</td><td></td><td></td><td></td><td>✓</td></tr>
+</table>
+
+<hr>
+
+<h3 id="llm-gateway">LLM Gateway Architecture</h3>
+
+<div class="mermaid">
+graph TD
+    subgraph "Gateway Interface"
+        COMPLETE["complete(system, messages) → CompletionResult"]
+        CONVERSE["converse(system, messages, tools) → AgentTurn"]
+        CONVERSE_S["converse_stream(...) → stream of text_delta / tool_use / done"]
+        EMBED["embed(texts) → EmbeddingResult"]
+        GEN_OBJ["generate_object(schema, prompt) → ObjectResult"]
+    end
+
+    subgraph "Providers"
+        ANTH["AnthropicProvider<br/>Claude · native streaming<br/>forced tool_choice for structured output"]
+        OAI["OpenAIProvider<br/>GPT · native streaming<br/>response_format json_schema"]
+        GEM["GeminiProvider<br/>Google AI · native streaming<br/>response_schema for structured output"]
+        FAKE["FakeLLM<br/>Deterministic · offline<br/>returns fixed text 'hello world'"]
+    end
+
+    subgraph "Wrappers"
+        REC_GW["RecordingGateway<br/>per-request token counters<br/>sums real tokens · estimates char/4 fallback"]
+        RETRY["retry_async<br/>429 / 5xx / connection errors<br/>exponential backoff + jitter<br/>surface 4xx / auth immediately"]
+    end
+
+    COMPLETE --> ANTH
+    COMPLETE --> OAI
+    COMPLETE --> GEM
+    COMPLETE --> FAKE
+    RETRY -.->|"wraps non-streaming calls"| ANTH
+    RETRY -.->|"wraps non-streaming calls"| OAI
+    RETRY -.->|"wraps non-streaming calls"| GEM
+    REC_GW -.->|"accumulates tokens"| ANTH
+    REC_GW -.->|"accumulates tokens"| OAI
+    REC_GW -.->|"accumulates tokens"| GEM
+</div>
+
+<p><strong>Provider auto-fallback logic</strong> in <code>runtime.py:_build_gateway()</code>:</p>
+<ol>
+  <li>Honour explicit <code>llm_provider</code> preference if key is available</li>
+  <li>Fall back: Google AI (if key) → OpenAI (if key) → Anthropic (if key)</li>
+  <li>If no keys: <code>FakeLLM</code> with startup warning (no real reasoning)</li>
+  <li><code>Platform.reload_gateway()</code> rebuilds in-process — no restart needed when admin changes provider</li>
+</ol>
+
+<hr>
+
+<h3 id="auth-isolation">Authentication &amp; Data Isolation</h3>
+
+<div class="mermaid">
+flowchart LR
+    subgraph "Auth Flow"
+        LOGIN["POST /auth/login<br/>email + password"] --> JWT["JWT (HS256)<br/>tenant_id · user_id · role · exp"]
+        JWT --> ACCESS["Access Token<br/>Bearer header<br/>or httpOnly cookie"]
+        ACCESS --> REFRESH["POST /auth/refresh<br/>opaque hashed token<br/>rotation + single-flight dedupe"]
+        REFRESH --> NEW_JWT["New JWT + Refresh Pair"]
+        ACCESS --> MFA["POST /auth/mfa/login<br/>TOTP code<br/>optional: mfa_required enforcement"]
+    end
+
+    subgraph "Tenant Isolation"
+        APP_LAYER["Application Layer<br/>every query: WHERE tenant_id = $1<br/>extracted from JWT"]
+        DB_SESSION["db_session<br/>SET LOCAL app.tenant_id = $1<br/>per transaction"]
+        RLS["Postgres RLS<br/>FORCE ROW LEVEL SECURITY<br/>current_setting('app.tenant_id')::uuid<br/>neondb_owner bypass for migrations"]
+    end
+
+    JWT --> APP_LAYER
+    APP_LAYER --> DB_SESSION
+    DB_SESSION --> RLS
+</div>
+
+<p><strong>Dual-layer isolation:</strong> Application-layer <code>tenant_id</code> filtering + Postgres RLS. If a bug skips the app filter, RLS still blocks cross-tenant reads at the database level. RLS was rolled out across 15 migrations (0019 → 0044).</p>
+
+<hr>
+
+<h3 id="deployment-architecture">Deployment Architecture</h3>
+
+<div class="mermaid">
+graph TB
+    subgraph "CI/CD — GitHub Actions"
+        PR["Pull Request<br/>lint + test"]
+        MAIN["Push to main<br/>build + push Docker images"]
+    end
+
+    subgraph "Google Cloud"
+        CB["Cloud Build<br/>cloudbuild-api.yaml<br/>cloudbuild-web.yaml<br/>cloudbuild-migrate.yaml"]
+        CR["Cloud Run<br/>api.ikarmic.com :8000<br/>aios.ikarmic.com :3000"]
+        CSQL["Cloud SQL<br/>PostgreSQL 16 + pgvector"]
+        AR["Artifact Registry<br/>us-central1-docker.pkg.dev"]
+    end
+
+    subgraph "Local Development"
+        DOCKER["Docker Compose<br/>db + migrate + api + web"]
+        UV["uv run uvicorn<br/>--reload · in-memory stores"]
+    end
+
+    PR --> MAIN
+    MAIN --> CB
+    CB --> AR
+    AR --> CR
+    CR --> CSQL
+    DOCKER --> CR
+</div>
+
+<hr>
+
+<!-- ==================== USER FLOW DIAGRAMS ==================== -->
+<h2 id="user-flows">2. User Flow Diagrams</h2>
+
+<h3>Flow A: Admin Onboarding &amp; First AI Hire</h3>
+
+<div class="mermaid">
+journey
+    title Admin Onboarding Journey
+    section Sign Up & Setup
+      Visit landing page: 3: Admin
+      Create tenant account: 4: Admin
+      Complete setup wizard: 4: Admin
+      Configure LLM provider keys: 4: Admin
+      Set company branding: 3: Admin
+    section Hire AI Employees
+      Browse pre-built roles: 5: Admin
+      Select AI SDR "Aria": 5: Admin
+      Configure persona & KPIs: 4: Admin
+      Set skill permissions: 4: Admin
+      Enable approval gates: 3: Admin
+    section First Launch
+      Write first goal: 5: Admin
+      Review AI response: 4: Admin
+      Approve first email: 5: Admin
+      See results in activity feed: 5: Admin
+</div>
+
+<h3>Flow B: Sales Manager Using AI SDR</h3>
+
+<div class="mermaid">
+sequenceDiagram
+    actor M as Sales Manager
+    participant Web as iKarmic Web
+    participant API as FastAPI
+    participant CEO as CEO Orchestrator
+    participant RA as RoleAgent
+    participant Gate as Governance Gate
+    participant Tools as CRM / Email / Calendar
+
+    M->>Web: Write goal: "Find 10 SaaS leads, qualify top 3, draft outreach"
+    Web->>API: POST /goals {goal, role_id}
+    API->>API: Rate limit check + License gate + JWT verify
+    API->>CEO: orch.run(goal, tenant_id)
+    CEO->>CEO: LLM decomposes goal → 5 subtasks
+    CEO->>RA: Subtask 1: "Find 10 SaaS leads"
+    RA->>RA: LLM picks 'find_leads' skill
+    RA->>Gate: execute(find_leads, ctx, payload, perms)
+    Gate->>Gate: evaluate() → ALLOW (enrichment.read scope OK)
+    Gate->>Tools: enrichment.find("SaaS ICP", 10)
+    Tools-->>Gate: 10 Lead objects
+    Gate-->>RA: GateOutcome(EXECUTED)
+    RA->>RA: Feed result back. LLM picks 'qualify_lead' for each
+    Note over RA,Gate: Loop continues for each lead
+    RA->>RA: LLM picks 'draft_outreach'
+    Gate->>Gate: ALLOW → SkillResult(subject, body)
+    RA->>RA: LLM picks 'send_email'
+    Gate->>Gate: evaluate() → NEEDS_APPROVAL
+    Gate->>Gate: Create PENDING Approval (SHA-256 bound)
+    Gate-->>RA: GateOutcome(PENDING_APPROVAL, approval_id)
+    RA-->>CEO: RunResult(PAUSED)
+    CEO-->>API: CEOResult(paused=true)
+    API-->>Web: {paused: true, approval_id: "..."}
+    Web-->>M: "Approval required — review email draft"
+    M->>Web: Review email → click Approve
+    Web->>API: POST /approvals/{id}/approve
+    API->>Gate: execute-approved → run skill → send email
+    Gate-->>API: EXECUTED
+    API->>CEO: orch.resume(thread_id, {approved})
+    CEO->>RA: Continue remaining subtasks
+    CEO-->>API: Final CEOResult(report)
+    API-->>Web: Goal complete with full trace
+    Web-->>M: Summary report + subtask trace
+</div>
+
+<h3>Flow C: Support Agent — Ticket Triage &amp; Knowledge Base</h3>
+
+<div class="mermaid">
+sequenceDiagram
+    actor C as Customer
+    actor A as Support Agent (Human)
+    participant Web as iKarmic Web
+    participant Sage as Sage (AI Support)
+    participant Gate as Governance Gate
+    participant KB as Knowledge Base (RAG)
+    participant HD as Helpdesk Tool
+
+    C->>Web: Submits support ticket via email/chat
+    Web->>Sage: Launch: "Triage new support ticket #452"
+    Sage->>Sage: LLM picks 'triage_ticket'
+    Sage->>Gate: execute(triage_ticket)
+    Gate->>Gate: evaluate() → ALLOW (support.read scope)
+    Gate->>Sage: Ticket classified: "billing issue · priority: high · urgency: 7/10"
+    Sage->>Sage: LLM picks 'search_kb'
+    Sage->>Gate: execute(search_kb)
+    Gate->>KB: Semantic search: "billing refund policy"
+    KB-->>Gate: Top 3 relevant doc chunks
+    Gate-->>Sage: Chunks returned
+    Sage->>Sage: LLM picks 'draft_support_reply'
+    Gate->>Gate: ALLOW → SkillResult(draft_reply)
+    Sage-->>Web: Draft reply ready
+    Web-->>A: "Sage drafted a reply using KB article #23<br/>Review and approve or edit"
+    A->>Web: Approves reply
+    A->>Web: Optionally escalate
+    Web->>Sage: If escalate_ticket: Gate pauses for approval
+    Sage->>Gate: execute(escalate_ticket) → NEEDS_APPROVAL
+    Web-->>A: "Escalation requires manager approval"
+</div>
+
+<hr>
+
+<h3>Flow D: Scheduled Autonomous Workflow</h3>
+
+<div class="mermaid">
+sequenceDiagram
+    participant Scheduler as Scheduler Loop<br/>(FastAPI lifespan)
+    participant API as API
+    participant CEO as CEO Orchestrator
+    participant Gate as Governance Gate
+
+    Scheduler->>Scheduler: asyncio.sleep(poll_seconds)
+    Scheduler->>API: Query schedules WHERE next_run <= now()
+    API-->>Scheduler: Schedule: "Morning lead enrichment" (cron: 0 8 * * 1-5)
+    Scheduler->>API: enforce_goal_limits(tenant_id)
+    Scheduler->>CEO: orch.run(schedule.goal, tenant_id)
+    CEO->>CEO: Decompose → subtasks
+    Note over CEO,Gate: Auto-approved skills execute immediately
+    Note over CEO,Gate: Skills needing approval → PENDING_APPROVAL<br/>Workflow halts (no human present for unattended runs)
+    CEO-->>API: CEOResult or PENDING_APPROVAL
+    API->>API: Record schedule run history
+    API->>API: Update next_run_at = cron_next(cron, now)
+</div>
+
+<hr>
+
+<!-- ==================== FUNCTIONAL FLOW DIAGRAMS ==================== -->
+<h2 id="functional-flows">3. Functional Flow Diagrams</h2>
+
+<h3>Skill Execution Lifecycle</h3>
+
+<div class="mermaid">
+flowchart TD
+    subgraph "RoleAgent Loop"
+        A["LLM selects tool_call<br/>{name: 'send_email', id: 'toolu_01'...}"] --> B["Bridge: skill_to_toolspec()<br/>Convert skill metadata → ToolSpec"]
+    end
+
+    subgraph "Governance Gate"
+        B --> C["1. Evaluate Policy<br/>evaluate(skill, perms, granted_scopes)"]
+        C --> D{"Has required scopes?"}
+        D -->|"No"| E["DENY<br/>Emit skill.denied<br/>AuditEvent{type: skill.denied}"]
+        D -->|"Yes"| F{"Auto-approve in platform policy?"}
+        F -->|"Yes"| G["ALLOW<br/>(auto-approve_skills)"]
+        F -->|"No"| H{"Skill requires approval<br/>or in require_approval_for?"}
+        H -->|"Yes"| I["NEEDS_APPROVAL"]
+        H -->|"No"| G
+        I --> J{"Find APPROVED + UNCONSUMED<br/>approval with matching payload hash?"}
+        J -->|"Yes"| K["Use existing approval<br/>→ fall through to execute"]
+        J -->|"No"| L["Create PENDING Approval<br/>(id, tenant, role, task, skill, input, hash, status)"]
+        L --> M["Emit approval.requested<br/>Notify email + Slack if configured"]
+        L --> N["Return PENDING_APPROVAL<br/>LangGraph interrupt() pauses graph"]
+    end
+
+    subgraph "Execution"
+        G --> O["2. skill.run(ctx, payload)"]
+        K --> O
+        O --> P{"Exception?"}
+        P -->|"Yes"| Q["ERROR<br/>Emit skill.failed<br/>AuditEvent{error}"]
+        P -->|"No"| R["3. Consume approval<br/>(if one was used: single-use)"]
+        R --> S["4. Confidence Check"]
+        S --> T{"confidence < min_autonomous_confidence?"}
+        T -->|"Yes"| U["Emit skill.low_confidence"]
+        T -->|"No"| V["EXECUTED"]
+        U --> V
+        V --> W["Emit skill.executed<br/>AuditEvent{type: skill.executed, confidence}"]
+    end
+</div>
+
+<h3>WorkflowSkill — Sequential Step Execution with Branching</h3>
+
+<div class="mermaid">
+flowchart TD
+    START["WorkflowSkill.run(ctx, payload)"] --> PARSE["Parse workflow_data from payload"]
+    PARSE --> LOOP{"i < len(steps)?"}
+    LOOP -->|"No"| DONE["Return WorkflowOut<br/>(results, final text)"]
+    LOOP -->|"Yes"| GUARD{"guard < max_iterations?"}
+    GUARD -->|"No"| ERROR_MAX["Return error:<br/>possible branch loop"]
+    GUARD -->|"Yes"| GET_SKILL["Get step.skill_name from registry"]
+    GET_SKILL --> SKILL_OK{"Skill found?"}
+    SKILL_OK -->|"No"| SKIP["Record error in step_outputs<br/>stop_on_failure? → halt<br/>else → i += 1 → LOOP"]
+    SKILL_OK -->|"Yes"| RESOLVE["Resolve step.input_map<br/>{workflow.field} → wf_data<br/>{step_name.field} → step_outputs"]
+    RESOLVE --> VALIDATE["Build step_payload<br/>sub_skill.input_model(**resolved)"]
+    VALIDATE --> INPUT_OK{"Valid inputs?"}
+    INPUT_OK -->|"No"| SKIP
+    INPUT_OK -->|"Yes"| RETRY_LOOP{"Attempt < max_retries?"}
+    RETRY_LOOP -->|"Yes"| EXEC["gate.execute(sub_skill, ctx, payload, perms)<br/>*if gate provided*<br/>else: sub_skill.run(ctx, payload)"]
+    RETRY_LOOP -->|"Exhausted"| SKIP
+    EXEC --> GATE_OK{"Gate EXECUTED?"}
+    GATE_OK -->|"No (blocked)"| BLOCK["Record blocked_msg<br/>stop_on_failure? → halt<br/>else → i += 1 → LOOP"]
+    GATE_OK -->|"Yes"| RESULT_OK{"result.ok?"}
+    RESULT_OK -->|"No"| RETRY_LOOP
+    RESULT_OK -->|"Yes"| STORE["Store result.output in step_outputs<br/>Set final_text if 'result' field present"]
+    STORE --> COND{"Has branch condition?"}
+    COND -->|"Yes"| EVAL["Evaluate condition<br/>(eq/neq/gt/lt/contains/regex/ai_judge)"]
+    EVAL --> BRANCH{"Target?"}
+    BRANCH -->|"None"| INCR["i += 1 → LOOP"]
+    BRANCH -->|"__end__"| DONE
+    BRANCH -->|"step name"| JUMP["i = index_by_name[target] → LOOP"]
+    COND -->|"No"| INCR
+</div>
+
+<h3>Platform Assembly (build_platform)</h3>
+
+<div class="mermaid">
+flowchart TD
+    START["build_platform(settings)"] --> REG["Register all code skills<br/>(register_sdr/recruiter/ops/support)"]
+    REG --> CIPHER["Create CredentialCipher(credentials_key)"]
+    CIPHER --> DB_CHK{"DATABASE_URL configured?"}
+    DB_CHK -->|"Yes: Postgres"| PG_PATH["Create asyncpg pool<br/>tenant_session_factory for RLS"]
+    PG_PATH --> PG_ADAPT["Instantiate all Postgres stores:<br/>audit · approvals · users · refresh<br/>roles · integrations · pipeline · catalog<br/>unsubscribes · org · system_config<br/>entitlements · usage · schedules<br/>kb · goal_runs · security_audit"]
+    PG_ADAPT --> PG_CHECK["Postgres Checkpointer<br/>postgres_checkpointer_cm(url)"]
+    DB_CHK -->|"No: InMemory"| MEM_CHK{"APP_ENV=production?"}
+    MEM_CHK -->|"Yes"| DIE["Refuse to start — would lose all data"]
+    MEM_CHK -->|"No"| MEM_ADAPT["Instantiate all InMemory stores"]
+    MEM_ADAPT --> MEM_CHECK["InMemorySaver checkpointer"]
+
+    PG_CHECK --> BUS["Create EventBus + PublishingAuditLog<br/>(wraps audit log for SSE)"]
+    MEM_CHECK --> BUS
+
+    BUS --> ENSURE["users.ensure_default_tenant()"]
+    ENSURE --> SYS_CFG["Read system_config for tenant<br/>(LLM keys, provider, rate limits, brand)"]
+    SYS_CFG --> GW["_build_gateway()<br/>(provider preference → auto-fallback → FakeLLM)"]
+    GW --> GW_CHK{"Live LLM provider?"}
+    GW_CHK -->|"No & production"| WARN["Log warning: no live reasoning"]
+    GW_CHK -->|"Yes"| OK["Gateway ready"]
+
+    OK --> MEM_BUILD["Build MemoryStore with gateway<br/>(PostgresMemoryStore or InMemoryMemoryStore)"]
+    MEM_BUILD --> DEFS["register_definitions(registry, catalog.list_published())<br/>(materialize marketplace skills)"]
+    DEFS --> TOOLBOX["build_tenant_toolbox(tenant_id, composio)<br/>(system toolbox for platform email)"]
+    TOOLBOX --> SEED{"Tenant has roles?"}
+    SEED -->|"No"| CREATE_ROLES["Create 4 default roles:<br/>Aria (SDR) · Rio (Recruiter)<br/>Otto (Ops) · Sage (Support)"]
+    SEED -->|"Yes"| SKIP_SEED["Skip"]
+    CREATE_ROLES --> AUTO_APP["Build auto_approve_skills frozenset<br/>(from system_config)"]
+    SKIP_SEED --> AUTO_APP
+    AUTO_APP --> NOTIFY["Wire approval notifications<br/>(email + Slack if configured)"]
+    NOTIFY --> RETURN["Return Platform dataclass<br/>(25+ fields wired)"]
+</div>
+
+<h3>Data Persistence — Ports &amp; Adapters Pattern</h3>
+
+<div class="mermaid">
+classDiagram
+    class MemoryStore {
+        &lt;&lt;protocol&gt;&gt;
+        +search(tenant_id, query, k) list
+        +remember(record) None
+    }
+    class AuditLog {
+        &lt;&lt;protocol&gt;&gt;
+        +append(event) None
+    }
+    class ApprovalStore {
+        &lt;&lt;protocol&gt;&gt;
+        +create(approval) Approval
+        +find_approved(tenant_id, task_id, skill, hash) Approval?
+        +consume(tenant_id, approval_id) None
+    }
+    class PipelineStore {
+        &lt;&lt;protocol&gt;&gt;
+        +upsert_contact(record) None
+        +record_message(record) None
+    }
+    class RoleStore {
+        &lt;&lt;protocol&gt;&gt;
+        +get(tenant_id, role_id) Role?
+        +list(tenant_id) list
+        +create(role) Role
+    }
+
+    class InMemoryMemoryStore {
+        +_records: list
+        +_gateway: LLMGateway
+    }
+    class PostgresMemoryStore {
+        +_pool: Pool
+        +_gateway: LLMGateway
+        +_session_factory: callable
+    }
+    class InMemoryAuditLog {
+        +_events: list
+    }
+    class PostgresAuditLog {
+        +_pool: Pool
+    }
+    class InMemoryApprovalStore {
+        +_approvals: dict
+    }
+    class PostgresApprovalStore {
+        +_pool: Pool
+    }
+
+    MemoryStore <|.. InMemoryMemoryStore : implements
+    MemoryStore <|.. PostgresMemoryStore : implements
+    AuditLog <|.. InMemoryAuditLog : implements
+    AuditLog <|.. PostgresAuditLog : implements
+    ApprovalStore <|.. InMemoryApprovalStore : implements
+    ApprovalStore <|.. PostgresApprovalStore : implements
+    PipelineStore <|.. InMemoryPipelineStore : implements
+    PipelineStore <|.. PostgresPipelineStore : implements
+    RoleStore <|.. InMemoryRoleStore : implements
+    RoleStore <|.. PostgresRoleStore : implements
+</div>
+
+<hr>
+
+<!-- ==================== GAP ANALYSIS ==================== -->
+<h2 id="gap-analysis">4. Gap Analysis &amp; Value-Add Features</h2>
+
+<p>This section identifies critical technical and functional elements that are either missing or partially implemented, assessed for production-readiness impact.</p>
+
+<h3>Critical Gaps</h3>
+
+<div class="gap-item severe">
+  <span class="gap-label">Unimplemented Skills</span>
+  <span class="gap-severity sev-critical">CRITICAL</span>
+  <p>The <code>schedule_followup</code> skill (SDR) returns a hardcoded error: <em>"schedule_followup is not yet implemented — durable scheduling pending."</em> Similarly, <code>schedule_followup</code> is assigned to SDR, Recruiter, and Ops roles. When the LLM selects this tool, the agent fails silently. The scheduler infrastructure exists but follow-up-as-a-skill is unimplemented.</p>
+  <p><strong>Recommendation:</strong> Implement <code>schedule_followup</code> using the existing <code>schedules</code> table and scheduler loop to create one-shot scheduled runs.</p>
+</div>
+
+<div class="gap-item severe">
+  <span class="gap-label">No File Upload / Document Parsing</span>
+  <span class="gap-severity sev-critical">CRITICAL</span>
+  <p>Resume screening (<code>screen_resume</code>) accepts only inline text. The RAG knowledge base accepts only raw text ingestion. No PDF, DOCX, or image parsing exists. This is a fundamental limitation for the Recruiter and Support roles.</p>
+  <p><strong>Recommendation:</strong> Integrate <code>pypdf</code> / <code>python-docx</code> for the KB ingestion pipeline; add a <code>resume_file</code> field type to the marketplace <code>InputField</code> type system.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No Billing / Stripe Integration</span>
+  <span class="gap-severity sev-high">HIGH</span>
+  <p>Entitlement enforcement is database-driven with plan tiers. No recurring billing, no Stripe webhooks for subscription lifecycle, no seat-based metering. The platform cannot accept payment autonomously.</p>
+  <p><strong>Recommendation:</strong> Add Stripe integration with webhook handlers for <code>invoice.paid</code>, <code>customer.subscription.deleted</code>, linking to the existing <code>entitlements</code> store.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No Backup / Restore CLI</span>
+  <span class="gap-severity sev-high">HIGH</span>
+  <p>No built-in backup mechanism. Tenant data lives in Cloud SQL with no platform-level export/import. Compliance buyers and enterprise customers will demand this.</p>
+  <p><strong>Recommendation:</strong> Ship an <code>ikarmic backup</code> CLI using <code>pg_dump</code> with tenant-scoped exports. Add to the deployment runbook.</p>
+</div>
+
+<h3>High-Impact Gaps</h3>
+
+<div class="gap-item">
+  <span class="gap-label">No Skill Versioning &amp; Rollback</span>
+  <span class="gap-severity sev-high">HIGH</span>
+  <p>The <code>SkillDefinition.version</code> field exists but no pinning or rollback logic is implemented. If a published marketplace update introduces a regression, all tenants using that skill are affected immediately with no recourse.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">Single-Approver Only (No Multi-Approver Workflows)</span>
+  <span class="gap-severity sev-high">HIGH</span>
+  <p>Approvals are single-actor: one admin approves or rejects. Enterprise governance requires multi-approver chains, approver groups, SLA timers with auto-escalation, and approve-from-Slack/email with signed action links.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No PII Redaction or Prompt Injection Screening</span>
+  <span class="gap-severity sev-high">HIGH</span>
+  <p>The LLM gateway has no middleware for PII detection/redaction on input/output or prompt injection filtering. Data-residency tags and time-of-day execution windows are absent from the gate policy engine.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No AI Finance Assistant (5th Employee)</span>
+  <span class="gap-severity sev-medium">MEDIUM</span>
+  <p>Named in <code>docs/PLAN.md</code> as a Tier 2 pending feature. Invoice drafting, expense categorization, and reconciliation skills would open the finance/accounting vertical but require new tool adapters (QuickBooks/Xero) and compliance-scoped permissions.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No Multi-Channel Tools (Slack, SMS, WhatsApp, Live Chat)</span>
+  <span class="gap-severity sev-medium">MEDIUM</span>
+  <p>Email and Slack (approval notifications only) are the only channels. Full Slack, SMS (Twilio), WhatsApp, and live-chat tool adapters are needed for support and sales use cases that require meeting customers where they are.</p>
+</div>
+
+<h3>Operational Gaps</h3>
+
+<div class="gap-item">
+  <span class="gap-label">Multi-Instance Deployment Requires Redis</span>
+  <span class="gap-severity sev-medium">MEDIUM</span>
+  <p>The rate limiter and SSE event bus use in-process state by default. With >1 Cloud Run instance and no <code>REDIS_URL</code>, per-tenant rate limits are enforced per-pod (bypassable) and SSE events only reach clients on the emitting pod. A non-fatal startup advisory is logged but the system operates in a degraded mode.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No Weekly Digest Email</span>
+  <span class="gap-severity sev-low">LOW</span>
+  <p>Named in the FEATURE_ROADMAP as remaining minor work. The scheduler is shipped. A weekly summary email (ROI, tokens spent, actions taken per role) would drive engagement and renewal.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No Theme / Branding Live Editor</span>
+  <span class="gap-severity sev-low">LOW</span>
+  <p>Branding API exists (logo URL, primary color, brand name) but there is no visual editor. Administrators must know the exact field names and values.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No Org Chart / Manager Role Delegation</span>
+  <span class="gap-severity sev-low">LOW</span>
+  <p><code>departments</code> table and <code>Role.department_id</code> exist. No manager role type decomposes a team goal and delegates to member roles (the CEO pattern one level down). No visual org-chart UI.</p>
+</div>
+
+<div class="gap-item">
+  <span class="gap-label">No Signed Third-Party Publisher Verification</span>
+  <span class="gap-severity sev-low">LOW</span>
+  <p>The marketplace accepts any <code>SkillDefinition</code>. No code-signing, publisher verification, or trust model exists for third-party skills. This is necessary for an ecosystem play but not blocking for V1.</p>
+</div>
+
+<hr>
+
+<h2 id="value-add-features">Value-Add Features for Production Readiness</h2>
+
+<p>Based on the gap analysis, here are the recommended features ordered by business impact:</p>
+
+<table>
+  <tr><th>#</th><th>Feature</th><th>Impact</th><th>Effort</th><th>Unlocks</th></tr>
+  <tr>
+    <td>1</td>
+    <td><strong>Stripe Billing Integration</strong></td>
+    <td><span class="badge badge-red">Critical</span></td>
+    <td>L</td>
+    <td>Recurring revenue, self-serve signup, seat management, license renewal automation</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><strong>File Upload &amp; Document Parsing</strong></td>
+    <td><span class="badge badge-red">Critical</span></td>
+    <td>M</td>
+    <td>Recruiter resume screening, KB document ingestion, support ticket attachments</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><strong>Implement schedule_followup Skill</strong></td>
+    <td><span class="badge badge-red">Critical</span></td>
+    <td>S</td>
+    <td>Completes SDR/Recruiter/Ops skill sets; removes hardcoded error path</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><strong>Multi-Approver Workflows &amp; SLA Timers</strong></td>
+    <td><span class="badge badge-amber">High</span></td>
+    <td>L</td>
+    <td>Enterprise compliance, SOC2 readiness, larger deal sizes</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><strong>PII Redaction &amp; Prompt Injection Guard</strong></td>
+    <td><span class="badge badge-amber">High</span></td>
+    <td>M</td>
+    <td>Healthcare/Legal verticals, GDPR/HIPAA compliance posture</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td><strong>Skill Versioning &amp; Rollback</strong></td>
+    <td><span class="badge badge-amber">High</span></td>
+    <td>M</td>
+    <td>Safe marketplace publishing, no-regression guarantees for tenants</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td><strong>Backup / Restore CLI</strong></td>
+    <td><span class="badge badge-amber">High</span></td>
+    <td>S</td>
+    <td>Enterprise procurement checklist, disaster recovery runbook</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td><strong>AI Finance Assistant (5th Employee)</strong></td>
+    <td><span class="badge badge-blue">Medium</span></td>
+    <td>M</td>
+    <td>Opens finance/accounting vertical; high-ROI for ops buyers</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td><strong>Multi-Channel Tools (Slack, SMS, WhatsApp)</strong></td>
+    <td><span class="badge badge-blue">Medium</span></td>
+    <td>L</td>
+    <td>Omnichannel support, sales engagement, broader market fit</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td><strong>Org Chart &amp; Manager Delegation</strong></td>
+    <td><span class="badge badge-blue">Medium</span></td>
+    <td>M</td>
+    <td>Team-selling (larger contracts), hierarchical goal decomposition</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td><strong>Weekly Digest Email</strong></td>
+    <td><span class="badge badge-green">Low</span></td>
+    <td>S</td>
+    <td>Engagement, retention, proof-of-ROI communication</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td><strong>Visual Branding Editor</strong></td>
+    <td><span class="badge badge-green">Low</span></td>
+    <td>S</td>
+    <td>Self-serve UX polish, reduces onboarding support tickets</td>
+  </tr>
+</table>
+
+<hr>
+
+<p style="text-align:center;color:var(--muted);font-size:13px;margin-top:48px">
+  iKarmic Technical Documentation — Generated from source code analysis of commit 0.0.1 ·
+  4 AI employees · 20+ skills · 46 migrations · 17 industry verticals
+</p>
+
+</main>
+
+<!-- Fullscreen diagram modal -->
+<div class="diagram-modal" id="diagram-modal" aria-hidden="true">
+  <div class="diagram-modal-panel">
+    <button class="diagram-modal-close" id="diagram-modal-close" title="Close (Esc)">&times;</button>
+    <img id="diagram-modal-img" src="" alt="Expanded diagram" />
+    <div class="diagram-modal-hint" id="diagram-modal-hint">Scroll to zoom &bull; drag to pan</div>
+    <div class="diagram-zoom-controls">
+      <button id="diagram-zoom-out" title="Zoom out">−</button>
+      <button id="diagram-zoom-reset" title="Reset zoom">↺</button>
+      <button id="diagram-zoom-in" title="Zoom in">+</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var ZOOM = 1;
+  var PAN = {x: 0, y: 0};
+  var DRAGGING = false;
+  var DRAG_START = {x: 0, y: 0};
+  var DRAG_PAN_START = {x: 0, y: 0};
+
+  function wrapDiagrams() {
+    document.querySelectorAll('.mermaid').forEach(function(el) {
+      if (el.parentNode && el.parentNode.classList.contains('diagram-wrapper')) return;
+      var wrapper = document.createElement('div');
+      wrapper.className = 'diagram-wrapper';
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+
+      var btn = document.createElement('button');
+      btn.className = 'diagram-expand-btn';
+      btn.title = 'Click to expand diagram';
+      btn.setAttribute('aria-label', 'Expand diagram');
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>';
+      btn.addEventListener('click', function(e) { e.stopPropagation(); openModal(el); });
+      wrapper.appendChild(btn);
+    });
+  }
+
+  function getSvg(el) {
+    return el.querySelector('svg');
+  }
+
+  function openModal(el) {
+    var svg = getSvg(el);
+    if (!svg) return;
+    var clone = svg.cloneNode(true);
+    clone.removeAttribute('style');
+    clone.setAttribute('width', '100%');
+    clone.setAttribute('height', '100%');
+    clone.style.maxWidth = '100%';
+    clone.style.maxHeight = '100%';
+    // Convert SVG to data URL so we can use <img> for easy object-fit
+    var ser = new XMLSerializer().serializeToString(clone);
+    var blob = new Blob([ser], {type: 'image/svg+xml;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+
+    var img = document.getElementById('diagram-modal-img');
+    // Revoke previous blob
+    if (img.src && img.src.startsWith('blob:')) URL.revokeObjectURL(img.src);
+    img.src = url;
+    img.style.transform = '';
+
+    ZOOM = 1; PAN = {x: 0, y: 0};
+    applyTransform(img);
+
+    document.getElementById('diagram-modal').classList.add('open');
+    document.getElementById('diagram-modal').setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showHint();
+  }
+
+  function closeModal() {
+    document.getElementById('diagram-modal').classList.remove('open');
+    document.getElementById('diagram-modal').setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function applyTransform(img) {
+    img.style.transform = 'translate(' + PAN.x + 'px, ' + PAN.y + 'px) scale(' + ZOOM + ')';
+    img.style.transformOrigin = '0 0';
+  }
+
+  var hintTimeout;
+  function showHint() {
+    var hint = document.getElementById('diagram-modal-hint');
+    hint.style.opacity = '1';
+    clearTimeout(hintTimeout);
+    hintTimeout = setTimeout(function() { hint.style.opacity = '0'; }, 3000);
+  }
+
+  // Modal zoom/pan
+  var modal = document.getElementById('diagram-modal');
+  var img = document.getElementById('diagram-modal-img');
+
+  img.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    var delta = e.deltaY > 0 ? -0.15 : 0.15;
+    var newZoom = Math.min(10, Math.max(0.1, ZOOM + delta));
+
+    // Zoom toward cursor position
+    var rect = img.getBoundingClientRect();
+    var cx = e.clientX - rect.left;
+    var cy = e.clientY - rect.top;
+    PAN.x -= cx * (newZoom - ZOOM);
+    PAN.y -= cy * (newZoom - ZOOM);
+    ZOOM = newZoom;
+    applyTransform(img);
+    showHint();
+  });
+
+  img.addEventListener('mousedown', function(e) {
+    DRAGGING = true;
+    DRAG_START = {x: e.clientX, y: e.clientY};
+    DRAG_PAN_START = {x: PAN.x, y: PAN.y};
+    img.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', function(e) {
+    if (!DRAGGING) return;
+    PAN.x = DRAG_PAN_START.x + (e.clientX - DRAG_START.x);
+    PAN.y = DRAG_PAN_START.y + (e.clientY - DRAG_START.y);
+    applyTransform(img);
+    showHint();
+  });
+
+  window.addEventListener('mouseup', function() {
+    DRAGGING = false;
+    img.style.cursor = '';
+  });
+
+  // Touch support
+  var lastPinchDist = 0;
+  img.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      DRAGGING = true;
+      DRAG_START = {x: e.touches[0].clientX, y: e.touches[0].clientY};
+      DRAG_PAN_START = {x: PAN.x, y: PAN.y};
+    } else if (e.touches.length === 2) {
+      DRAGGING = false;
+      lastPinchDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    }
+  });
+
+  img.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1 && DRAGGING) {
+      PAN.x = DRAG_PAN_START.x + (e.touches[0].clientX - DRAG_START.x);
+      PAN.y = DRAG_PAN_START.y + (e.touches[0].clientY - DRAG_START.y);
+      applyTransform(img);
+    } else if (e.touches.length === 2) {
+      var dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      if (lastPinchDist) {
+        var scale = dist / lastPinchDist;
+        var newZoom = Math.min(10, Math.max(0.1, ZOOM * scale));
+        var cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        var cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        var rect = img.getBoundingClientRect();
+        PAN.x -= (cx - rect.left) * (newZoom - ZOOM);
+        PAN.y -= (cy - rect.top) * (newZoom - ZOOM);
+        ZOOM = newZoom;
+        applyTransform(img);
+      }
+      lastPinchDist = dist;
+      showHint();
+    }
+    e.preventDefault();
+  });
+
+  img.addEventListener('touchend', function() { DRAGGING = false; lastPinchDist = 0; });
+
+  // Click on modal backdrop to close
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+  document.getElementById('diagram-modal-close').addEventListener('click', closeModal);
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key === '0' || e.key === 'r') { ZOOM = 1; PAN = {x:0,y:0}; applyTransform(img); showHint(); return; }
+    if (e.key === '+' || e.key === '=') { ZOOM = Math.min(10, ZOOM + 0.25); applyTransform(img); showHint(); return; }
+    if (e.key === '-') { ZOOM = Math.max(0.1, ZOOM - 0.25); applyTransform(img); showHint(); return; }
+  });
+
+  // Zoom buttons
+  document.getElementById('diagram-zoom-in').addEventListener('click', function() { ZOOM = Math.min(10, ZOOM + 0.25); applyTransform(img); showHint(); });
+  document.getElementById('diagram-zoom-out').addEventListener('click', function() { ZOOM = Math.max(0.1, ZOOM - 0.25); applyTransform(img); showHint(); });
+  document.getElementById('diagram-zoom-reset').addEventListener('click', function() { ZOOM = 1; PAN = {x:0,y:0}; applyTransform(img); showHint(); });
+
+  // ── Mermaid init ──────────────────────────────────────────────────────
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'dark',
+    themeVariables: {
+      primaryColor: '#1e293b',
+      primaryTextColor: '#e2e8f0',
+      primaryBorderColor: '#334155',
+      lineColor: '#475569',
+      secondaryColor: '#111827',
+      tertiaryColor: '#0b1120',
+      noteBkgColor: '#1e293b',
+      noteTextColor: '#94a3b8',
+    },
+    flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' },
+    sequence: { useMaxWidth: true, diagramMarginX: 50, diagramMarginY: 20 },
+    journey: { useMaxWidth: true }
+  });
+
+  // Wait for mermaid to render, then wrap diagrams
+  var checkInterval = setInterval(function() {
+    var els = document.querySelectorAll('.mermaid');
+    var allRendered = true;
+    els.forEach(function(el) {
+      if (!el.querySelector('svg')) allRendered = false;
+    });
+    if (allRendered && els.length > 0) {
+      clearInterval(checkInterval);
+      wrapDiagrams();
+    }
+  }, 100);
+
+  // Fallback: wrap after 5 seconds regardless
+  setTimeout(function() { clearInterval(checkInterval); wrapDiagrams(); }, 5000);
+})();
+</script>
+
+</body>
+</html>
